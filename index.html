@@ -13,6 +13,7 @@
               fontFamily : {
                 sans : ['Abel', 'sans-serif']
               }
+             
             }
           }
         }
@@ -27,18 +28,24 @@
             <div class="flex-intial px-3" style="border-right: 1px solid grey; height: 100vh; width: 40%;">
         
                 <!-- This example requires Tailwind CSS v2.0+ -->
-                    <div class="back-light py-3 px-20 my-5 rounded">
+                    <div class="back-light flex justify-center py-3 px-20 my-5 rounded">
                         <h1 class="font-thin text-lg tracking-widest">
-                            <span>AMRITA VISHWA VIDYAPEETHAM </span>
+                            <span>DSA VISUALIZER</span>
                          </h1>
                     </div>
 
 
                     <section>
-                        <h2 class="font-thin text-md tracking-widest mt-4">
-                            Lorem Ipsum 
-                            <button class="btn btn-primary" onclick="anime()"> Pop </button>
-                        </h2>
+                        <div class="relative inline-block text-left">
+                            <div>
+                              <button type="button" class="primary-button" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                Options
+                                <!-- Heroicon name: solid/chevron-down -->
+                                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                              </button>
+                            </div>
                     </section>
                    
 
@@ -72,14 +79,8 @@ let myStack = new Stack(0);
         myStack.pop()
     }
 
-    anime({
-  targets: '.staggering-axis-grid-demo .box',
-  translateX: anime.stagger(10, {grid: [14, 5], from: 'center', axis: 'x'}),
-  translateY: anime.stagger(10, {grid: [14, 5], from: 'center', axis: 'y'}),
-  rotateZ: anime.stagger([0, 90], {grid: [14, 5], from: 'center', axis: 'x'}),
-  delay: anime.stagger(200, {grid: [14, 5], from: 'center'}),
-  easing: 'easeInOutQuad'
-});
+
+
 
 
 
