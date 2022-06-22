@@ -1,26 +1,27 @@
+
 :root {
-    --primary : #166D8A;
-    --secondary : #FDD741;
-    --light : #F4F3ED;
-    --primary10 : #24B4A5;
-    --primary20 : #8FEDC2;
-    --bs-dark: var(--primary);
-    overflow-y: hidden;
-    overflow-x: hidden;
+  --primary : #166D8A;
+  --secondary : #FDD741;
+  --light : #F4F3ED;
+  --primary10 : #24B4A5;
+  --primary20 : #8FEDC2;
+  --bs-dark: var(--primary);
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 *{
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .box {
-    display: flex;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    color: var(--light);
-    padding-top: 15px;
-    margin: 5px;
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  height: 50px;
+  color: var(--light);
+  padding-top: 15px;
+  margin: 5px;
 background: rgba(36, 180, 165, 0.82);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -29,7 +30,7 @@ backdrop-filter: blur(8.3px);
 }
 
 .back-dark {
-    background-color: var(--primary);
+  background-color: var(--primary);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(6.3px);
@@ -44,13 +45,173 @@ backdrop-filter: blur(12.3px);
 -webkit-backdrop-filter: blur(12.3px);
 }
 
-.primary-button {
-    background-color: var(--secondary);
-    width: 100%;
-    display: inline-flex;
-    justify-content: center;
-    border-radius: 16px;
+
+.animation-wrapper {
+  width: 80%;
+  padding-bottom: 40%;
 }
-.primary-button:hover {
-    border: 1px solid var(--dark);
+
+.stagger-visualizer {
+  position: absolute;
+  width: 1100px;
+  height: 550px;
+  transform-origin: left top;
 }
+
+.stagger-visualizer .dots-wrapper {
+  transform: translateZ(0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.stagger-visualizer .dot {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  margin: 16px;
+  border: 1px solid #F4F3ED;
+  border-radius: 16%;
+
+}
+
+
+@media (min-width: 740px) {
+  .stagger-visualizer .dot {
+    background-color: transparent;
+    background-image: var(--secondary)
+  }
+}
+
+.stagger-visualizer .cursor {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 37px;
+  height: 37px;
+  margin: 9px;
+  background-color: var(--secondary);
+  border-radius: 16%;
+}
+
+nav {
+
+  margin: auto;
+  margin-top: 40px;
+  position: relative;
+  width: clamp(320px, 50vw ,100%);
+}
+
+nav h2 {
+
+  position: relative;
+  background: var(--secondary);
+  height: 40px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  color: inherit;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px 20px -2px rgba(0, 0, 0, 0.35);
+  transition: all 0.4s;
+}
+
+nav:hover h2 {
+  transform: translateY(-2px);
+  box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.35);
+}
+
+#toggle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+  cursor: pointer;
+  height: 40px;
+}
+
+h2::before{
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: inherit;
+  aspect-ratio: 1;
+  background: currentColor;
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+  content: "";
+  clip-path: polygon(50% 25%, 20% 80%, 80% 80%);
+  transform: rotate(180deg) scale(0.75);
+}
+
+#toggle:not(:checked) ~ h2::before {
+  transform: rotate(0deg) scale(0.75);
+}
+
+#toggle:focus ~ h2{
+  background: var(--primary20);
+}
+
+#toggle:checked ~ ul {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#toggle:not(:checked) ~ ul {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+nav ul {
+  padding-left: 0;
+  padding-top: 1rem;
+  margin-top: 0;
+  list-style: none;
+  overflow: hidden;
+  text-align: right;
+  text-align: center;
+  transition: all 0.4s ease-out;
+  width: 100%;
+  position: absolute;
+}
+nav ul li {
+  border-radius: 16px;
+  position: relative;
+  display: inline-block;
+  line-height: 1.5;
+  width: 100%;
+  margin: 0 0 0.25rem 0;
+  background: var(--secondary);
+  transition: background 3s;
+  box-shadow: 2px 2px 10px -2px rgba(0, 0, 0, 0.35);
+}
+
+nav ul li:hover,
+nav ul li a:focus {
+  background: var(--primary20);
+  transition: background 0.45s;
+}
+
+nav ul a {
+  display: block;
+  color: inherit;
+  text-transform: uppercase;
+  font-weight: 200;
+  text-decoration: none;
+}
+
