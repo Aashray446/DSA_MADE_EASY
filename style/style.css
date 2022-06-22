@@ -1,3 +1,14 @@
+:root {
+    --primary : #166D8A;
+    --secondary : #FDD741;
+    --light : #F4F3ED;
+    --primary10 : #24B4A5;
+    --primary20 : #8FEDC2;
+    --bs-dark: var(--primary);
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
 *{
     box-sizing: border-box;
 }
@@ -7,8 +18,29 @@
     justify-content: center;
     width: 50px;
     height: 50px;
-    color: white;
+    color: var(--light);
     padding-top: 15px;
-    margin: 10px;
-    background-color: rgba(235, 46, 46, 0.822);
+    margin: 5px;
+background: rgba(36, 180, 165, 0.82);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.3px);
+-webkit-backdrop-filter: blur(8.3px);
 }
+
+.back-dark {
+    background-color: var(--primary);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.3px);
+-webkit-backdrop-filter: blur(6.3px);
+}
+.back-light {
+color: var(--light);
+background: rgba(244, 243, 237, 0.28);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(12.3px);
+-webkit-backdrop-filter: blur(12.3px);
+}
+

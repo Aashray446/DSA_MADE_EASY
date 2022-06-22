@@ -5,19 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSA VISUALIZATION </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily : {
+                sans : ['Abel', 'sans-serif']
+              }
+            }
+          }
+        }
+      </script>
     <link rel="stylesheet" href="./style/style.css">
 
 </head>
-<body>
+<body style="background-color:var(--primary);">
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-4">asd </div>
+        <div class="flex flex-row">
+            <div class="flex-intial px-3" style="border-right: 1px solid grey; height: 100vh; width: 40%;">
+        
+                <!-- This example requires Tailwind CSS v2.0+ -->
+                    <div class="back-light py-3 px-20 my-5 rounded">
+                        <h1 class="font-thin text-lg tracking-widest">
+                            <span>AMRITA VISHWA VIDYAPEETHAM </span>
+                         </h1>
+                    </div>
+
+
+                    <section>
+                        <h2 class="font-thin text-md tracking-widest mt-4">
+                            Lorem Ipsum 
+                            <button class="btn btn-primary" onclick="anime()"> Pop </button>
+                        </h2>
+                    </section>
+                   
+
+             </div>
 
             <!-- PLAYGROUND AREAD -->
-            <div class="col-8" id="playgrnd"> 
-                
+            <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
+
+                <div class="flex flex-row flex-wrap justify-center flex-grow staggering-axis-grid-demo" id="playgrnd" > 
+            </div>
+         
+            
             </div>
         </div>
     </div>
@@ -29,14 +62,30 @@
 <script src="./js/stack.js"></script>
 
 <script>
-    let myStack = new Stack(5);
-    myStack.push(10)
-    myStack.push(100)
-    console.log(myStack.pop())
 
-    const add = function() {
-        myStack.push(100)
+let myStack = new Stack(0);
+    for(let i= 1; i < 91; i++) {
+        myStack.push(i)
     }
+
+    const pop = function() {
+        myStack.pop()
+    }
+
+    anime({
+  targets: '.staggering-axis-grid-demo .box',
+  translateX: anime.stagger(10, {grid: [14, 5], from: 'center', axis: 'x'}),
+  translateY: anime.stagger(10, {grid: [14, 5], from: 'center', axis: 'y'}),
+  rotateZ: anime.stagger([0, 90], {grid: [14, 5], from: 'center', axis: 'x'}),
+  delay: anime.stagger(200, {grid: [14, 5], from: 'center'}),
+  easing: 'easeInOutQuad'
+});
+
+
+
+    
+    
+    
 </script>
 
 </html>

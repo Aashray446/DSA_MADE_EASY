@@ -6,7 +6,7 @@ class Stack {
     // Functions to manipulate the UI
     #createElement(value){
         const element = document.createElement('div');
-        element.classList.add('box')
+        element.classList.add('box')    
         element.innerHTML = value
 
         document.getElementById('playgrnd').appendChild(element)        
