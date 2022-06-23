@@ -1,6 +1,6 @@
 
 :root {
-  --primary : #166D8A;
+  --primary : #1e424e;
   --secondary : #FDD741;
   --light : #F4F3ED;
   --primary10 : #24B4A5;
@@ -30,11 +30,14 @@ backdrop-filter: blur(8.3px);
 }
 
 .back-dark {
-  background-color: var(--primary);
+/* From https://css.glass */
+background: rgba(30, 66, 78, 0);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(6.3px);
--webkit-backdrop-filter: blur(6.3px);
+backdrop-filter: blur(14.1px);
+-webkit-backdrop-filter: blur(14.1px);
+border: 1px solid rgba(30, 66, 78, 1);
+
 }
 .back-light {
 color: var(--light);
