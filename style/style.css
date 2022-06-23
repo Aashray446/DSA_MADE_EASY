@@ -215,3 +215,22 @@ nav ul a {
   text-decoration: none;
 }
 
+.animation-container {
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 100%;
+  width: 80%;
+
+}
+.stack {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  z-index: 1;
+  width: 200px;
+  height: 25px;
+  margin: 5px;
+  border: 1px solid #F4F3ED;
+  border-radius: 16%;
+
+}
