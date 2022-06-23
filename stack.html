@@ -15,7 +15,8 @@
               'secondary' : '#FDD741',
               'light' : '#F4F3ED',
               'primary10' : '#24B4A5',
-              'primary20' : '#8FEDC2'
+              'primary20' : '#8FEDC2',
+              'pink' : '#c17c74'
           } , 
             extend: {
               fontFamily : {
@@ -75,13 +76,15 @@
                       
                       <!-- INITIAL WOKDS WILL BE ASSIGNED HERE -->
                 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">PUSH</button>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="stack.push(
+                          document.getElementById('push').value
+                        )">PUSH</button>
     
-                        <input type="number" class="text-center" placeholder="Enter Push Data" name="push">
+                        <input type="number" id="push" class="text-center" placeholder="Enter Push Data" name="push">
 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700">POP</button>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="stack.pop()">POP</button>
 
-                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700">RESET</button>
+                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="stack.reset()">RESET</button>
                     
                       
                   
@@ -97,6 +100,11 @@
 
 <!--------------------------------------------------------- PLAYGROUND AREAD ------------------------------------------------------------------------------------------------>
             <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
+
+              <div class="grid grid-cols-2">
+                <div class="sudo-stack bg-secondary" id="pushingData"></div>
+                <div class="sudo-stack bg-primary20" id="popingData"></div>
+              </div>
 
               <div class="animation-container h-screen items-center justify-center px-20 flex flex-wrap flex-col" id="animation-container">
           

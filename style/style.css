@@ -223,6 +223,22 @@ nav ul a {
 
 }
 .stack {
+  background-color:#24b4a6df;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  z-index: 1;
+  width: 200px;
+  height: 25px;
+  margin: 5px;
+  border: 1px solid #F4F3ED;
+  border-radius: 16%;
+  box-shadow: 10px 20px 16px rgba(0, 0, 0, 0.2);
+
+}
+
+
+.sudo-stack {
   position: relative;
   display: inline-flex;
   justify-content: center;
