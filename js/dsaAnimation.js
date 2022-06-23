@@ -14,10 +14,10 @@ const createElement = function(value) {
     container.appendChild(element)        
 }
 
-const initDisplay = function(size) {
+const initDisplay = function() {
 
     //Resetting if already initialized
-    if( container.childElementCount > 1) {
+    if( container.childElementCount > 10) {
         container.innerHTML = ""
     }
 
