@@ -119,6 +119,12 @@ class Stack {
         this.dataArray = new Array();
     }
 
+    peek() {
+        const list = document.getElementsByClassName(structure)
+        document.getElementById('popingData').innerHTML = this.dataArray[this.dataArray.length-1]
+
+    }
+
     
 }
 
