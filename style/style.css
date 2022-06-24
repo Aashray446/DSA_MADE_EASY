@@ -253,3 +253,14 @@ nav ul a {
   border-radius: 16%;
 
 }
+.initial_description{
+  font-size: 19px;
+}
+.info{
+  margin-top: 4%;
+  font-size: 19px;
+}
+
+.keywords{
+  color: #FDD741;
+}
