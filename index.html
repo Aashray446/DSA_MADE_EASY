@@ -35,13 +35,12 @@
 <body style="background-color:var(--primary);">
 
     <div class="container-fluid">
-        <div class="flex flex-row">
-
+        <div class="grid grid-cols-12">
 
 
 
 <!------------------------------------------------  CONTROLLER AREA   ------------------------------------------------------------------------------------>
-            <div class="flex-intial px-3" style="border-right: 1px solid grey; height: 100vh; width: 40%;">
+            <div class="flex-intial col-span-5 px-3 hidden md:block lg:block"  style="border-right: 1px solid grey; height: 100vh; ">
         
                 <!-- This example requires Tailwind CSS v2.0+ -->
                     <div class="back-light flex justify-center py-3 px-20 my-5 rounded">
@@ -93,9 +92,14 @@
              </div>
 
 <!--------------------------------------------------------- PLAYGROUND AREAD ------------------------------------------------------------------------------------------------>
-            <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
+            <div class="container col-span-12 md:col-span-7 lg:col-span-7 grid place-items-center h-screen back-dark" style="height:100vh">
 
+
+                
                 <div class="animation-wrapper">
+                                
+              <h3 class="text-secondary text-xl text-center block sm:hidden">Please use Screen larger than 768px to enjoy our app.</h3>
+                  <p class="text-secondary my-3 text-center block sm:hidden">DSA VISUALIZER BY GROUP 12</p>
                     <div class="stagger-visualizer">
                       <div class="cursor color-red"></div>
                       <div class="dots-wrapper"></div>
