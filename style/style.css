@@ -79,8 +79,8 @@ backdrop-filter: blur(12.3px);
   display: inline-flex;
   justify-content: center;
   z-index: 1;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   margin: 16px;
   border: 1px solid #F4F3ED;
   border-radius: 16%;
@@ -272,4 +272,7 @@ nav ul a {
   border: 1px solid #F4F3ED;
   border-radius: 16%;
 
+}
+.keywords{
+  color: #FDD741;
 }
