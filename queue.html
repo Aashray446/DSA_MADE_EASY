@@ -9,117 +9,81 @@
     <!---------------------------TAILWIND  ------------------------------------->
     <script>
         tailwind.config = {
-          theme: {
-            colors : {
-              'primary' : '#166D8A',
-              'secondary' : '#FDD741',
-              'light' : '#F4F3ED',
-              'primary10' : '#24B4A5',
-              'primary20' : '#8FEDC2'
-          } , 
-            extend: {
-              fontFamily : {
-                sans : ['Abel', 'sans-serif']
-              }
-            }  
+            theme: {
+                colors : {
+                    'primary' : '#166D8A',
+                    'secondary' : '#FDD741',
+                    'light' : '#F4F3ED',
+                    'primary10' : '#24B4A5',
+                    'primary20' : '#8FEDC2',
+                    'pink' : '#c17c74'
+                } ,
+                extend: {
+                    fontFamily : {
+                        sans : ['Abel', 'sans-serif']
+                    }
+                }
+            }
         }
-      }
     </script>
     <link rel="stylesheet" href="./style/style.css">
-
 </head>
 
-
-
-
 <body style="background-color:var(--primary);">
-
     <div class="container-fluid">
         <div class="flex flex-row">
-
-
-
-
-<!------------------------------------------------  CONTROLLER AREA   ------------------------------------------------------------------------------------>
+            <!------------------------------------------------  CONTROLLER AREA   ------------------------------------------------------------------------------------>
             <div class="flex-intial px-3" style="border-right: 1px solid grey; height: 100vh; width: 40%;">
-        
                 <!-- This example requires Tailwind CSS v2.0+ -->
-                    <div class="back-light py-3 px-20 my-5 rounded">
-                        <h1 class="font-thin text-lg tracking-widest">
-                            <span>AMRITA VISHWA VIDYAPEETHAM </span>
-                         </h1>
-                    </div>
-
-
-                    <section>
-                      <nav>
+                <div class="back-light py-3 px-20 my-5 rounded">
+                    <h1 class="font-thin text-lg tracking-widest">
+                        <span>AMRITA VISHWA VIDYAPEETHAM </span>
+                    </h1>
+                </div>
+                <section>
+                    <nav>
                         <input id="toggle" style="border-radius:16px;" type="checkbox" checked>
-                       <h2>SELECT DATA STRUCTURE</h2>
-                     <ul>
-                        <li> <a href="index.html">Home</a></li>
-                       <li><a href="stack.html">Stack</a></li>
-                       <li><a href="queue.html">Queue</a></li>
-                       <li><a href="singlylinklist.html">Singly Linked List</a></li>
-                       <li><a href="doublylinklist.html">Doubly Linked List</a></li>
-                       <li><a href="binary.html">Binary Tree</a></li>
-                     </ul>
+                        <h2>SELECT DATA STRUCTURE</h2>
+                        <ul>
+                            <li> <a href="index.html">Home</a></li>
+                            <li><a href="stack.html">Stack</a></li>
+                            <li><a href="queue.html">Queue</a></li>
+                            <li><a href="linklist.html">Linked List</a></li>
+                            <li><a href="binary.html">Binary Tree</a></li>
+                        </ul>
                     </nav>
+                    <!------------------------------ SECTION THAT WILL BE CHANGED [CONTROLLER FOR EVERY DATASTRUCTURE] IN EVERY PAGE  ------------------------------------------------------------------->
+                    <div class="container mx-2 font-sans">
+                        <div class="flex flex-col" id="moreInfo">
+                            <h2 class="font-thin text-2xl tracking-widest mt-20 text-secondary mb-5" >Controls of Stack</h2>
+                            <div class="grid grid-cols-2 gap-10 tracking-widest">
+                                <!-- INITIAL WOKDS WILL BE ASSIGNED HERE -->
+                                <div class="text-center bg-secondary rounded">LENGTH</div>
+                                <input type="number" id="queuelength" class="text-center" value=20 placeholder="Enter Length of the queue" name="length" onchange="queue.length=value">
+                                <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="queue.enqueue(document.getElementById('push').value)">ENQUEUE</button>
+                                <input type="number" id="push" class="text-center" placeholder="Enter Data" name="push" value=0>
+                                <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="queue.dequeue()">DEQUEUE</button>
+                                <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="queue.reset()">RESET</button>
+                            </div>
 
-
-<!------------------------------ SECTION THAT WILL BE CHANGED [CONTROLLER FOR EVERY DATASTRUCTURE] IN EVERY PAGE  ------------------------------------------------------------------->
-      
-                      <div class="container mx-2 font-sans">
-                    <div class="flex flex-col" id="moreInfo">
-                      <h2 class="font-thin text-2xl tracking-widest mt-20 text-secondary mb-5" >Controls Of Queue</h2>
-                    
-                    <div class="grid grid-cols-2 gap-10 tracking-widest">
-                      
-                      <!-- INITIAL WOKDS WILL BE ASSIGNED HERE -->
-                
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">PUSH</button>
-    
-                        <input type="number" class="text-center" placeholder="Enter Push Data" name="push">
-
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700">POP</button>
-
-                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700">RESET</button>
-                    
-                        
-                      
-                  
+                        </div>
                     </div>
-
-                    </div>
-                  </div>
-      
-      
-                    </section>
-
-             </div>
-
-<!--------------------------------------------------------- PLAYGROUND AREAD ------------------------------------------------------------------------------------------------>
+                </section>
+            </div>
+            <!--------------------------------------------------------- PLAYGROUND AREAD --------------------------------------->
             <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
-
-                <div class="animation-wrapper">
-                    <div class="stagger-visualizer">
-                      <div class="cursor color-red"></div>
-                      <div class="dots-wrapper"></div>
-                    </div>
-                  </div>
+                <div class="grid grid-cols-2">
+                    <div class="sudo-queue bg-secondary" id="enqueueData" style="display: none"></div>
+                    <div class="sudo-queue bg-primary20" id="dequeueData" style="display: none"></div>
+                </div>
+                <div class="animation-container items-center" id="animation-container"></div>
             </div>
-<!--------------------------------------------------------- PLAYGROUND AREA ENDS ------------------------------------------------------------------------------------------------>
-            
-            </div>
+            <!------------------------------------------------------------------------------------------------------------------->
+        </div>
     </div>
-    
-    
 </body>
-
-
-<script src="./js/anime.min.js"></script>
-<script src="./js/stack.js"></script>
-
 <!-- PAGE SPECIFICE ANIMATIION -->
-<script src="./js/animationScript.js"></script>
+<script src="./js/anime.min.js"></script>
+<script src="./js/dsaAnimation.js"></script>
 
 </html>
