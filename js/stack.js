@@ -19,12 +19,8 @@ const createElement = function(value) {
 //  ------------------------------ ANIMATIONS FUNCTIONS -------------------------------------------------
 
 const movePushingElement = function() {
-
     let target = document.getElementById('pushingData')
-
-
     let arrayElements = document.getElementsByClassName('stack')
-
 
     //  Some Unkown Error BruteForcely Solved
     let destination = arrayElements[1]
@@ -56,11 +52,7 @@ const movePushingElement = function() {
 
 
 const movePopingData = function() {
-
     let destination = document.getElementById('popingData')
-
-
-
     target = document.getElementsByClassName('stack')[0]
 
     let x = destination.offsetLeft - target.offsetLeft

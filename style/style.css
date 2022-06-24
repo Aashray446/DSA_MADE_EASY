@@ -245,23 +245,20 @@ nav ul a {
   display: inline-flex;
   justify-content: center;
   width: 50px;
-  height: 150px;
+  height: 100px;
   margin: 5px;
   border: 1px solid #F4F3ED;
 
 }
 
 .sudo-queue {
-  position: relative;
+  background-color:#24b4a6df;
   display: inline-flex;
   justify-content: center;
-  z-index: 1;
-  width: 25px;
-  height: 200px;
+  width: 50px;
+  height: 100px;
   margin: 5px;
   border: 1px solid #F4F3ED;
-  border-radius: 16%;
-
 }
 
 .sudo-stack {

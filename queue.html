@@ -59,9 +59,9 @@
                             <div class="grid grid-cols-2 gap-10 tracking-widest">
                                 <!-- INITIAL WOKDS WILL BE ASSIGNED HERE -->
                                 <div class="text-center bg-secondary rounded">LENGTH</div>
-                                <input type="number" id="queuelength" class="text-center" value=20 placeholder="Enter Length of the queue" name="length" onchange="queue.length=value">
-                                <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="queue.enqueue(document.getElementById('push').value)">ENQUEUE</button>
-                                <input type="number" id="push" class="text-center" placeholder="Enter Data" name="push" value=0>
+                                <input type="number" id="queuelength" class="text-center" value=16 placeholder="Enter Length of the queue" name="length" onchange="queue.length=value-1">
+                                <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="queue.enqueue(document.getElementById('enqueue').value)">ENQUEUE</button>
+                                <input type="number" id="enqueue" class="text-center" placeholder="Enter Data" name="enqueue" value=0>
                                 <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="queue.dequeue()">DEQUEUE</button>
                                 <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="queue.reset()">RESET</button>
                             </div>
@@ -73,8 +73,8 @@
             <!--------------------------------------------------------- PLAYGROUND AREAD --------------------------------------->
             <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
                 <div class="grid grid-cols-2">
-                    <div class="sudo-queue bg-secondary" id="enqueueData" style="display: none"></div>
-                    <div class="sudo-queue bg-primary20" id="dequeueData" style="display: none"></div>
+                    <div class="sudo-queue bg-secondary" id="enqueueData"></div>
+                    <div class="sudo-queue bg-primary20" id="dequeueData"></div>
                 </div>
                 <div class="animation-container items-center" id="animation-container"></div>
             </div>
@@ -83,7 +83,7 @@
     </div>
 </body>
 <!-- PAGE SPECIFICE ANIMATIION -->
-<script src="./js/anime.min.js"></script>
+<script src="./js/queue.js"></script>
 <script src="./js/dsaAnimation.js"></script>
 
 </html>
