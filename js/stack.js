@@ -1,40 +1,131 @@
+//Container Variable Definition 
+const container = document.getElementById('animation-container')
+const structure = 'stack'
+
+const createElement = function(value) {
+    const element = document.createElement('div');
+    element.classList.add('hidden')
+    element.classList.add(structure)
+    if(value==null) {
+        element.innerHTML = '-'
+    }   
+    else {
+        element.innerHTML = value
+    }
+    container.prepend(element)        
+}
+
+
+//  ------------------------------ ANIMATIONS FUNCTIONS -------------------------------------------------
+
+const movePushingElement = function() {
+
+    let target = document.getElementById('pushingData')
+
+
+    let arrayElements = document.getElementsByClassName('stack')
+
+
+    //  Some Unkown Error BruteForcely Solved
+    let destination = arrayElements[1]
+    if(arrayElements.length == 1) {
+        destination = arrayElements[0]
+    }
+
+    let x = destination.offsetLeft - target.offsetLeft
+    let y = destination.offsetTop -  target.offsetTop
+
+    anime({
+        targets: target,
+        translateY : [
+            {value : y, easing : 'linear'}
+        ],
+        translateX : {
+            value : x,
+        },
+        complete: function() {
+            document.getElementsByClassName('stack')[0].classList.remove('hidden');
+            anime.set(target, {
+                translateX : 0,
+                translateY : 0
+            })
+        }
+      },
+      );
+}
+
+
+const movePopingData = function() {
+
+    let destination = document.getElementById('popingData')
+
+
+
+    target = document.getElementsByClassName('stack')[0]
+
+    let x = destination.offsetLeft - target.offsetLeft
+    let y = destination.offsetTop -  target.offsetTop
+
+    anime({
+        targets: 'stack',
+        translateY : [
+            {value : y, easing : 'linear'}
+        ],
+        translateX : {
+            value : x,
+        },
+        complete: function() {
+            document.getElementsByClassName('stack')[0].classList.remove('hidden');
+            anime.set(target, {
+                translateX : 0,
+                translateY : 0
+            })
+        }
+      },
+      );
+}
+
+
+// ------------------ Implementation of stack with animation  -------------------------
+// Stack Implementation with array
 class Stack {
    
     dataArray = new Array();
 
-
-    // Functions to manipulate the UI
-    #createElement(value){
-        const element = document.createElement('div');
-        element.classList.add('box')    
-        element.innerHTML = value
-
-        document.getElementById('playgrnd').appendChild(element)        
-    }
-
-    constructor(value) {
-        this.dataArray.push(value)
-        this.#createElement(value)
-    }
-
-   
-
     push(value) {
 
-        this.dataArray.push(value)
-        this.#createElement(value)
-        return
+        if(this.dataArray.length > 12) {
+            window.alert("Stack out of range")
+        }
+        else {
 
+        document.getElementById('pushingData').innerHTML = value
+        createElement(value)
+        this.dataArray.push(value)
+        movePushingElement() 
+        }
     }
 
     pop() {
-        
-        const list = document.getElementsByClassName('box')
-        list[list.length-1].remove()
-
-        return this.dataArray.pop()
+        movePopingData()
+        const list = document.getElementsByClassName(structure)
+        list[0].remove()
+        document.getElementById('popingData').innerHTML = this.dataArray.pop()
+       
     }
 
+    reset = function() {
+        container.innerHTML = ''    
+        this.dataArray = new Array();
+    }
 
     
 }
+
+// Function that will be used by the browser
+let stack = new Stack()
+
+
+
+
+
