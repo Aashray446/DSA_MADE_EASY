@@ -5,7 +5,7 @@ const createElement = (data) => {
     const element = document.createElement('div');
     element.classList.add(structure)
     element.style.backgroundColor=data?.color
-    element.innerHTML = data?.value
+    element.innerHTML = `<p style="color: white; font-size: xx-large">${data?.value}</p>`
     container.append(element)
 }
 
@@ -18,6 +18,13 @@ const getRandomColor = () => {
     }
     color += trans + ')';
     return color;
+}
+
+const wrapFR = (value, isfront) => {
+    if(isfront) {
+        return `<p class="text-center">Front is ${value}</p>`
+    }
+    return `<p class="text-center">Rear is ${value}</p>`
 }
 
 
@@ -40,21 +47,21 @@ class Queue {
         else {
             let enqinf = document.getElementById('enqueueinfo')
             if(value=="") {
-                enqinf.getElementsByTagName('p')[0].innerHTML = "Random no is taken for Enqueue!"
+                enqinf.getElementsByTagName('p')[0].innerHTML = "Random number is taken for Enqueue!"
                 enqinf.style.display = 'block'
-                value = Math.floor((Math.random() * 10) + 1);
+                value = Math.floor((Math.random() * 100) + 1);
             } else {
                 enqinf.style.display = 'none'
             }
             this.inf.style.display = 'none'
             const bg_color = getRandomColor()
-            this.qr.innerHTML = "Rear\n--> " + value
+            this.qr.innerHTML = wrapFR(value, false)
             this.qr.style.backgroundColor = bg_color
             createElement({'value': value, 'color': bg_color})
             this.dataArray.push(value)
             if (this.rear == -1) {
                 this.front = 0;
-                this.qf.innerHTML = "Front\n--> "+this.dataArray[this.front]
+                this.qf.innerHTML = wrapFR(this.dataArray[this.front],true)
                 this.rear = 0;
                 this.qf.style.display = 'block'
                 this.qr.style.display = 'block'
@@ -78,14 +85,17 @@ class Queue {
             }else{
                 list[0].remove()
                 this.dataArray?.pop()
-                this.qf.innerHTML = "Front\n--> "+ list[0]?.innerHTML
+                this.qf.innerHTML = wrapFR(list[0]?.getElementsByTagName('p')[0]?.innerHTML || -1,true)
+                console.log(this.dataArray)
                 this.qf.style.backgroundColor = list[0]?.style?.backgroundColor
             }
-            this.front+=1;
+            this.front++;
         }
-        if(this.dataArray.length == 0 || this.front > this.rear) {
+        if(this.dataArray.length == 0) {
             this.front = -1;
             this.rear = -1;
+            this.qf.innerHTML = wrapFR(-1,true)
+            this.qr.innerHTML = wrapFR(-1,false)
         }
         console.log(this.rear,this.front)
     }
@@ -99,8 +109,8 @@ class Queue {
 
     isEmpty=()=>{
         if(this.front == -1) {
-            this.qf.innerHTML = 'Front -1'
-            this.qr.innerHTML = 'Rear -1'
+            this.qf.innerHTML = wrapFR(-1,true)
+            this.qr.innerHTML = wrapFR(-1,false)
             return true;
         }
         return false;
@@ -108,8 +118,8 @@ class Queue {
 
     reset = () => {
         this.inf.style.display = 'none'
-        this.qr.innerHTML = ""
-        this.qf.innerHTML = ""
+        this.qf.innerHTML = wrapFR(-1,true)
+        this.qr.innerHTML = wrapFR(-1,false)
         container.innerHTML = ''
         this.dataArray = new Array();
         this.front=-1;
