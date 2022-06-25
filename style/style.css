@@ -399,6 +399,6 @@ input:checked + .slider:before {
   padding: 0 20px;
   background-color: white;
   max-height: 0;
-  overflow: scroll;
+  overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
