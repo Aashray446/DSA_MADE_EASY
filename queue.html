@@ -79,7 +79,7 @@
                                         </button>
                                         <input type="number" id="enqueue" class="text-center"
                                                placeholder="Enter value  (-99 to 99)" name="enqueue"
-                                               min="-99" max="99" onchange="value < min ? value > min ? value = min : value = max : value = null"
+                                               min=-99 max=99 onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
                                         >
                                         <button class="bg-secondary rounded hover:bg-primary20 duration-700"
                                                 onclick="queue.dequeue()">

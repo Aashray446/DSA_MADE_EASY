@@ -46,7 +46,7 @@ class Queue {
         }
         else {
             let enqinf = document.getElementById('enqueueinfo')
-            if(value=="") {
+            if(value=="" || value<-99 || value>99) {
                 enqinf.getElementsByTagName('p')[0].innerHTML = "Random number is taken for Enqueue!"
                 enqinf.style.display = 'block'
                 value = Math.floor((Math.random() * 100) + 1);
