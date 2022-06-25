@@ -32,15 +32,15 @@ class Queue {
     qr = document.getElementById('queueRear')
     inf = document.getElementById('queueinfo')
 
-    enqueue(value) {
+    enqueue=(value)=>{
         if(this.isFull()) {
-            this.inf.innerHTML = "Queue Overflow! Queue is full!"
+            this.inf.getElementsByTagName('p')[0].innerHTML = "Queue Overflow! Queue is full!"
             this.inf.style.display = 'block'
         }
         else {
             let enqinf = document.getElementById('enqueueinfo')
             if(value=="") {
-                enqinf.innerHTML = "Random no is taken for Enqueue!"
+                enqinf.getElementsByTagName('p')[0].innerHTML = "Random no is taken for Enqueue!"
                 enqinf.style.display = 'block'
                 value = Math.floor((Math.random() * 10) + 1);
             } else {
@@ -64,9 +64,9 @@ class Queue {
         }
     }
 
-    dequeue() {
+    dequeue=()=>{
         if(this.isEmpty()) {
-            this.inf.innerHTML = "Queue Underflow! Queue is empty!"
+            this.inf.getElementsByTagName('p')[0].innerHTML = "Queue Underflow! Queue is empty!"
             this.inf.style.display = 'block'
         } else {
             this.inf.style.display = 'none'
@@ -77,8 +77,8 @@ class Queue {
                 list[this.front].style.border = '1px solid gray'
             }else{
                 list[0].remove()
-                this.qf.innerHTML = "Front\n--> "+
                 this.dataArray?.pop()
+                this.qf.innerHTML = "Front\n--> "+ list[0]?.innerHTML
                 this.qf.style.backgroundColor = list[0]?.style?.backgroundColor
             }
             this.front+=1;
@@ -90,14 +90,14 @@ class Queue {
         console.log(this.rear,this.front)
     }
 
-    isFull() {
+    isFull=()=>{
         if(this.dataArray.length > this.length) {
             return true;
         }
         return false;
     }
 
-    isEmpty() {
+    isEmpty=()=>{
         if(this.front == -1) {
             this.qf.innerHTML = 'Front -1'
             this.qr.innerHTML = 'Rear -1'
