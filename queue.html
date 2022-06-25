@@ -20,7 +20,8 @@
                 } ,
                 extend: {
                     fontFamily : {
-                        sans : ['Abel', 'sans-serif']
+                        serif : ['Abel', 'sans'],
+                        sansSerif : ['Abel', 'sans-serif']
                     }
                 }
             }
@@ -33,10 +34,10 @@
     <div class="container-fluid">
         <div class="flex flex-row">
             <!------------------------------------------------  CONTROLLER AREA   ------------------------------------->
-            <div class="flex-intial  px-3 my-5" style="border-right: 1px solid grey; height: 100vh; width: 40%;">
+            <div class="flex-intial px-3" style="border-right: 1px solid grey; width: 40%;">
                 <!-- This example requires Tailwind CSS v2.0+ -->
-                <div class="back-light py-3 px-20 my-5 rounded">
-                    <h1 class="font-thin text-lg tracking-widest">
+                <div class="back-light py-3 px-20 my-5 text-center rounded">
+                    <h1 class="font-thin text-2xl tracking-widest">
                         <span>QUEUE</span>
                     </h1>
                 </div>
@@ -53,7 +54,7 @@
                         </ul>
                     </nav>
                     <!------------------- SECTION THAT WILL BE CHANGED------------------------------------------------->
-                    <div class="container mx-2 font-sans">
+                    <div class="container mx-2 hidden-scroll font-serif">
                         <div class="flex flex-col" id="moreInfo">
                             <div class="mt-3 mr-4">
                                 <button class="accordion">
@@ -94,21 +95,21 @@
                                 <button class="accordion" onclick="queue.detailed=false; queue.reset()">
                                     Lesson 1 - Linear Queue
                                 </button>
-                                <div class="panel ">
+                                <div class="panel">
                                     <p>
                                         A linear queue is a linear data structure that serves the request first,
                                         which has been arrived first. It consists of data elements which are connected
                                         in a linear fashion. It has two pointers, i.e., front and rear, where the
                                         insertion takes place from the front end, and deletion occurs from the front end.
                                     </p>
-                                    <p style="color: blue" class="float-right">Simulate for insight!</p>
+                                    <p class="float-right text-secondary ">Simulate for insight!</p>
                                 </div>
 
                                 <button class="accordion" onclick="queue.detailed=true; queue.reset()">
                                     Lesson 2 - Disadvantage of Linear Queue
                                 </button>
-                                <div class="panel" style="height: 700px">
-                                    <div class="alert items-center m-1">
+                                <div class="panel">
+                                    <div class="alert text-center m-1">
                                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                         <strong>PARTIALLY IMPLEMENTED</strong>
                                     </div>
@@ -118,7 +119,7 @@
                                         remove some of the elements, until the queue is reset,
                                         no new elements can be inserted. You must be wondering why?
                                     </p>
-                                    <p style="color: blue">Simulate to see why!</p>
+                                    <p class="text-secondary">Simulate to see why!</p>
                                     <p>
                                         When we dequeue any element to remove it from the queue, we are actually moving
                                         the front of the queue forward, thereby reducing the overall size of the queue.
@@ -131,7 +132,7 @@
                                     Lesson 3 - Circular Queue
                                 </button>
                                 <div class="panel">
-                                    <div class="alert items-center m-1">
+                                    <div class="alert text-center m-1">
                                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                         <strong>IMPLEMENTATION REQUIRED</strong>
                                     </div>
