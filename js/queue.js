@@ -81,7 +81,7 @@ class Queue {
                 this.dataArray?.pop()
                 this.qf.style.backgroundColor = list[0]?.style?.backgroundColor
             }
-            this.front++;
+            this.front+=1;
         }
         if(this.dataArray.length == 0 || this.front > this.rear) {
             this.front = -1;
@@ -112,6 +112,8 @@ class Queue {
         this.qf.innerHTML = ""
         container.innerHTML = ''
         this.dataArray = new Array();
+        this.front=-1;
+        this.rear=-1;
     }
 }
 
