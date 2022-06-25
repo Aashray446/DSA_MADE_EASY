@@ -59,6 +59,9 @@ class Queue {
             this.qr.style.backgroundColor = bg_color
             createElement({'value': value, 'color': bg_color})
             this.dataArray.push(value)
+            if (this.detailed){
+                this.qf.innerHTML = wrapFR(this.dataArray[this.front],true)
+            }
             if (this.rear == -1) {
                 this.front = 0;
                 this.qf.innerHTML = wrapFR(this.dataArray[this.front],true)
@@ -69,6 +72,7 @@ class Queue {
                 this.rear++;
             }
         }
+        console.log(this.front,this.rear)
     }
 
     dequeue=()=>{
@@ -79,25 +83,37 @@ class Queue {
             this.inf.style.display = 'none'
             const list = document.getElementsByClassName(structure)
             if(this.detailed){
-                list[this.front].style.backgroundColor = '#1e424e'
-                list[this.front].style.color = '#1e424e'
-                list[this.front].style.border = '1px solid gray'
+                if(list[this.front]) {
+                    list[this.front].style.opacity = '0.1'
+                }
+                if (this.dataArray[this.front+1]) {
+                    this.qf.innerHTML = wrapFR(this.dataArray[this.front+1],true)
+                } else {
+                    this.qf.innerHTML = wrapFR(-1,true)
+                    this.qr.innerHTML = wrapFR(-1,false)
+                }
+                this.front++;
             }else{
                 list[0].remove()
                 this.dataArray?.pop()
                 this.qf.innerHTML = wrapFR(list[0]?.getElementsByTagName('p')[0]?.innerHTML || -1,true)
-                console.log(this.dataArray)
                 this.qf.style.backgroundColor = list[0]?.style?.backgroundColor
+                this.front++;
             }
-            this.front++;
         }
-        if(this.dataArray.length == 0) {
-            this.front = -1;
-            this.rear = -1;
+        if(this.dataArray.length == 0 || this.front>this.rear+1) {
+            if(!this.detailed) {
+                this.front = -1;
+                this.rear = -1;
+            } else{
+                this.front--;
+                this.inf.getElementsByTagName('p')[0].innerHTML = "Queue Underflow! Queue is empty!"
+                this.inf.style.display = 'block'
+            }
+            console.log(this.dataArray.length,this.length,"this")
             this.qf.innerHTML = wrapFR(-1,true)
             this.qr.innerHTML = wrapFR(-1,false)
         }
-        console.log(this.rear,this.front)
     }
 
     isFull=()=>{
