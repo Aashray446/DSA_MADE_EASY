@@ -240,15 +240,18 @@ nav ul a {
 
 }
 
+/*  -----------------------------------FOR QUEUE --------------------------------------- */
 .queue {
   background-color:#24b4a6df;
   display: inline-flex;
   justify-content: center;
   width: 50px;
-  height: 100px;
+  height: 50px;
   margin: 5px;
   border: 1px solid #F4F3ED;
-
+  border-radius: 10px;
+  align-content: center;
+  
 }
 
 .sudo-queue {
@@ -256,9 +259,10 @@ nav ul a {
   display: inline-flex;
   justify-content: center;
   width: 50px;
-  height: 100px;
+  height: 50px;
   margin: 5px;
   border: 1px solid #F4F3ED;
+  border-radius: 10px;
 }
 
 .sudo-stack {
@@ -271,8 +275,6 @@ nav ul a {
   margin: 5px;
   border: 1px solid #F4F3ED;
   border-radius: 16%;
+  
 
-}
-.keywords{
-  color: #FDD741;
 }

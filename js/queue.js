@@ -15,7 +15,7 @@ const createElement = function(value) {
 }
 
 function getRandomColor() {
-    var trans = '0.5';
+    var trans = '0.3';
     var color = 'rgba(';
     for (var i = 0; i < 3; i++) {
         color += Math.floor(Math.random() * 255) + ',';
