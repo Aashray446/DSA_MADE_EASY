@@ -81,7 +81,7 @@
                                         </button>
                                         <input type="number" id="enqueue" class="text-center"
                                                placeholder="Enter value  (-99 to 99)" name="enqueue"
-                                               min=-99 max=99 onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
+                                               min=-99 max=99 onchange="value!=null && value >= min ? (value <= max ? value=value : value=max) : value=min"
                                         >
                                         <button class="bg-secondary rounded hover:bg-primary20 duration-700"
                                                 onclick="queue.dequeue()">
@@ -99,7 +99,7 @@
                                 </div>
 
                                 <button class="accordion" onclick="queue.detailed=false; queue.reset()">
-                                    Lesson 1 - Linear Queue
+                                    Linear Queue
                                 </button>
                                 <div class="panel ">
                                     <p class="py-4">
@@ -112,7 +112,7 @@
                                 </div>
 
                                 <button class="accordion" onclick="queue.detailed=true; queue.reset()">
-                                    Lesson 2 - Disadvantage of Linear Queue
+                                    Disadvantage of Linear Queue
                                 </button>
                                 <div class="panel">
                                     <div class="alert text-center m-1">
@@ -135,7 +135,7 @@
                                 </div>
 
                                 <button class="accordion">
-                                    Lesson 3 - Circular Queue
+                                    Circular Queue
                                 </button>
                                 <div class="panel">
                                     <div class="py-4">
