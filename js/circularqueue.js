@@ -12,6 +12,7 @@ class Circularqueue{
         element.classList.add(this.structure)
         element.style.backgroundColor=data?.color
         element.innerHTML = `<p style="color: white; font-size: xx-large">${data?.value}</p>`
+        element.classList.add('circlerow')
         return element
     }
 
@@ -119,6 +120,7 @@ class Circularqueue{
         this.rear = -1;
         this.container.innerHTML = '';
         if(this.isactive) {
+            this.container.classList.add('circlecontainer')
             for (let i = 0; i < this.length; i++) {
                 this.container.append(this.createElement({'value': '-', 'color': 'rgba(255,255,255,0)'}));
             }

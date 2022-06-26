@@ -27,6 +27,7 @@
         }
     </script>
     <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/style.scss">
 </head>
 
 <body style="background-color:var(--primary);">
@@ -100,7 +101,7 @@
                                 <p></p>
                             </div>
 
-                            <button class="accordion" onclick="queue.detailed=false; queue.reset();circularqueue.isactive=false; circularqueue.reset();">
+                            <button class="accordion" onclick="queue.detailed=false; queue.reset();circularqueue.isactive=false; circularqueue.reset(); changehead();">
                                 Linear Queue
                             </button>
                             <div class="panel ">
@@ -112,7 +113,7 @@
                                 </p>
                             </div>
 
-                            <button class="accordion" onclick="queue.detailed=true; queue.reset(); circularqueue.isactive=false; circularqueue.reset();">
+                            <button class="accordion" onclick="queue.detailed=true; queue.reset(); circularqueue.isactive=false; circularqueue.reset(); changehead();">
                                 Disadvantage of Linear Queue
                             </button>
                             <div class="panel" style="height: 700px">
@@ -133,7 +134,7 @@
                                 </div>
                             </div>
 
-                            <button class="accordion" onclick="queue.reset(); circularqueue.isactive=true;  circularqueue.reset();">
+                            <button class="accordion" onclick="queue.reset(); circularqueue.isactive=true;  circularqueue.reset(); changehead();">
                                 Circular Queue
                             </button>
                             <div class="panel">
@@ -150,6 +151,10 @@
                                         after a bit of insertion and deletion, there will be non-usable empty space.
                                     </p>
                                 </div>
+                            </div>
+                            <div class="alert items-center">
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                <p>Navigate through sections to change simulation.</p>
                             </div>
 
                         </div>
