@@ -71,10 +71,14 @@
                                     </div>
                                     <input type="number" id="queuelength" class="text-center" value=16
                                            placeholder="Enter Queue Length" name="length"
-                                           onchange="queue.length=value-1"
+                                           onchange="circularqueue.isactive ? circularqueue.length=value-1 : queue.length=value-1;
+                                           circularqueue.isactive && circularqueue.handlengthchange()"
                                     >
-                                    <button class="bg-secondary rounded hover:bg-primary20 duration-700
-                                focus:shadow-outline" onclick="queue.enqueue(document.getElementById('enqueue').value); console.log(circularqueue.array);">
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
+                                            onclick=
+                                                    "circularqueue.isactive ?
+                                                    circularqueue.enqueue(document.getElementById('enqueue').value) :
+                                                    queue.enqueue(document.getElementById('enqueue').value);">
                                         ENQUEUE
                                     </button>
                                     <input type="number" id="enqueue" class="text-center"
@@ -82,11 +86,11 @@
                                            min=-99 max=99 onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
                                     >
                                     <button class="bg-secondary rounded hover:bg-primary20 duration-700"
-                                            onclick="queue.dequeue()">
+                                            onclick="circularqueue.isactive ? circularqueue.dequeue() : queue.dequeue()">
                                         DEQUEUE
                                     </button>
                                     <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
-                                            onclick="queue.reset()">
+                                            onclick="circularqueue.isactive ? circularqueue.reset() : queue.reset()">
                                         RESET
                                     </button>
                                 </div>
@@ -96,7 +100,7 @@
                                 <p></p>
                             </div>
 
-                            <button class="accordion" onclick="queue.detailed=false; queue.reset()">
+                            <button class="accordion" onclick="queue.detailed=false; queue.reset();circularqueue.isactive=false; circularqueue.reset();">
                                 Lesson 1 - Linear Queue
                             </button>
                             <div class="panel ">
@@ -108,7 +112,7 @@
                                 </p>
                             </div>
 
-                            <button class="accordion" onclick="queue.detailed=true; queue.reset()">
+                            <button class="accordion" onclick="queue.detailed=true; queue.reset(); circularqueue.isactive=false; circularqueue.reset();">
                                 Lesson 2 - Disadvantage of Linear Queue
                             </button>
                             <div class="panel" style="height: 700px">
@@ -119,6 +123,7 @@
                                         remove some of the elements, until the queue is reset,
                                         no new elements can be inserted. You must be wondering why?
                                     </p>
+                                    <br>
                                     <p>
                                         When we dequeue any element to remove it from the queue, we are actually moving
                                         the front of the queue forward, thereby reducing the overall size of the queue.
@@ -128,21 +133,25 @@
                                 </div>
                             </div>
 
-                            <button class="accordion">
+                            <button class="accordion" onclick="queue.reset(); circularqueue.isactive=true;  circularqueue.reset();">
                                 Lesson 3 - Circular Queue
                             </button>
                             <div class="panel">
                                 <div class="py-4">
-                                    <div class="alert items-center m-1">
-                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                        <strong>IMPLEMENTATION REQUIRED</strong>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    <p>
+                                        A circular queue is the extended version of a regular queue where the last
+                                        element is connected to the first element. Thus forming a circle-like structure.
+                                        Circular queue representation.
+                                        The circular queue solves the major limitation of the normal queue.
+                                    </p>
+                                    <br>
+                                    <p>
+                                        The circular queue solves the major limitation of the normal queue. In a normal queue,
+                                        after a bit of insertion and deletion, there will be non-usable empty space.
                                     </p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

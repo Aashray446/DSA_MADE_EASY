@@ -427,7 +427,7 @@ input:checked + .slider:before {
   background: rgba(255,255,255,0.5);
 }
 .hidden-scroll {
-  max-height: 500px;  
+  max-height: 80vh;
   padding-bottom: 50px;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
