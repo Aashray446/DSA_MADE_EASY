@@ -1,9 +1,1 @@
-# DSA_MADE_EASY
-A fun way to learn about DSA concepts
-
-Checkout the site at https://aashray446.github.io/DSA_MADE_EASY/index.html
-
-The project is based on plain javascript, HTML, and CSS with no framework purposely, As to help beginners understand the code without getting overwhelmed by any framework code. 
-
-### How to run the Code ??
-- Just open Index.html (Easy right?? )
+![Screenshot from 2022-06-27 00-05-59](https://user-images.githubusercontent.com/83636572/175829112-94aaab54-fd2a-4bab-9f31-6286e33a8e6a.png)
