@@ -20,8 +20,7 @@
                 } ,
                 extend: {
                     fontFamily : {
-                        serif : ['Abel', 'sans'],
-                        sansSerif : ['Abel', 'sans-serif']
+                        sans : ['Abel', 'sans-serif']
                     }
                 }
             }
@@ -31,101 +30,95 @@
 </head>
 
 <body style="background-color:var(--primary);">
-    <div class="container-fluid">
-        <div class="flex flex-row">
-            <!------------------------------------------------  CONTROLLER AREA   ------------------------------------->
-            <div class="flex-intial px-3" style="border-right: 1px solid grey; width: 40%;">
-                <!-- This example requires Tailwind CSS v2.0+ -->
-                <div class="back-light py-3 px-20 my-5 text-center rounded">
-                    <h1 class="font-thin text-2xl tracking-widest">
-                        <span>QUEUE</span>
-                    </h1>
-                </div>
-                <section>
-                    <nav>
-                        <input id="toggle" style="border-radius:16px;" type="checkbox" checked>
-                        <h2>SELECT DATA STRUCTURE</h2>
-                        <ul>
-                            <li> <a href="index.html">Home</a></li>
-                           <li><a href="stack.html">Stack</a></li>
-                           <li><a href="queue.html">Queue</a></li>
-                           <li><a href="singlylinklist.html">Singly Linked List</a></li>
-                           <li><a href="doublylinklist.html">Doubly Linked List</a></li>
-                           <li><a href="binary.html">Binary Tree</a></li>
-                         </ul>
-                    </nav>
-                    <!------------------- SECTION THAT WILL BE CHANGED------------------------------------------------->
-                    <div class="container mx-2 hidden-scroll font-serif">
-                        <div class="flex flex-col" id="moreInfo">
-                            <div class="mt-3 mr-4">
-                                <button class="simulation">
-                                        Simulation Controls
-                                    <div id="enqueueinfo" class="" style="display: none;">
-                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                        <p></p>
-                                    </div>
-                                </button>
-                                <div class="simulationpanel w-700">
-                                    <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
-                                        <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
-                                        <div class="text-center bg-secondary rounded">
-                                            LENGTH
-                                        </div>
-                                        <input type="number" id="queuelength" class="text-center" value=16
-                                               placeholder="Enter Queue Length" name="length"
-                                               onchange="queue.length=value-1"
-                                        >
-                                        <button class="bg-secondary rounded hover:bg-primary20 duration-700
-                                focus:shadow-outline" onclick="queue.enqueue(document.getElementById('enqueue').value)">
-                                            ENQUEUE
-                                        </button>
-                                        <input type="number" id="enqueue" class="text-center"
-                                               placeholder="Enter value  (-99 to 99)" name="enqueue"
-                                               min=-99 max=99 onchange="value!=null && value >= min ? (value <= max ? value=value : value=max) : value=min"
-                                        >
-                                        <button class="bg-secondary rounded hover:bg-primary20 duration-700"
-                                                onclick="queue.dequeue()">
-                                            DEQUEUE
-                                        </button>
-                                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
-                                                onclick="queue.reset()">
-                                            RESET
-                                        </button>
-                                    </div>
-                                </div>
-                                <div id="queueinfo" class="alert items-center" style="display: none; background: coral">
+<div class="container-fluid">
+    <div class="flex flex-row">
+        <!------------------------------------------------  CONTROLLER AREA   ------------------------------------->
+        <div class="flex-intial  px-3" style="border-right: 1px solid grey; height: 100vh; width: 40%;">
+            <!-- This example requires Tailwind CSS v2.0+ -->
+            <div class="back-light py-3 px-20 my-5 rounded">
+                <h1 class="font-thin text-lg tracking-widest text-center">
+                    <span>QUEUE</span>
+                </h1>
+            </div>
+            <section>
+                <nav>
+                    <input id="toggle" style="border-radius:16px;" type="checkbox" checked>
+                    <h2>SELECT DATA STRUCTURE</h2>
+                    <ul>
+                        <li> <a href="index.html">Home</a></li>
+                        <li><a href="stack.html">Stack</a></li>
+                        <li><a href="queue.html">Queue</a></li>
+                        <li><a href="linklist.html">Linked List</a></li>
+                        <li><a href="binary.html">Binary Tree</a></li>
+                    </ul>
+                </nav>
+                <!------------------- SECTION THAT WILL BE CHANGED------------------------------------------------->
+                <div class="container mx-2 font-sans">
+                    <div class="flex flex-col" id="moreInfo">
+                        <div class="mt-3 mr-4">
+                            <button class="simulation">
+                                Simulation Controls
+                                <div id="enqueueinfo" class="" style="display: none;">
                                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                     <p></p>
                                 </div>
-
-                                <button class="accordion" onclick="queue.detailed=false; queue.reset()">
-                                    Linear Queue
-                                </button>
-                                <div class="panel ">
-                                    <p class="py-4">
-                                        A linear queue is a linear data structure that serves the request first,
-                                        which has been arrived first. It consists of data elements which are connected
-                                        in a linear fashion. It has two pointers, i.e., front and rear, where the
-                                        insertion takes place from the front end, and deletion occurs from the front end.
-                                    </p>
-                                    <p class="float-right text-secondary ">Simulate for insight!</p>
-                                </div>
-
-                                <button class="accordion" onclick="queue.detailed=true; queue.reset()">
-                                    Disadvantage of Linear Queue
-                                </button>
-                                <div class="panel">
-                                    <div class="alert text-center m-1">
-                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                        <strong>PARTIALLY IMPLEMENTED</strong>
+                            </button>
+                            <div class="simulationpanel w-700">
+                                <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
+                                    <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
+                                    <div class="text-center bg-secondary rounded">
+                                        LENGTH
                                     </div>
+                                    <input type="number" id="queuelength" class="text-center" value=16
+                                           placeholder="Enter Queue Length" name="length"
+                                           onchange="queue.length=value-1"
+                                    >
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-700
+                                focus:shadow-outline" onclick="queue.enqueue(document.getElementById('enqueue').value)">
+                                        ENQUEUE
+                                    </button>
+                                    <input type="number" id="enqueue" class="text-center"
+                                           placeholder="Enter value  (-99 to 99)" name="enqueue"
+                                           min=-99 max=99 onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
+                                    >
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-700"
+                                            onclick="queue.dequeue()">
+                                        DEQUEUE
+                                    </button>
+                                    <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
+                                            onclick="queue.reset()">
+                                        RESET
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="queueinfo" class="alert items-center" style="display: none; background: coral">
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                <p></p>
+                            </div>
+
+                            <button class="accordion" onclick="queue.detailed=false; queue.reset()">
+                                Lesson 1 - Linear Queue
+                            </button>
+                            <div class="panel ">
+                                <p class="py-4">
+                                    A linear queue is a linear data structure that serves the request first,
+                                    which has been arrived first. It consists of data elements which are connected
+                                    in a linear fashion. It has two pointers, i.e., front and rear, where the
+                                    insertion takes place from the front end, and deletion occurs from the front end.
+                                </p>
+                            </div>
+
+                            <button class="accordion" onclick="queue.detailed=true; queue.reset()">
+                                Lesson 2 - Disadvantage of Linear Queue
+                            </button>
+                            <div class="panel" style="height: 700px">
+                                <div class="py-4">
                                     <p>
                                         In a Linear queue, once the queue is completely full,
                                         it's not possible to insert more elements. Even if we dequeue the queue to
                                         remove some of the elements, until the queue is reset,
                                         no new elements can be inserted. You must be wondering why?
                                     </p>
-                                    <p class="text-secondary">Simulate to see why!</p>
                                     <p>
                                         When we dequeue any element to remove it from the queue, we are actually moving
                                         the front of the queue forward, thereby reducing the overall size of the queue.
@@ -133,42 +126,43 @@
                                         of the queue.
                                     </p>
                                 </div>
+                            </div>
 
-                                <button class="accordion">
-                                    Circular Queue
-                                </button>
-                                <div class="panel">
-                                    <div class="py-4">
-                                        <div class="alert items-center m-1">
-                                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                            <strong>IMPLEMENTATION REQUIRED</strong>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        </p>
+                            <button class="accordion">
+                                Lesson 3 - Circular Queue
+                            </button>
+                            <div class="panel">
+                                <div class="py-4">
+                                    <div class="alert items-center m-1">
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        <strong>IMPLEMENTATION REQUIRED</strong>
                                     </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
-            <!--------------------------------------------------------- PLAYGROUND AHEAD ------------------------------>
-            <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
-                <div class="grid grid-cols-2">
-                    <div class="sudo-queue bg-secondary" id="queueFront">
-                        <p class="text-center">Front is -1</p>
-                    </div>
-                    <div class="sudo-queue bg-primary20" id="queueRear">
-                        <p class="text-center">Rear is -1</p>
-                    </div>
                 </div>
-                <div class="animation-container items-center" id="animation-container"></div>
-            </div>
-            <!--------------------------------------------------------------------------------------------------------->
+            </section>
         </div>
+        <!--------------------------------------------------------- PLAYGROUND AHEAD ------------------------------>
+        <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
+            <div class="grid grid-cols-2">
+                <div class="sudo-queue bg-secondary" id="queueFront">
+                    <p class="text-center">Front is -1</p>
+                </div>
+                <div class="sudo-queue bg-primary20" id="queueRear">
+                    <p class="text-center">Rear is -1</p>
+                </div>
+            </div>
+            <div class="animation-container items-center" id="animation-container"></div>
+        </div>
+        <!--------------------------------------------------------------------------------------------------------->
     </div>
+</div>
 </body>
 <!-- PAGE SPECIFICE ANIMATIION -->
 <script src="./js/queue.js"></script>

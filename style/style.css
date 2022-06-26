@@ -418,6 +418,14 @@ input:checked + .slider:before {
   transition: max-height 0.2s ease-out;
   background: rgba(255,255,255,0.5);
 }
+
+.simulationpanel {
+  padding: 0 20px;
+  background-color: white;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background: rgba(255,255,255,0.5);
+}
 .hidden-scroll {
   max-height: 500px;  
   padding-bottom: 50px;
