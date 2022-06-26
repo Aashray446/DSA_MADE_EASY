@@ -251,18 +251,21 @@ nav ul a {
   border: 1px solid #F4F3ED;
   border-radius: 10px;
   align-content: center;
-  
 }
 
 .sudo-queue {
   background-color:#24b4a6df;
-  display: inline-flex;
-  justify-content: center;
-  width: 50px;
+  color: white; 
+  width: 100px;
   height: 50px;
   margin: 5px;
   border: 1px solid #F4F3ED;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column; 
+  flex-wrap: wrap;                   
+  justify-content: center;
+  align-items: center;
 }
 
 .sudo-stack {
@@ -427,7 +430,7 @@ input:checked + .slider:before {
   background: rgba(255,255,255,0.5);
 }
 .hidden-scroll {
-  max-height: 500px;  
+  max-height: 80vh;  
   padding-bottom: 50px;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
@@ -435,5 +438,5 @@ input:checked + .slider:before {
  
 }
 .hidden-scroll::-webkit-scrollbar { 
-  display: none;  /* Safari and Chrome */
+  display: none; 
 }
