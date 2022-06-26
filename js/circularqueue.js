@@ -30,7 +30,7 @@ const wrapFR = (value, isfront) => {
     return `<p class="text-center">Rear is ${value}</p>`
 }
 
-class Circularqueue(){
+class Circularqueue{
     array = new Array();
     front = -1;
     rear = -1;
@@ -103,4 +103,13 @@ class Circularqueue(){
         }
         return false;
     }
+
+    reset(){
+        this.array = new Array();
+        this.front = -1;
+        this.rear = -1;
+        container.innerHTML = ''
+    }
 }
+
+let circularqueue = new Circularqueue();

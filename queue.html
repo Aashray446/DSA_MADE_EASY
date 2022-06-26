@@ -41,7 +41,7 @@
                 </h1>
             </div>
             <section>
-                <nav>
+                <nav class="navigation">
                     <input id="toggle" style="border-radius:16px;" type="checkbox" checked>
                     <h2>SELECT DATA STRUCTURE</h2>
                     <ul>
@@ -74,7 +74,7 @@
                                            onchange="queue.length=value-1"
                                     >
                                     <button class="bg-secondary rounded hover:bg-primary20 duration-700
-                                focus:shadow-outline" onclick="queue.enqueue(document.getElementById('enqueue').value)">
+                                focus:shadow-outline" onclick="queue.enqueue(document.getElementById('enqueue').value); console.log(circularqueue.array);">
                                         ENQUEUE
                                     </button>
                                     <input type="number" id="enqueue" class="text-center"
@@ -166,7 +166,7 @@
 </body>
 <!-- PAGE SPECIFICE ANIMATIION -->
 <script src="./js/queue.js"></script>
-<script src="./js/dsaAnimation.js"></script>
+<script src="./js/circularqueue.js"></script>
 <script>
     var acc = document.getElementsByClassName("accordion");
     var i;
