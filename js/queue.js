@@ -40,6 +40,7 @@ class Queue {
     inf = document.getElementById('queueinfo')
 
     enqueue=(value)=>{
+        
         if(this.isFull()) {
             this.inf.getElementsByTagName('p')[0].innerHTML = "Queue Overflow! Queue is full!"
             this.inf.style.display = 'block'
@@ -66,13 +67,13 @@ class Queue {
                 this.front = 0;
                 this.qf.innerHTML = wrapFR(this.dataArray[this.front],true)
                 this.rear = 0;
-                this.qf.style.display = 'block'
-                this.qr.style.display = 'block'
+                this.qf.style.display = 'flex'
+                this.qr.style.display = 'flex'
             } else {
                 this.rear++;
             }
         }
-        console.log(this.front,this.rear)
+
     }
 
     dequeue=()=>{

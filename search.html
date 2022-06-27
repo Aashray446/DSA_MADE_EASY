@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA VISUALIZATION </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!---------------------------TAILWIND  ---------------------------------------------------------------------------->
+    <script>
+        tailwind.config = {
+            theme: {
+                colors : {
+                    'primary' : '#166D8A',
+                    'secondary' : '#FDD741',
+                    'light' : '#F4F3ED',
+                    'primary10' : '#24B4A5',
+                    'primary20' : '#8FEDC2',
+                    'pink' : '#c17c74'
+                } ,
+                extend: {
+                    fontFamily : {
+                        sans : ['Abel', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/style.scss">
+</head>
+
+<body style="background-color:var(--primary);">
+<div class="container-fluid">
+    <div class="flex flex-row">
+        <!------------------------------------------------  CONTROLLER AREA   ------------------------------------->
+        <div class="flex-intial  px-3" style="border-right: 1px solid grey; height: 100vh; width: 40%;">
+            <!-- This example requires Tailwind CSS v2.0+ -->
+            <div class="back-light py-3 px-20 my-5 rounded">
+                <h1 class="font-thin text-lg tracking-widest text-center">
+                    <span>ALGORITHMS</span>
+                </h1>
+            </div>
+            <section>
+                <nav class="navigation">
+                    <input id="toggle" style="border-radius:16px;" type="checkbox" checked>
+                    <h2>SELECT DATA STRUCTURE</h2>
+                    <ul>
+                        <li> <a href="index.html">Home</a></li>
+                        <li><a href="stack.html">Stack</a></li>
+                        <li><a href="queue.html">Queue</a></li>
+                        <li><a href="linklist.html">Linked List</a></li>
+                        <li><a href="binary.html">Binary Tree</a></li>
+                        <li><a href="algorithm.html">Searching Algorithms</a></li>
+                    </ul>
+                </nav>
+                <!------------------- SECTION THAT WILL BE CHANGED------------------------------------------------->
+                <div class="container hidden-scroll mx-2 font-sans">
+                    <div class="flex flex-col" id="moreInfo">
+
+                        <div class="mt-3 mr-4">
+                            <button class="simulation">
+                                Simulation Controls
+                                <div id="enqueueinfo" class="" style="display: none;">
+                                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                    <p></p>
+                                </div>
+                            </button>
+                            <div class="simulationpanel w-700">
+                                <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
+                                    <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
+                                            onclick="searchAlgorithms.add(document.getElementById('algo-add').value)">
+                                        ADD
+                                    </button>
+                                    <input type="number" id="algo-add" class="text-center"
+                                           placeholder="Enter value  (-99 to 99)" name="enqueue"
+                                           min=-99 max=99 onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
+                                    >
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
+                                            onclick="searchAlgorithms.search(document.getElementById('algo-search').value)">
+                                        SEARCH
+                                    </button>
+                                    <input type="number" id="algo-search" class="text-center"
+                                           placeholder="" name="search" onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
+                                    >
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-700"
+                                            onclick="searchAlgorithms.remove()">
+                                        REMOVE
+                                    </button>
+                                    <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
+                                            onclick="searchAlgorithms.reset()">
+                                        RESET
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="queueinfo" class="alert items-center" style="display: none; background: coral">
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                <p></p>
+                            </div>
+                            <button class="accordion" onclick="">
+                                Linear Search
+                            </button>
+                            <div class="panel ">
+                                <p class="py-4">
+                                    Linear search is also called as sequential search algorithm.
+                                    It is the simplest searching algorithm. In Linear search, we simply traverse the list
+                                    completely and match each element of the list with the item whose location is to be found.
+                                    If the match is found, then the location of the item is returned; otherwise, the algorithm returns NULL.
+                                </p>
+                            </div>
+                            <button class="accordion" onclick="">
+                                Binary Search
+                            </button>
+                            <div class="panel ">
+                                <p class="py-4">
+                                    Binary Search is a searching algorithm for finding an element's position in a sorted array.
+                                    In this approach, the element is always searched in the middle of a portion of an array.
+                                </p>
+                                <p>
+                                    Binary search is faster than linear search. In case of binary search, array elements must be in ascending order.
+                                </p>
+                            </div>
+                            <div class="alert items-center">
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                <p>Navigate through sections to change simulation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!--------------------------------------------------------- PLAYGROUND AHEAD ------------------------------>
+        <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
+            <div></div>
+            <div class="animation-container items-center" id="animation-container"></div>
+        </div>
+        <!--------------------------------------------------------------------------------------------------------->
+    </div>
+</div>
+</body>
+<!-- PAGE SPECIFICE ANIMATIION -->
+<script src="./js/searchAlgorithms.js"></script>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+            for (i = 0; i < acc.length; i++) {
+                if (acc[i] != this && acc[i].classList.contains("active")) {
+                    acc[i].classList.toggle("active");
+                    acc[i].nextElementSibling.style.maxHeight = null;
+                }
+            }
+        });
+    }
+</script>
+
+</html>
