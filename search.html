@@ -38,7 +38,7 @@
             <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="back-light py-3 px-20 my-5 rounded">
                 <h1 class="font-thin text-lg tracking-widest text-center">
-                    <span>QUEUE</span>
+                    <span>ALGORITHMS</span>
                 </h1>
             </div>
             <section>
@@ -51,11 +51,13 @@
                         <li><a href="queue.html">Queue</a></li>
                         <li><a href="linklist.html">Linked List</a></li>
                         <li><a href="binary.html">Binary Tree</a></li>
+                        <li><a href="algorithm.html">Searching Algorithms</a></li>
                     </ul>
                 </nav>
                 <!------------------- SECTION THAT WILL BE CHANGED------------------------------------------------->
                 <div class="container hidden-scroll mx-2 font-sans">
                     <div class="flex flex-col" id="moreInfo">
+
                         <div class="mt-3 mr-4">
                             <button class="simulation">
                                 Simulation Controls
@@ -67,31 +69,27 @@
                             <div class="simulationpanel w-700">
                                 <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
                                     <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
-                                    <div class="text-center bg-secondary rounded">
-                                        LENGTH
-                                    </div>
-                                    <input type="number" id="queuelength" class="text-center" value=16
-                                           placeholder="Enter Queue Length" name="length"
-                                           onchange="circularqueue.isactive ? circularqueue.length=value-1 : queue.length=value-1;
-                                           circularqueue.isactive && circularqueue.handlengthchange()"
-                                    >
                                     <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
-                                            onclick=
-                                                    "circularqueue.isactive ?
-                                                    circularqueue.enqueue(document.getElementById('enqueue').value) :
-                                                    queue.enqueue(document.getElementById('enqueue').value);">
-                                        ENQUEUE
+                                            onclick="searchAlgorithms.add(document.getElementById('algo-add').value)">
+                                        ADD
                                     </button>
-                                    <input type="number" id="enqueue" class="text-center"
+                                    <input type="number" id="algo-add" class="text-center"
                                            placeholder="Enter value  (-99 to 99)" name="enqueue"
                                            min=-99 max=99 onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
                                     >
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
+                                            onclick="searchAlgorithms.search(document.getElementById('algo-search').value)">
+                                        SEARCH
+                                    </button>
+                                    <input type="number" id="algo-search" class="text-center"
+                                           placeholder="" name="search" onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
+                                    >
                                     <button class="bg-secondary rounded hover:bg-primary20 duration-700"
-                                            onclick="circularqueue.isactive ? circularqueue.dequeue() : queue.dequeue()">
-                                        DEQUEUE
+                                            onclick="searchAlgorithms.remove()">
+                                        REMOVE
                                     </button>
                                     <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
-                                            onclick="circularqueue.isactive ? circularqueue.reset() : queue.reset()">
+                                            onclick="searchAlgorithms.reset()">
                                         RESET
                                     </button>
                                 </div>
@@ -100,63 +98,33 @@
                                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                 <p></p>
                             </div>
-
-                            <button class="accordion" onclick="queue.detailed=false; queue.reset();circularqueue.isactive=false; circularqueue.reset(); changehead();">
-                                Linear Queue
+                            <button class="accordion" onclick="">
+                                Linear Search
                             </button>
                             <div class="panel ">
                                 <p class="py-4">
-                                    A linear queue is a linear data structure that serves the request first,
-                                    which has been arrived first. It consists of data elements which are connected
-                                    in a linear fashion. It has two pointers, i.e., front and rear, where the
-                                    insertion takes place from the front end, and deletion occurs from the front end.
+                                    Linear search is also called as sequential search algorithm.
+                                    It is the simplest searching algorithm. In Linear search, we simply traverse the list
+                                    completely and match each element of the list with the item whose location is to be found.
+                                    If the match is found, then the location of the item is returned; otherwise, the algorithm returns NULL.
                                 </p>
                             </div>
-
-                            <button class="accordion" onclick="queue.detailed=true; queue.reset(); circularqueue.isactive=false; circularqueue.reset(); changehead();">
-                                Disadvantage of Linear Queue
+                            <button class="accordion" onclick="">
+                                Binary Search
                             </button>
-                            <div class="panel" style="height: 700px">
-                                <div class="py-4">
-                                    <p>
-                                        In a Linear queue, once the queue is completely full,
-                                        it's not possible to insert more elements. Even if we dequeue the queue to
-                                        remove some of the elements, until the queue is reset,
-                                        no new elements can be inserted. You must be wondering why?
-                                    </p>
-                                    <br>
-                                    <p>
-                                        When we dequeue any element to remove it from the queue, we are actually moving
-                                        the front of the queue forward, thereby reducing the overall size of the queue.
-                                        And we cannot insert new elements, because the rear pointer is still at the end
-                                        of the queue.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <button class="accordion" onclick="queue.reset(); circularqueue.isactive=true;  circularqueue.reset(); changehead();">
-                                Circular Queue
-                            </button>
-                            <div class="panel">
-                                <div class="py-4">
-                                    <p>
-                                        A circular queue is the extended version of a regular queue where the last
-                                        element is connected to the first element. Thus forming a circle-like structure.
-                                        Circular queue representation.
-                                        The circular queue solves the major limitation of the normal queue.
-                                    </p>
-                                    <br>
-                                    <p>
-                                        The circular queue solves the major limitation of the normal queue. In a normal queue,
-                                        after a bit of insertion and deletion, there will be non-usable empty space.
-                                    </p>
-                                </div>
+                            <div class="panel ">
+                                <p class="py-4">
+                                    Binary Search is a searching algorithm for finding an element's position in a sorted array.
+                                    In this approach, the element is always searched in the middle of a portion of an array.
+                                </p>
+                                <p>
+                                    Binary search is faster than linear search. In case of binary search, array elements must be in ascending order.
+                                </p>
                             </div>
                             <div class="alert items-center">
                                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                 <p>Navigate through sections to change simulation.</p>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -164,14 +132,7 @@
         </div>
         <!--------------------------------------------------------- PLAYGROUND AHEAD ------------------------------>
         <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
-            <div class="grid grid-cols-2">
-                <div class="sudo-queue bg-secondary" id="queueFront">
-                    <p class="text-center">Front is -1</p>
-                </div>
-                <div class="sudo-queue bg-primary20" id="queueRear">
-                    <p class="text-center">Rear is -1</p>
-                </div>
-            </div>
+            <div></div>
             <div class="animation-container items-center" id="animation-container"></div>
         </div>
         <!--------------------------------------------------------------------------------------------------------->
@@ -179,8 +140,7 @@
 </div>
 </body>
 <!-- PAGE SPECIFICE ANIMATIION -->
-<script src="./js/queue.js"></script>
-<script src="./js/circularqueue.js"></script>
+<script src="./js/searchAlgorithms.js"></script>
 <script>
     var acc = document.getElementsByClassName("accordion");
     var i;
