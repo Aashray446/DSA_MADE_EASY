@@ -38,7 +38,7 @@
             <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="back-light py-3 px-20 my-5 rounded">
                 <h1 class="font-thin text-lg tracking-widest text-center">
-                    <span>ALGORITHMS</span>
+                    <span>SEARCH ALGORITHMS</span>
                 </h1>
             </div>
             <section>
@@ -51,7 +51,7 @@
                         <li><a href="queue.html">Queue</a></li>
                         <li><a href="linklist.html">Linked List</a></li>
                         <li><a href="binary.html">Binary Tree</a></li>
-                        <li><a href="algorithm.html">Searching Algorithms</a></li>
+                        <li><a href="search.html">Search Algorithms</a></li>
                     </ul>
                 </nav>
                 <!------------------- SECTION THAT WILL BE CHANGED------------------------------------------------->
@@ -82,11 +82,15 @@
                                         SEARCH
                                     </button>
                                     <input type="number" id="algo-search" class="text-center"
-                                           placeholder="" name="search" onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
+                                           placeholder="Enter element to search"
                                     >
                                     <button class="bg-secondary rounded hover:bg-primary20 duration-700"
                                             onclick="searchAlgorithms.remove()">
                                         REMOVE
+                                    </button>
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-700"
+                                            onclick="searchAlgorithms.generateRandomArray()">
+                                        RANDOM ARRAY
                                     </button>
                                     <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
                                             onclick="searchAlgorithms.reset()">
@@ -98,7 +102,7 @@
                                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                 <p></p>
                             </div>
-                            <button class="accordion" onclick="">
+                            <button class="accordion" onclick="searchAlgorithms.searchtype='linear'">
                                 Linear Search
                             </button>
                             <div class="panel ">
@@ -109,7 +113,7 @@
                                     If the match is found, then the location of the item is returned; otherwise, the algorithm returns NULL.
                                 </p>
                             </div>
-                            <button class="accordion" onclick="">
+                            <button class="accordion" onclick="searchAlgorithms.searchtype='binary'">
                                 Binary Search
                             </button>
                             <div class="panel ">
@@ -132,7 +136,9 @@
         </div>
         <!--------------------------------------------------------- PLAYGROUND AHEAD ------------------------------>
         <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
-            <div></div>
+            <div class="view-area bg-primary" id="search-box" style="visibility: hidden">
+                <p class="text-center"></p>
+            </div>
             <div class="animation-container items-center" id="animation-container"></div>
         </div>
         <!--------------------------------------------------------------------------------------------------------->
@@ -141,6 +147,7 @@
 </body>
 <!-- PAGE SPECIFICE ANIMATIION -->
 <script src="./js/searchAlgorithms.js"></script>
+<script src="./js/utils.js"></script>
 <script>
     var acc = document.getElementsByClassName("accordion");
     var i;
