@@ -98,7 +98,7 @@
                                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                 <p></p>
                             </div>
-                            <button class="accordion" onclick="">
+                            <button class="accordion" onclick="searchAlgorithms.searchtype='linear'">
                                 Linear Search
                             </button>
                             <div class="panel ">
@@ -109,7 +109,7 @@
                                     If the match is found, then the location of the item is returned; otherwise, the algorithm returns NULL.
                                 </p>
                             </div>
-                            <button class="accordion" onclick="">
+                            <button class="accordion" onclick="searchAlgorithms.searchtype='binary'">
                                 Binary Search
                             </button>
                             <div class="panel ">
@@ -141,6 +141,7 @@
 </body>
 <!-- PAGE SPECIFICE ANIMATIION -->
 <script src="./js/searchAlgorithms.js"></script>
+<script src="./js/utils.js"></script>
 <script>
     var acc = document.getElementsByClassName("accordion");
     var i;

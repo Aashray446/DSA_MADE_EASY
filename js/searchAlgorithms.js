@@ -2,44 +2,21 @@ class SearchAlgorithms {
     container = document.getElementById('animation-container')
     structure = 'queue'
 
-    createElement = (data) => {
+    createElement = (value) => {
         const element = document.createElement('div');
         element.classList.add(this.structure)
-        element.style.backgroundColor = data?.color
-        element.innerHTML = `<p style="color: white; font-size: xx-large">${data?.value}</p>`
-        element.classList.add('circlerow')
+        element.innerHTML = `<p style="color: black; font-size: xx-large">${value}</p>`
         return element
-    }
-
-    getRandomColor = () => {
-        var trans = '0.3';
-        var color = 'rgba(';
-        for (var i = 0; i < 3; i++) {
-            color += Math.floor(Math.random() * 255) + ',';
-        }
-        color += trans + ')';
-        return color;
-    }
-
-    wrapFR = (value, isfront) => {
-        if(isfront) {
-            return `<p class="text-center">Front is ${value}</p>`
-        }
-        return `<p class="text-center">Rear is ${value}</p>`
     }
 
     array = new Array();
     length;
-    searchtype = 'binary';
-
-    init(length) {
-        this.length = length;
-    }
+    searchtype = 'linear';
 
     render(){
         this.container.innerHTML = '';
         for (let i = 0; i < this.array.length; i++) {
-            this.container.append(this.createElement({'value': this.array[i], 'color': this.getRandomColor()}))
+            this.container.append(this.createElement(this.array[i]));
         }
     }
 
@@ -103,6 +80,7 @@ class SearchAlgorithms {
 
     reset() {
         this.array = new Array();
+        this.container.innerHTML = '';
     }
 }
 
