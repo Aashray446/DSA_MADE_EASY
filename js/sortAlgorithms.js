@@ -125,6 +125,7 @@ class SortAlgorithms{
     async insertionSort() {
         let i, j, temp;
         for (i = 1; i < this.array.length; i++) {
+<<<<<<< HEAD
             this.container.children[i].style.backgroundColor = 'orange';
             temp = this.array[i];
             this.display.style.visibility = 'visible';
@@ -149,6 +150,17 @@ class SortAlgorithms{
             this.container.children[j + 1].style.backgroundColor = 'green';
             await sleep(300);
             this.render()
+=======
+            temp = this.array[i];
+            j = i - 1;
+            while (j >= 0 && this.array[j] > temp) {
+                this.array[j + 1] = this.array[j];
+                j = j - 1;
+                this.render();
+                await sleep(200);
+            }
+            this.array[j + 1] = temp;
+>>>>>>> 331e9a1 (<algorithms>:[implement basic sort features])
         }
     }
 
