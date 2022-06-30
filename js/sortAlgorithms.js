@@ -21,7 +21,6 @@ class SortAlgorithms{
     sorttype = 'bubble';
 
     render(){
-        this.display.style.visibility = 'hidden';
         this.container.innerHTML = '';
         for (let i = 0; i < this.array.length; i++) {
             this.container.append(this.createElement(this.array[i]));
@@ -126,15 +125,30 @@ class SortAlgorithms{
     async insertionSort() {
         let i, j, temp;
         for (i = 1; i < this.array.length; i++) {
+            this.container.children[i].style.backgroundColor = 'orange';
             temp = this.array[i];
+            this.display.style.visibility = 'visible';
+            this.display.innerHTML = `<p style="color: white; font-size: large">Temp-> ${temp}</p>`
             j = i - 1;
             while (j >= 0 && this.array[j] > temp) {
+                if(i>=j+2) {
+                    this.container.children[j + 2].style.backgroundColor = 'lightgreen';
+                    this.container.children[j + 1].style.backgroundColor = 'lightblue';
+                }
+                this.container.children[i].style.backgroundColor = 'orange';
+                this.display.style.visibility = 'visible';
+                await sleep(600);
                 this.array[j + 1] = this.array[j];
+                this.container.children[j].style.backgroundColor = 'lightgreen';
+                this.container.children[j+1].style.backgroundColor = 'lightblue';
                 j = j - 1;
+                await sleep(600);
                 this.render();
-                await sleep(200);
             }
             this.array[j + 1] = temp;
+            this.container.children[j + 1].style.backgroundColor = 'green';
+            await sleep(300);
+            this.render()
         }
     }
 
