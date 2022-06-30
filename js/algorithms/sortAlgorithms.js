@@ -21,6 +21,7 @@ class SortAlgorithms{
     sorttype = 'bubble';
 
     render(){
+        this.display.style.visibility = 'hidden';
         this.container.innerHTML = '';
         for (let i = 0; i < this.array.length; i++) {
             this.container.append(this.createElement(this.array[i]));
