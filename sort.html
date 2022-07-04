@@ -38,7 +38,7 @@
             <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="back-light py-3 px-20 my-5 rounded">
                 <h1 class="font-thin text-lg tracking-widest text-center">
-                    <span>SEARCH ALGORITHMS</span>
+                    <span>SORT ALGORITHMS</span>
                 </h1>
             </div>
             <section>
@@ -72,30 +72,27 @@
                                 <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
                                     <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
                                     <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
-                                            onclick="searchAlgorithms.add(document.getElementById('algo-add').value)">
+                                            onclick="sortAlgorithms.add(document.getElementById('algo-add').value)">
                                         ADD
                                     </button>
                                     <input type="number" id="algo-add" class="text-center"
                                            placeholder="Enter value  (-99 to 99)" name="enqueue"
                                            min=-99 max=99 onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
                                     >
-                                    <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
-                                            onclick="searchAlgorithms.search(document.getElementById('algo-search').value)">
-                                        SEARCH
-                                    </button>
-                                    <input type="number" id="algo-search" class="text-center"
-                                           placeholder="Enter element to search"
-                                    >
                                     <button class="bg-secondary rounded hover:bg-primary20 duration-700"
-                                            onclick="searchAlgorithms.remove()">
+                                            onclick="sortAlgorithms.remove()">
                                         REMOVE
                                     </button>
                                     <button class="bg-secondary rounded hover:bg-primary20 duration-700"
-                                            onclick="searchAlgorithms.generateRandomArray()">
+                                            onclick="sortAlgorithms.sort()">
+                                        SORT
+                                    </button>
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-700"
+                                            onclick="sortAlgorithms.generateRandomArray()">
                                         RANDOM ARRAY
                                     </button>
                                     <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
-                                            onclick="searchAlgorithms.reset()">
+                                            onclick="sortAlgorithms.reset()">
                                         RESET
                                     </button>
                                 </div>
@@ -104,27 +101,38 @@
                                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                 <p></p>
                             </div>
-                            <button class="accordion" onclick="searchAlgorithms.searchtype='linear'">
-                                Linear Search
+                            <button class="accordion" onclick="sortAlgorithms.sorttype='bubble'">
+                                Bubble Sort
                             </button>
                             <div class="panel ">
                                 <p class="py-4">
-                                    Linear search is also called as sequential search algorithm.
-                                    It is the simplest searching algorithm. In Linear search, we simply traverse the list
-                                    completely and match each element of the list with the item whose location is to be found.
-                                    If the match is found, then the location of the item is returned; otherwise, the algorithm returns NULL.
+                                    Bubble sort is a sorting algorithm that compares two adjacent elements and swaps them
+                                    until they are not in the intended order.
+                                    Just like the movement of air bubbles in the water that rise up to the surface, each
+                                    element of the array move to the end in each iteration. Therefore, it is called a bubble sort.
                                 </p>
                             </div>
-                            <button class="accordion" onclick="searchAlgorithms.searchtype='binary'">
-                                Binary Search
+                            <button class="accordion" onclick="sortAlgorithms.sorttype='insertion'">
+                                Insertion Sort
                             </button>
                             <div class="panel ">
                                 <p class="py-4">
-                                    Binary Search is a searching algorithm for finding an element's position in a sorted array.
-                                    In this approach, the element is always searched in the middle of a portion of an array.
+                                    Insertion sort is a sorting algorithm that places an unsorted element at its suitable place in each iteration.
+
+                                    Insertion sort works similarly as we sort cards in our hand in a card game.
+
+                                    We assume that the first card is already sorted then, we select an unsorted card.
+                                    If the unsorted card is greater than the card in hand, it is placed on the right otherwise,
+                                    to the left. In the same way, other unsorted cards are taken and put in their right place.
                                 </p>
-                                <p>
-                                    Binary search is faster than linear search. In case of binary search, array elements must be in ascending order.
+                            </div>
+                            <button class="accordion" onclick="sortAlgorithms.sorttype='selection'">
+                                Selection Sort
+                            </button>
+                            <div class="panel ">
+                                <p class="py-4">
+                                    Selection sort is a sorting algorithm that selects the smallest element from an unsorted
+                                    list in each iteration and places that element at the beginning of the unsorted list.
                                 </p>
                             </div>
                             <div class="alert items-center">
@@ -138,7 +146,7 @@
         </div>
         <!--------------------------------------------------------- PLAYGROUND AHEAD ------------------------------>
         <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
-            <div class="view-area bg-primary" id="search-box" style="visibility: hidden">
+            <div class="view-area bg-primary" id="sort-box" style="visibility: hidden">
                 <p class="text-center"></p>
             </div>
             <div class="animation-container items-center" id="animation-container"></div>
@@ -148,8 +156,7 @@
 </div>
 </body>
 <!-- PAGE SPECIFICE ANIMATIION -->
-<script src="js/algorithms/searchAlgorithms.js"></script>
-<script src="./js/utils.js"></script>
+<script src="js/algorithms/sortAlgorithms.js"></script>
 <script>
     var acc = document.getElementsByClassName("accordion");
     var i;

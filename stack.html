@@ -60,11 +60,13 @@
                        <h2>SELECT DATA STRUCTURE</h2>
                      <ul>
                         <li> <a href="index.html">Home</a></li>
-                       <li><a href="stack.html">Stack</a></li>
-                       <li><a href="queue.html">Queue</a></li>
-                       <li><a href="singlylinklist.html">Singly Linked List</a></li>
-                       <li><a href="doublylinklist.html">Doubly Linked List</a></li>
-                       <li><a href="binary.html">Binary Tree</a></li>
+                        <li><a href="stack.html">Stack</a></li>
+                        <li><a href="queue.html">Queue</a></li>
+                        <li><a href="singlylinklist.html">Singly Linked List</a></li>
+                        <li><a href="doublylinklist.html">Doubly Linked List</a></li>
+                        <li><a href="binary.html">Binary Tree</a></li>
+                        <li><a href="search.html">Search Algorithms</a></li>
+                        <li><a href="sort.html">Sort Algorithms</a></li>
                      </ul>
                     </nav>
 
@@ -83,7 +85,8 @@
                           document.getElementById('push').value
                         )">PUSH</button>
     
-                        <input type="number" id="push" class="text-center" placeholder="Enter Push Data" name="push">
+                        <input type="number" id="push" class="text-center" placeholder="Enter Push Data" name="push" onkeypress="Javascipt: if (event.keyCode ==13) stack.push(
+                          document.getElementById('push').value)">
 
                         <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="stack.pop()">POP</button>
                         <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="stack.peek()">PEEK</button>
