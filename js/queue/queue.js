@@ -34,6 +34,7 @@ class Queue {
     rear=-1;
     length=15;
     detailed=false;
+    isdeque=false;
 
     qf = document.getElementById('queueFront')
     qr = document.getElementById('queueRear')
@@ -74,6 +75,21 @@ class Queue {
             }
         }
 
+    }
+
+    pushFront = (value) => {
+        if (this.isFull()) {
+            this.inf.getElementsByTagName('p')[0].innerHTML = "Queue Overflow! Queue is full!"
+            this.inf.style.display = 'block'
+        }
+        if (this.isEmpty()){
+            this.rear = this.front = 0;
+            this.array[this.rear] = value;
+        } else {
+            this.rear = (this.rear + 1) % this.length;
+            this.array[this.rear] = value;
+        }
+        return true;
     }
 
     dequeue=()=>{
@@ -117,6 +133,21 @@ class Queue {
         }
     }
 
+    popRear = () => {
+        if (this.isEmpty()) {
+            this.inf.getElementsByTagName('p')[0].innerHTML = "Queue Underflow! Queue is empty!"
+            this.inf.style.display = 'block'
+        }
+        if (this.rear==this.front){
+            this.rear=this.front=-1;
+        } else {
+            let v = this.dataArray[this.front];
+            this.rear = (this.rear + this.length-1) % this.length;
+            return v;
+        }
+        return -1;
+    }
+
     isFull=()=>{
         if(this.dataArray.length > this.length) {
             return true;
@@ -141,6 +172,17 @@ class Queue {
         this.dataArray = new Array();
         this.front=-1;
         this.rear=-1;
+    }
+
+    toggledeque = () => {
+        this.isdeque = !this.isdeque;
+        if(this.isdeque) {
+            this.qf.style.display = 'flex'
+            this.qr.style.display = 'flex'
+        } else {
+            this.qf.style.display = 'none'
+            this.qr.style.display = 'none'
+        }
     }
 }
 

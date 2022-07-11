@@ -86,13 +86,22 @@
                                                     queue.enqueue(document.getElementById('enqueue').value);">
                                         ENQUEUE
                                     </button>
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
+                                            onclick="queue.pushFront(document.getElementById('enqueue').value);">
+                                        ENQUEUE FRONT
+                                    </button>
                                     <input type="number" id="enqueue" class="text-center"
                                            placeholder="Enter value  (-99 to 99)" name="enqueue"
                                            min=-99 max=99 onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
                                     >
+                                    <div></div>
                                     <button class="bg-secondary rounded hover:bg-primary20 duration-700"
                                             onclick="circularqueue.isactive ? circularqueue.dequeue() : queue.dequeue()">
                                         DEQUEUE
+                                    </button>
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-700"
+                                            onclick="queue.popRear()">
+                                        DEQUEUE REAR
                                     </button>
                                     <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
                                             onclick="circularqueue.isactive ? circularqueue.reset() : queue.reset()">
@@ -207,10 +216,10 @@
         <!--------------------------------------------------------- PLAYGROUND AHEAD ------------------------------>
         <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
             <div class="grid grid-cols-2">
-                <div class="sudo-queue bg-secondary" id="queueFront">
+                <div class="sudo-queue" id="queueFront">
                     <p class="text-center">Front is -1</p>
                 </div>
-                <div class="sudo-queue bg-primary20" id="queueRear">
+                <div class="sudo-queue" id="queueRear">
                     <p class="text-center">Rear is -1</p>
                 </div>
             </div>
