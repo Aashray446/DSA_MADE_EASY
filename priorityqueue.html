@@ -77,40 +77,21 @@
                                     </div>
                                     <input type="number" id="queuelength" class="text-center" value=16
                                            placeholder="Enter Queue Length" name="length"
-                                           onchange="circularqueue.isactive ? circularqueue.length=value-1 : queue.length=value-1;
-                                           circularqueue.isactive && circularqueue.handlengthchange()"
-                                    >
-                                    <div class="grid grid-cols  gap-10 tracking-widest " id="enqueuebuttongroup">
-                                        <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
-                                                onclick=
-                                                        "circularqueue.isactive ?
-                                                    circularqueue.enqueue(document.getElementById('enqueue').value) :
-                                                    queue.enqueue(document.getElementById('enqueue').value);">
-                                            ENQUEUE
-                                        </button>
-                                        <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
-                                                style='display:none'
-                                                onclick="queue.enqueueFront(document.getElementById('enqueue').value);" id="enqueuefrontbutton">
-                                            ENQUEUE FRONT
-                                        </button>
-                                    </div>
+                                           onchange="">
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
+                                            onclick="">
+                                        ENQUEUE
+                                    </button>
                                     <input type="number" id="enqueue" class="text-center"
                                            placeholder="Enter value  (-99 to 99)" name="enqueue"
                                            min=-99 max=99 onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
                                     >
-                                    <div class="grid grid-cols  gap-10 tracking-widest " id="dequeuebuttongroup">
-                                        <button class="bg-secondary rounded hover:bg-primary20 duration-700"
-                                                onclick="circularqueue.isactive ? circularqueue.dequeue() : queue.dequeue()">
-                                            DEQUEUE
-                                        </button>
-                                        <button class="bg-secondary rounded hover:bg-primary20 duration-700"
-                                                style='display:none'
-                                                onclick="queue.dequeueRear()" id="dequeuerearbutton">
-                                            DEQUEUE REAR
-                                        </button>
-                                    </div>
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-700"
+                                            onclick="">
+                                        DEQUEUE
+                                    </button>
                                     <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
-                                            onclick="circularqueue.isactive ? circularqueue.reset() : queue.reset()">
+                                            onclick="">
                                         RESET
                                     </button>
                                 </div>
@@ -120,8 +101,8 @@
                                 <p></p>
                             </div>
 
-                            <button class="accordion" onclick="queue.detailed=false; queue.reset();circularqueue.isactive=false; circularqueue.reset();  queue.isdeque=false; queue.toggledeque();">
-                                Linear Queue
+                            <button class="accordion" onclick="">
+                                 UnSorted Priority Queue
                             </button>
                             <div class="panel ">
                                 <p class="py-4">
@@ -132,8 +113,8 @@
                                 </p>
                             </div>
 
-                            <button class="accordion" onclick="queue.detailed=true; queue.reset(); circularqueue.isactive=false; circularqueue.reset(); queue.isdeque=false; queue.toggledeque();">
-                                Disadvantage of Linear Queue
+                            <button class="accordion" onclick="">
+                                Sorted Priority Queue
                             </button>
                             <div class="panel" style="height: 700px">
                                 <div class="py-4">
@@ -149,43 +130,6 @@
                                         the front of the queue forward, thereby reducing the overall size of the queue.
                                         And we cannot insert new elements, because the rear pointer is still at the end
                                         of the queue.
-                                    </p>
-                                </div>
-                            </div>
-                            <button class="accordion" onclick=" queue.reset(); queue.detailed=false; circularqueue.isactive=false;  circularqueue.reset();  queue.isdeque=true; queue.toggledeque();">
-                                 Deque
-                            </button>
-                            <div class="panel">
-                                <div class="py-4">
-                                    <p>
-                                        Deque or Double Ended Queue is a type of queue in which insertion and removal of
-                                        elements can either be performed from the front or the rear. Thus, it does not
-                                        follow FIFO rule (First In First Out).
-                                    </p>
-                                    <br>
-                                    <p>
-                                        New items can be added at either the front or the rear. Likewise, existing items
-                                        can be removed from either end. In a sense, this hybrid linear structure provides
-                                        all the capabilities of stacks and queues in a single data structure.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <button class="accordion" onclick="queue.reset(); circularqueue.isactive=true;  circularqueue.reset(); queue.isdeque=false; queue.toggledeque();">
-                                Circular Queue
-                            </button>
-                            <div class="panel">
-                                <div class="py-4">
-                                    <p>
-                                        A circular queue is the extended version of a regular queue where the last
-                                        element is connected to the first element. Thus forming a circle-like structure.
-                                        Circular queue representation.
-                                        The circular queue solves the major limitation of the normal queue.
-                                    </p>
-                                    <br>
-                                    <p>
-                                        The circular queue solves the major limitation of the normal queue. In a normal queue,
-                                        after a bit of insertion and deletion, there will be non-usable empty space.
                                     </p>
                                 </div>
                             </div>
