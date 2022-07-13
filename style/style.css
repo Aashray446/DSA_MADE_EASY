@@ -578,16 +578,3 @@ input:checked + .slider:before {
 @keyframes a6 {
   80%,100%{background-position: 50px 50%,85px 0}
 }
-
-/*progress bar*/
-#progressBar{
-  width:50%;
-  height:20px;
-  background-color:#808080;
-}
-
-#played{
-  width:30%;
-  height:100%;
-  background-color:cadetblue;
-}
