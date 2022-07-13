@@ -77,15 +77,25 @@
                     <div class="flex flex-col" id="moreInfo">
                       <h2 class="font-thin text-2xl tracking-widest mt-20 text-secondary mb-5" >Controls of Doubly Linked List</h2>
                     
-                    <div class="grid grid-cols-2 gap-10 tracking-widest">
+                    <div class="grid grid-cols-2 gap-4  tracking-widest">
                       
                       <!-- INITIAL WOKDS WILL BE ASSIGNED HERE -->
                 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">PUSH</button>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="dll.insert(5)" >INSERT OR CREATE</button>
     
-                        <input type="number" class="text-center" placeholder="Enter Push Data" name="push">
+                        <input type="number" class="text-center" placeholder="Enter Data For Node" name="nodeData">
 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700">POP</button>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">INSERT AT INDEX</button>
+    
+                        <div class="flex flex-row flex-wrap" >
+                          <input type="number" class="text-center" placeholder="Enter Data For Node" name="push">
+                          <input type="number" class="text-center mt-1" placeholder="Enter Index" name="push">
+                        </div>
+                       
+
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">DELETE AT INDEX</button>
+    
+                        <input type="number" class="text-center" placeholder="Enter the Index" name="push">
 
                         <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700">RESET</button>
                     
@@ -114,48 +124,7 @@
 
               <div class="flex flex-row flex-wrap mt-8 mx-4" id="animation-container">
           
-                  <div class="node">
-                <div class="data">5</div>
-                <div class="data value">55</div>
-                <div class="data">0</div>
-                <div class="pointer"></div>
-              </div>
-              <div class="arrow-6"></div>
-              <div class="node">
-                <div class="data">5</div>
-                <div class="data value">55</div>
-                <div class="data">0</div>
-              </div>
-              <div class="arrow-6"></div>
-              <div class="node">
-                <div class="data">5</div>
-                <div class="data value">55</div>
-                <div class="data">0</div>
-              </div>
-              <div class="arrow-6"></div>
-              <div class="node">
-                <div class="data">5</div>
-                <div class="data value">55</div>
-                <div class="data">0</div>
-              </div>
-              <div class="arrow-6"></div>
-              <div class="node">
-                <div class="data">5</div>
-                <div class="data value">55</div>
-                <div class="data">0</div>
-              </div>
-              <div class="arrow-6"></div>
-              <div class="node">
-                <div class="data">5</div>
-                <div class="data value">55</div>
-                <div class="data">0</div>
-              </div>
-              <div class="arrow-6"></div>
-              <div class="node">
-                <div class="data">5</div>
-                <div class="data value">55</div>
-                <div class="data">0</div>
-              </div>
+              
               
               </div>
 
