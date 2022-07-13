@@ -1,4 +1,52 @@
-// Please Make DoublyLinkList Implementation 
+//Container Variable Definition 
+const container = document.getElementById('animation-container')
+
+
+const createNode = function(prevData, currentData, nextData) {
+    const element = document.createElement('div');
+    element.classList.add('node')
+
+    // Previous Address
+    var prev  = document.createElement('div');
+    prev.classList.add('data');
+    if( prevData == null) {
+        prevData.innerHTML = ' - '
+    }
+    else  {
+        prev.innerHTML =  prevData;
+    }
+
+    // Current Value
+    var data  = document.createElement('div');
+    data.classList.add('data');
+    data.classList.add('value');
+    data.innerHTML = currentData;
+
+    //Next Address
+    var next  = document.createElement('div');
+    next.classList.add('data');
+   
+    if( nextData == null) {
+        nextData.innerHTML = ' - '
+    }
+    else  {
+        nextData.innerHTML =  nextData;
+    }
+
+    element.appendChild(prev)
+    element.appendChild(data)
+    element.appendChild(next)
+    container.append(element)
+      
+}
+
+const addArrow = function() {
+    const element = document.createElement('div').classList.add('arrow-6')
+    container.append(element)
+}
+
+
+
 // All possible Functions 
 class node{
     constructor(value){
@@ -16,20 +64,9 @@ class DoublyLinkedList {
         this.size = 0;
     }
 
-    insert = function(value) {
-        let node = new node(value);
-        let pointer;
-        if(this.head = null){
-            this.head = node;
-            this.tail = node;
-        }
-        else{
-            this.tail.next = node;
-            node.previous = this.tail;
-            this.tail = node;
-        }
-        this.size++;
-    }
+   insert = function(value){
+
+   }
 
     insertAtIndex = function(value, index){
         if(index < 0 || index > this.size){
@@ -53,3 +90,5 @@ class DoublyLinkedList {
    
 
 }
+
+const dll = new DoublyLinkedList()
