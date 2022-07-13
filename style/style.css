@@ -455,3 +455,16 @@ input:checked + .slider:before {
 .hidden-scroll::-webkit-scrollbar { 
   display: none; 
 }
+
+/*progress bar*/
+#progressBar{
+  width:50%;
+  height:20px;
+  background-color:#808080;
+}
+
+#played{
+  width:30%;
+  height:100%;
+  background-color:cadetblue;
+}

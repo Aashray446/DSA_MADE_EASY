@@ -3,9 +3,9 @@ class Circularqueue{
     container = document.getElementById('animation-container')
     structure = 'queue'
 
-    qf = document.getElementById('queueFront') || queue.qf
-    qr = document.getElementById('queueRear') || queue.qr
-    inf = document.getElementById('queueinfo') || queue.inf
+    qf = queue.qf
+    qr = queue.qr
+    inf = queue.inf
 
     createElement = (data) => {
         const element = document.createElement('div');
@@ -57,9 +57,7 @@ class Circularqueue{
         }
 
         const bg_color = getRandomColor()
-        console.log(this.container.children)
         let element = this.createElement({'value': value, 'color': bg_color})
-        console.log("isempt",this.isEmpty())
         if(this.isEmpty()){
             this.rear=this.front=0;
             this.array[this.rear]=value;
@@ -114,7 +112,6 @@ class Circularqueue{
     }
 
     reset=()=>{
-        console.log("circular resetting")
         this.array = new Array();
         this.front = -1;
         this.rear = -1;
@@ -131,6 +128,8 @@ class Circularqueue{
                 }
             }
         }
+        this.qr.style.display='block'
+        this.qf.style.display='block'
 
     }
 
