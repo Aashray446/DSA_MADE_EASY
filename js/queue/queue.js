@@ -6,7 +6,7 @@ const createElement = (data) => {
     element.classList.add(structure)
     element.style.backgroundColor=data?.color
     element.innerHTML = `<p style="color: white; font-size: xx-large">${data?.value}</p>`
-    container.append(element)
+    return element
 }
 
 
@@ -59,7 +59,7 @@ class Queue {
             const bg_color = getRandomColor()
             this.qr.innerHTML = wrapFR(value, false)
             this.qr.style.backgroundColor = bg_color
-            createElement({'value': value, 'color': bg_color})
+            container.append(createElement({'value': value, 'color': bg_color}))
             this.dataArray.push(value)
             if (this.detailed){
                 this.qf.innerHTML = wrapFR(this.dataArray[this.front],true)
@@ -77,19 +77,36 @@ class Queue {
 
     }
 
-    pushFront = (value) => {
-        if (this.isFull()) {
+    enqueueFront=(value)=>{
+        if(this.isFull()) {
             this.inf.getElementsByTagName('p')[0].innerHTML = "Queue Overflow! Queue is full!"
             this.inf.style.display = 'block'
         }
-        if (this.isEmpty()){
-            this.rear = this.front = 0;
-            this.array[this.rear] = value;
-        } else {
-            this.rear = (this.rear + 1) % this.length;
-            this.array[this.rear] = value;
+        else {
+            let enqinf = document.getElementById('enqueueinfo')
+            if(value=="" || value<-99 || value>99) {
+                enqinf.getElementsByTagName('p')[0].innerHTML = "Random number is taken for Enqueue!"
+                enqinf.style.display = 'block'
+                value = Math.floor((Math.random() * 99) + 1);
+            } else {
+                enqinf.style.display = 'none'
+            }
+            this.inf.style.display = 'none'
+            const bg_color = getRandomColor()
+            this.qf.innerHTML = wrapFR(value, true)
+            this.qf.style.backgroundColor = bg_color
+            container.prepend(createElement({'value': value, 'color': bg_color}))
+            this.dataArray.unshift(value)
+            if (this.rear == -1) {
+                this.rear = 0;
+                this.qf.innerHTML = wrapFR(this.dataArray[this.rear],true)
+                this.front = 0;
+                this.qf.style.display = 'flex'
+                this.qr.style.display = 'flex'
+            } else {
+                this.rear++;
+            }
         }
-        return true;
     }
 
     dequeue=()=>{
@@ -133,19 +150,44 @@ class Queue {
         }
     }
 
-    popRear = () => {
+    dequeueRear=()=> {
         if (this.isEmpty()) {
             this.inf.getElementsByTagName('p')[0].innerHTML = "Queue Underflow! Queue is empty!"
             this.inf.style.display = 'block'
-        }
-        if (this.rear==this.front){
-            this.rear=this.front=-1;
         } else {
-            let v = this.dataArray[this.front];
-            this.rear = (this.rear + this.length-1) % this.length;
-            return v;
+            this.inf.style.display = 'none'
+            const list = document.getElementsByClassName(structure)
+            if (this.detailed) {
+                if (list[this.rear]) {
+                    list[this.rear].style.opacity = '0.1'
+                }
+                if (this.dataArray[this.rear - 1]) {
+                    this.qr.innerHTML = wrapFR(this.dataArray[this.rear - 1], false)
+                } else {
+                    this.qf.innerHTML = wrapFR(-1, true)
+                    this.qr.innerHTML = wrapFR(-1, false)
+                }
+                this.rear--;
+            } else {
+                list[list.length - 1].remove()
+                this.dataArray?.pop()
+                this.qr.innerHTML = wrapFR(list[list.length - 1]?.getElementsByTagName('p')[0]?.innerHTML || -1, false)
+                this.qr.style.backgroundColor = list[list.length - 1]?.style?.backgroundColor
+                this.rear--;
+            }
         }
-        return -1;
+        if (this.dataArray.length == 0 || this.front > this.rear + 1) {
+            if (!this.detailed) {
+                this.front = -1;
+                this.rear = -1;
+            } else {
+                this.rear--;
+                this.inf.getElementsByTagName('p')[0].innerHTML = "Queue Underflow! Queue is empty!"
+                this.inf.style.display = 'block'
+            }
+            this.qf.innerHTML = wrapFR(-1, true)
+            this.qr.innerHTML = wrapFR(-1, false)
+        }
     }
 
     isFull=()=>{
@@ -175,13 +217,20 @@ class Queue {
     }
 
     toggledeque = () => {
-        this.isdeque = !this.isdeque;
         if(this.isdeque) {
             this.qf.style.display = 'flex'
             this.qr.style.display = 'flex'
+            document.getElementById('dequeuerearbutton').style.display = 'block'
+            document.getElementById('enqueuefrontbutton').style.display = 'block'
+            document.getElementById('enqueuebuttongroup').classList.add('grid-cols-2')
+            document.getElementById('dequeuebuttongroup').classList.add('grid-cols-2')
         } else {
             this.qf.style.display = 'none'
             this.qr.style.display = 'none'
+            document.getElementById('dequeuerearbutton').style.display = 'none'
+            document.getElementById('enqueuefrontbutton').style.display = 'none'
+            document.getElementById('enqueuebuttongroup').classList.remove('grid-cols-2')
+            document.getElementById('dequeuebuttongroup').classList.remove('grid-cols-2')
         }
     }
 }

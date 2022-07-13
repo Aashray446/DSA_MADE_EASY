@@ -126,7 +126,9 @@ class Circularqueue{
             }
         }else {
             for (let i = 0; i < this.length; i++) {
-                this.container.firstChild.remove();
+                if(this.container.firstChild) {
+                    this.container.firstChild.remove();
+                }
             }
         }
 

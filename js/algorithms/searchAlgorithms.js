@@ -42,8 +42,13 @@ class SearchAlgorithms {
     }
 
     add(value) {
+        let enqinf = document.getElementById('enqueueinfo')
         if(value=="" || value<-99 || value>99) {
             value = Math.floor((Math.random() * 99) + 1);
+            enqinf.getElementsByTagName('p')[0].innerHTML = "Random number is added!"
+            enqinf.style.display = 'block'
+        } else{
+            enqinf.style.display = 'none'
         }
         this.array.push(value);
         this.render();
