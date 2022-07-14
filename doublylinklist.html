@@ -85,21 +85,16 @@
     
                         <input type="number" class="text-center" placeholder="Enter Data For Node" id="nodeData">
 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">INSERT AT INDEX</button>
+        
+                        <!-- <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">DELETE AT INDEX</button>
     
-                        <div class="flex flex-row flex-wrap" >
-                          <input type="number" class="text-center" placeholder="Enter Data For Node" name="push">
-                          <input type="number" class="text-center mt-1" placeholder="Enter Index" name="push">
-                        </div>
-                       
+                        <input type="number" class="text-center" placeholder="Enter the Index" name="push"> -->
 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">DELETE AT INDEX</button>
-    
-                        <input type="number" class="text-center" placeholder="Enter the Index" name="push">
-
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="dll.traverse()">Traverse</button>
+                        <div></div>
                         <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700">SET DELAY</button>
                         <input type="number" class="text-center" value="1000" placeholder="Enter the Index" id="delay">
-                        
+                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="dll.reset()">RESET</button>
 
                   
                     </div>
@@ -115,7 +110,7 @@
             <div class="container h-screen place-items-center back-dark" style="height:100vh; width: 60%;">
 
               <div class="grid grid-cols-4 mt-5 place-items-center">
-                <div class="rounded border grid grid-cols-2 col-span-3 border-light-500 text-light px-10">
+                <div class="rounded border grid grid-cols-2 col-span-3 border-light-500 text-light px-5 min-w-full	">
                   
                   <p>Current Process : - </p> <p class="text-secondary" id="process">None</p>
                   <p>Current Node Memory : - </p> <p class="text-secondary" id="currentNodeMemory">None</p>

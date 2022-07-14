@@ -4,7 +4,7 @@ const process = document.getElementById('process')
 const currentNodeMemory = document.getElementById('currentNodeMemory')
 const currentNodeData = document.getElementById('currentNodeData')
 const currentHeadMemory = document.getElementById('currentHeadMemory')
-const currentTailMemroy = document.getElementById('currentTailMemory')
+const currentTailMemory = document.getElementById('currentTailMemory')
 
 const nodeShowcase = document.getElementById('nodeShowcase')
 
@@ -215,7 +215,7 @@ class DoublyLinkedList {
         updateInfoScreen(process, 'Changing the tail')
         await sleep(delay)
         movePointerNext('tail')
-        updateInfoScreen(currentTailMemroy, newNode.myMemory)
+        updateInfoScreen(currentTailMemory, newNode.myMemory)
         updateInfoScreen(process, 'Done')
         return;
     }
@@ -245,10 +245,66 @@ class DoublyLinkedList {
         return;
     }
 
+
+    //traverse the list
+    async traverse() {
+        const delay = document.getElementById('delay').value
+
+
+        updateInfoScreen(process, 'Traversing the list')
+        await sleep(delay)
+
+        updateInfoScreen(process, 'Getting Head Information to temp pointer')
+        await sleep(delay)
+        let current = this.head;
+        container.firstElementChild.appendChild(getPointer('pointer'))
+
+        updateInfoScreen(process, 'Checking if the next node is null')
+        await sleep(delay)
+        while (current) {
+        updateInfoScreen(process, 'The node is not null')
+        // Setting The data of the current node
+        updateInfoScreen(process, 'Getting the data of the current node')
+        await sleep(delay)
+        updateInfoScreen(currentNodeData, current.value)
+        updateInfoScreen(currentNodeMemory, current.myMemory)
+            console.log(current.value);
+            current = current.next;
+            await sleep(delay)
+        updateInfoScreen(process, 'Moving the pointer to the next node')
+            await sleep(delay)
+            if(current == null){
+                continue
+            }
+            movePointerNext('pointer')
+        }
+        
+        updateInfoScreen(process, 'The Node is null')
+        await sleep(delay)
+        updateInfoScreen(process, 'Removing temp pointer and terminating traversal')
+        await sleep(delay)
+        container.lastChild.removeChild(container.lastChild.lastChild)
+    }
+
+    reset() {
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+        container.innerHTML = '';
+        updateInfoScreen(process, 'List reset')
+        updateInfoScreen(currentHeadMemory, ' - ')
+        updateInfoScreen(currentTailMemory, ' - ')
+        updateInfoScreen(currentNodeMemory, ' - ')
+        updateInfoScreen(currentNodeData, ' - ')
+
+    }
+
     // CHAINING THE MEMORY
     changePrevMemory(memory){
         container.lastChild.children[2].innerHTML = memory
     }
+
+
 
 }
 
