@@ -493,7 +493,7 @@ input:checked + .slider:before {
   grid-column: 2 / 5;
 }
 
-.node .pointer {
+.node .head {
   grid-column: 3 / 6;
   margin-top: 4px;
   width: 0;
@@ -501,6 +501,29 @@ input:checked + .slider:before {
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
   border-bottom: 12px solid var(--secondary);
+  -webkit-animation: breathing 2s ease-out infinite normal;
+    animation: breathing 2s ease-out infinite normal;
+}
+
+.node .pointer {
+  grid-column: 3 / 6;
+  margin-top: 4px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid red;
+  -webkit-animation: breathing 2s ease-out infinite normal;
+    animation: breathing 2s ease-out infinite normal;
+}
+.node .tail{
+  grid-column: 3 / 6;
+  margin-top: 4px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid var(--primary10);
   -webkit-animation: breathing 2s ease-out infinite normal;
     animation: breathing 2s ease-out infinite normal;
 }

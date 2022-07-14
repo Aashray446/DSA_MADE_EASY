@@ -81,9 +81,9 @@
                       
                       <!-- INITIAL WOKDS WILL BE ASSIGNED HERE -->
                 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="dll.insert(5)" >INSERT OR CREATE</button>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="dll.insert(document.getElementById('nodeData').value)" >INSERT OR CREATE</button>
     
-                        <input type="number" class="text-center" placeholder="Enter Data For Node" name="nodeData">
+                        <input type="number" class="text-center" placeholder="Enter Data For Node" id="nodeData">
 
                         <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">INSERT AT INDEX</button>
     
@@ -97,9 +97,10 @@
     
                         <input type="number" class="text-center" placeholder="Enter the Index" name="push">
 
-                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700">RESET</button>
-                    
-                      
+                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700">SET DELAY</button>
+                        <input type="number" class="text-center" value="1000" placeholder="Enter the Index" id="delay">
+                        
+
                   
                     </div>
 
@@ -113,13 +114,26 @@
 <!--------------------------------------------------------- PLAYGROUND AREAD ------------------------------------------------------------------------------------------------>
             <div class="container h-screen place-items-center back-dark" style="height:100vh; width: 60%;">
 
-              <div class="grid grid-cols-2 mt-5 place-items-center">
-                <div class="bg-secondary rounded px-10"> Current Process </div>
-                <div class="node">
-                  <div class="data"> - </div>
-                  <div class="data value"> -- </div>
-                  <div class="data"> - </div>
+              <div class="grid grid-cols-4 mt-5 place-items-center">
+                <div class="rounded border grid grid-cols-2 col-span-3 border-light-500 text-light px-10">
+                  
+                  <p>Current Process : - </p> <p class="text-secondary" id="process">None</p>
+                  <p>Current Node Memory : - </p> <p class="text-secondary" id="currentNodeMemory">None</p>
+                  <p>Current Node Data : - </p> <p class="text-secondary" id="currentNodeData">None</p>
+                  <p>Current Head Memory : - </p> <p class="text-secondary" id="currentHeadMemory" >None</p>
+                  <p>Current Tail Memory: - </p> <p class="text-secondary" id="currentTailMemory" >None</p>
+           
+              
+
+                  </div>
+                  
+            
+                  <div class="node"  id="nodeShowcase">
+                    <div class="data"> - </div>
+                    <div class="data value"> -- </div>
+                    <div class="data"> - </div>
                 </div>
+            
               </div>
 
               <div class="flex flex-row flex-wrap mt-8 mx-4" id="animation-container">

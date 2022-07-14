@@ -1,7 +1,26 @@
 //Container Variable Definition 
 const container = document.getElementById('animation-container')
+const process = document.getElementById('process')
+const currentNodeMemory = document.getElementById('currentNodeMemory')
+const currentNodeData = document.getElementById('currentNodeData')
+const currentHeadMemory = document.getElementById('currentHeadMemory')
+const currentTailMemroy = document.getElementById('currentTailMemory')
+
+const nodeShowcase = document.getElementById('nodeShowcase')
 
 
+function showcase_updateData(value){
+    nodeShowcase.children[1].innerHTML = value
+}
+function showcase_updatePrev(value){
+    nodeShowcase.children[0].innerHTML = value
+}
+function showcase_updateNext(value){
+    nodeShowcase.children[2].innerHTML = value
+}
+
+
+// Create a div in dom for showing nodes of double link list
 const createNode = function(prevData, currentData, nextData) {
     const element = document.createElement('div');
     element.classList.add('node')
@@ -46,47 +65,48 @@ const addArrow = function() {
     container.append(element)
 }
 
-const Pointer = function() {
+const getPointer = function(pointerName) {
     const element = document.createElement('div');
-    element.classList.add('pointer');
+    element.classList.add(pointerName);
     return element;
 }
 
 
    // Pointer animation related information
     // move pointer to next node
-    movePointerNext = function(){
+    movePointerNext = function(pointerName){
         for (let i = 0; i < container.childElementCount; i++) {
+            // This is two ignore the arrows 
             if(container.children[i].classList.contains('arrow-6')){
                 continue;
             }
-            if(container.children[i].lastChild.classList.contains('pointer')){
+            if(container.children[i].lastChild.classList.contains(pointerName)){
+                container.children[i+2].appendChild(getPointer(pointerName))
                 container.children[i].removeChild(container.children[i].lastChild)
-                container.children[i+2].appendChild(Pointer())
                 return;
             }
         }
     }
 
-   movePointerPrev = function(){
+   movePointerPrev = function(pointerName){
         for (let i = 0; i < container.childElementCount; i++) {
             if(container.children[i].classList.contains('arrow-6')){
                 continue;
             }
-            if(container.children[i].lastChild.classList.contains('pointer')){
+            if(container.children[i].lastChild.classList.contains(pointerName)){
                 container.children[i].removeChild(container.children[i].lastChild)
-                container.children[i-2].appendChild(Pointer())
+                container.children[i-2].appendChild(getPointer(pointerName))
                 return;
             }
         }
     }
 
-    getPresentPointerPos = function(){
+    getPresentPointerPos = function(pointerName){
         for (let i = 0; i < container.childElementCount; i++) {
             if(container.children[i].classList.contains('arrow-6')){
                 continue;
             }
-            if(container.children[i].lastChild.classList.contains('pointer')){
+            if(container.children[i].lastChild.classList.contains(pointerName)){
                 return i;
             }
         }
@@ -123,31 +143,65 @@ class DoublyLinkedList {
 
 
   //insert in doubly linked List
-    insert(value) {
-        const newNode = new node(value);
-        newNode.myMemory = randomNumber();
+   async insert(value) {
+         const delay = document.getElementById('delay').value
 
+        updateInfoScreen(process, 'Creating a new node')
+        await sleep(delay)
+        const newNode = new node(value);
+
+        showcase_updateData(newNode.value)
+        updateInfoScreen(currentNodeData, value);
+
+        newNode.myMemory = randomNumber();
+        updateInfoScreen(currentNodeMemory, newNode.myMemory)
+        await sleep(delay)
         // if list is empty
+        updateInfoScreen(process, 'Checking if list is empty')
+        await sleep(delay)
         if (this.head === null) {
+            updateInfoScreen(process, 'List is empty')
+            await sleep(delay)
+            updateInfoScreen(process, 'Setting Head and tail to new node')
             this.head = newNode;
             this.tail = newNode;
+            updateInfoScreen(currentHeadMemory, newNode.myMemory)
+            updateInfoScreen(currentTailMemory, newNode.myMemory)
             this.size++;
-
+            await sleep(delay)
             //Psuedo Memory Address
             newNode.nextMemory = " - "
             newNode.prevMemory = " - "
-        
+            showcase_updatePrev(newNode.nextMemory)
+            showcase_updateNext(newNode.prevMemory)
+            updateInfoScreen(process, 'Setting next and prev memory')
+            await sleep(delay)
             // Drawing the node
+            updateInfoScreen(process, 'Drawing the node')
             createNode(newNode.prevMemory, value, newNode.nextMemory)
+            await sleep(delay)
+            updateInfoScreen(process, 'Node drawn')
             //add pointer to the node
-            container.lastChild.appendChild(Pointer())
+            container.lastChild.appendChild(getPointer('head'))
+            container.lastChild.appendChild(getPointer('tail'))
             return;
         }
 
 
         // if  list is not empty
+        updateInfoScreen(process, 'List is not empty')
+        await sleep(delay)
+        updateInfoScreen(process, 'Getting Tail Information')
+        await sleep(delay)
+        updateInfoScreen(process, 'Setting Tail to new node')
         this.tail.nextMemory = newNode.myMemory;
+        updateInfoScreen(process, 'Setting previous node next memory')
+        await sleep(delay)
         this.changePrevMemory(newNode.myMemory);
+        await sleep(delay)
+        updateInfoScreen(process, 'Setting Current Node Prev Memory')
+        await sleep(delay)
+        showcase_updatePrev(this.tail.myMemory)
         newNode.prevMemory = this.tail.myMemory
         this.tail.next = newNode;
         newNode.prev = this.tail;
@@ -156,7 +210,13 @@ class DoublyLinkedList {
         this.size++;
         addArrow();
         createNode(newNode.prevMemory, value, newNode.nextMemory)
-        movePointerNext();
+        updateInfoScreen(process, 'Node drawn')
+        await sleep(delay)
+        updateInfoScreen(process, 'Changing the tail')
+        await sleep(delay)
+        movePointerNext('tail')
+        updateInfoScreen(currentTailMemroy, newNode.myMemory)
+        updateInfoScreen(process, 'Done')
         return;
     }
 
@@ -185,7 +245,7 @@ class DoublyLinkedList {
         return;
     }
 
-
+    // CHAINING THE MEMORY
     changePrevMemory(memory){
         container.lastChild.children[2].innerHTML = memory
     }
@@ -195,3 +255,16 @@ class DoublyLinkedList {
 
 
 const dll = new DoublyLinkedList()
+
+
+// Update The infoScreen
+function updateInfoScreen(element, information) {
+    element.innerHTML = information;
+}
+
+// Util functions
+function sleep(ms) {
+    return new Promise(
+      resolve => setTimeout(resolve, ms)
+    );
+  }
