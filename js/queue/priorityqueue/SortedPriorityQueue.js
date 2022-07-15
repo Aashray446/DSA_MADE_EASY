@@ -1,22 +1,17 @@
-class Node {
-    constructor(key, value) {
-        this.key = key;
-        this.value = value;
-        this.next = null;
-        this.previous = null;
-    }
-}
+import Node from "./Node";
 
 class SortedPriorityQueue {
     constructor() {
         this.dataArray = new Array();
         this.head = null;
         this.tail = null;
-        this.size = 0;
     }
 
     isEmpty = () => {
-        return this.size === 0;
+        if(this.head == this.tail && this.head == null){
+            return true;
+        }
+        return false;
     }
 
     insert = (key, value) => {
@@ -47,11 +42,31 @@ class SortedPriorityQueue {
         if(this.isEmpty){
             return console.log("Queue is Empty");
         }
-        let node = this.head;
-        if(this.head.next != null){
-            (this.head) = (this.head).next;
+        let temp = this.head
+        if(temp.next !== null){
+            (temp) = (temp).next;
         }
-        return
+        return temp;
+    }
+
+    min = () => {
+        if(this.isEmpty){
+            return console.log("Queue is Empty");
+            return null;
+        }
+        return this.head;
+    }
+
+    size = () => {
+        let count = 0;
+        let node = this.head;
+        while(node !== null){
+            count+=1;
+            node = node.next;
+        }
+        return count;
     }
 
 }
+
+export default SortedPriorityQueue;
