@@ -72,64 +72,58 @@
                             <div class="simulationpanel w-700">
                                 <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
                                     <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
-                                    <div class="text-center bg-secondary rounded">
-                                        LENGTH
-                                    </div>
-                                    <input type="number" id="queuelength" class="text-center" value=16
-                                           placeholder="Enter Queue Length" name="length"
-                                           onchange="">
-                                    <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
-                                            onclick="">
-                                        ENQUEUE
-                                    </button>
-                                    <input type="number" id="enqueue" class="text-center"
-                                           placeholder="Enter value  (-99 to 99)" name="enqueue"
+                                    <input type="number" id="enqueue_priority" class="text-center"
+                                           placeholder="Enter priority (1 to 99)" name="priority"
+                                           min=1 max=99 onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
+                                    >
+                                    <input type="number" id="enqueue_value" class="text-center"
+                                           placeholder="Enter value (-99 to 99)" name="enqueue"
                                            min=-99 max=99 onchange="value >= min ? (value <= max ? value=value : value=max) : value=min"
                                     >
+                                    <button class="bg-secondary rounded hover:bg-primary20 duration-70 focus:shadow-outline"
+                                            onclick="
+                                            let v = document.getElementById('enqueue_value').value;
+                                            let p = document.getElementById('enqueue_priority').value;
+                                            sortedPriorityQueue.isSorted ? sortedPriorityQueue.enqueue(p,v) : unsortedpriorityqueue.enqueue(p,v);">
+                                        ENQUEUE
+                                    </button>
                                     <button class="bg-secondary rounded hover:bg-primary20 duration-700"
-                                            onclick="">
+                                            onclick="sortedPriorityQueue.isSorted ? sortedPriorityQueue.dequeue() : unsortedpriorityqueue.dequeue();">
                                         DEQUEUE
                                     </button>
                                     <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
-                                            onclick="">
+                                            onclick="sortedPriorityQueue.isSorted ? sortedPriorityQueue.reset() : unsortedpriorityqueue.reset()">
                                         RESET
                                     </button>
                                 </div>
                             </div>
-                            <div id="queueinfo" class="alert items-center" style="display: none; background: coral">
+                            <div id="info" class="alert items-center" style="display: none; background: coral">
                                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                 <p></p>
                             </div>
 
-                            <button class="accordion" onclick="">
+                            <button class="accordion" onclick="sortedPriorityQueue.isSorted=false;">
                                  UnSorted Priority Queue
                             </button>
                             <div class="panel ">
                                 <p class="py-4">
-                                    A linear queue is a linear data structure that serves the request first,
-                                    which has been arrived first. It consists of data elements which are connected
-                                    in a linear fashion. It has two pointers, i.e., front and rear, where the
-                                    insertion takes place from the front end, and deletion occurs from the front end.
+                                    An unsorted priority queue is one in which we insert at the end and remove elements
+                                    based on priority(i,e; smallest value in the queue). The unsorted priority queue
+                                    makes adding very fast - add operations are O(1), because items are just added to
+                                    the end of the list, in no particular order.
                                 </p>
                             </div>
 
-                            <button class="accordion" onclick="">
+                            <button class="accordion" onclick="sortedPriorityQueue.isSorted=true;">
                                 Sorted Priority Queue
                             </button>
                             <div class="panel" style="height: 700px">
                                 <div class="py-4">
                                     <p>
-                                        In a Linear queue, once the queue is completely full,
-                                        it's not possible to insert more elements. Even if we dequeue the queue to
-                                        remove some of the elements, until the queue is reset,
-                                        no new elements can be inserted. You must be wondering why?
-                                    </p>
-                                    <br>
-                                    <p>
-                                        When we dequeue any element to remove it from the queue, we are actually moving
-                                        the front of the queue forward, thereby reducing the overall size of the queue.
-                                        And we cannot insert new elements, because the rear pointer is still at the end
-                                        of the queue.
+                                        A sorted priority queue is one in which we insert at the position and remove elements
+                                        based on priority(i,e; smallest value in the queue). The sorted priority queue
+                                        makes deleting and finding minimum value very fast - delete and peek operations are O(1), because items are just deleted from
+                                        the end of the list, in no particular order.
                                     </p>
                                 </div>
                             </div>
@@ -146,22 +140,30 @@
         <!--------------------------------------------------------- PLAYGROUND AHEAD ------------------------------>
         <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
             <div class="grid grid-cols-2">
-                <div class="sudo-queue" id="queueFront">
-                    <p class="text-center">Front is -1</p>
+                <div class="sudo-pqueue">
+                    <div class="sudo-pqueue-value">MIN</div>
+                    <div id="peekindex" class="sudo-pqueue-key">-</div>
                 </div>
-                <div class="sudo-queue" id="queueRear">
-                    <p class="text-center">Rear is -1</p>
+                <div class="sudo-pqueue">
+                    <div class="sudo-pqueue-value">LEN</div>
+                    <div id="sizearea" class="sudo-pqueue-key">-</div>
                 </div>
             </div>
             <div class="animation-container items-center" id="animation-container"></div>
+            <div id='progressBar'>
+                <div id='played'></div>
+                <div style="color: #FDD741"><strong>Seek to change Speed</strong></div>
+            </div>
         </div>
         <!--------------------------------------------------------------------------------------------------------->
     </div>
 </div>
 </body>
 <!-- PAGE SPECIFICE ANIMATIION -->
-<script src="js/queue/priorityqueue/priorityqueue.js"></script>
+<script src="js/queue/priorityqueue/SortedPriorityQueue.js"></script>
+<script src="js/queue/priorityqueue/UnsortedPriorityQueue.js"></script>
 <script>
+    i
     var acc = document.getElementsByClassName("accordion");
     var i;
     for (i = 0; i < acc.length; i++) {
@@ -180,6 +182,25 @@
                 }
             }
         });
+    }
+
+    var pb = document.getElementById('progressBar');
+    var played = document.getElementById('played');
+    var vidlen = 100;
+    pb.onclick = seek;
+    function seek(e) {
+        var pbwid = parseInt(window.getComputedStyle(pb).width);
+        var clickx = e.offsetX;
+        var perc = clickx / pbwid;
+        var curtime = Math.round(vidlen * perc);
+        if(curtime <= 100){
+            played.style.width = curtime + '%';
+            if(sortedPriorityQueue.isSorted){
+                sortedPriorityQueue.speed=1000 - curtime*10;
+            }else{
+                unsortedpriorityqueue.speed=1000 - curtime*10;
+            }
+        }
     }
 </script>
 

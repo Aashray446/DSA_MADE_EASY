@@ -1,11 +1,7 @@
-import Node from "./Node";
-
-class UnsortedPriorityQueue{
-    constructor(){
-        this.dataArray = new Array();
-        this.head = null;
-        this.tail = null;
-    }
+class UnsortedPriorityQueue {
+    head = null;
+    tail = null;
+    speed = 300;
 
     isEmpty = () => {
         if(this.head == this.tail && this.head == null){
@@ -14,7 +10,7 @@ class UnsortedPriorityQueue{
         return false;
     }
 
-    insert = (key, value) => {
+    enqueue = (key, value) => {
         let node = new Node(key, value);
         if(this.isEmpty()){
             this.head = node;
@@ -24,11 +20,13 @@ class UnsortedPriorityQueue{
             node.previous = this.tail;
         }
         this.tail = node;
+        this.size();
     }
 
-    delete = () => {
-        if(this.isEmpty){
-            return console.log("Queue is Empty");
+    dequeue = () => {
+        if(this.isEmpty()){
+            info.getElementsByTagName('p')[0].innerHTML = "Queue Underflow! Queue is empty!"
+            info.style.display = 'block'
         }
         let min = Number.MAX_VALUE;
         let minNode = new Node(min, null);
@@ -61,13 +59,14 @@ class UnsortedPriorityQueue{
         if(minNode.next != null){
             minNode.next.previous = minNode.previous;
         }
+        this.size();
         return node;
     }
 
     min = () => {
         if(this.isEmpty){
-            return console.log("Queue is Empty");
-            return null;
+            info.getElementsByTagName('p')[0].innerHTML = "Queue Underflow! Queue is empty!"
+            info.style.display = 'block'
         }
         let min = Number.MAX_VALUE;
         let minNode = new Node(min, null);
@@ -86,11 +85,17 @@ class UnsortedPriorityQueue{
         let count = 0;
         let node = this.head;
         while(node !== null){
+            console.log(node.key, node.value)
             count+=1;
             node = node.next;
         }
         return count;
     }
+
+    reset = () => {
+        this.head = null;
+        this.tail = null;
+    }
 }
 
-export default UnsortedPriorityQueue;
+let unsortedpriorityqueue = new UnsortedPriorityQueue();
