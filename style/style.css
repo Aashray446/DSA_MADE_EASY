@@ -678,7 +678,36 @@ input:checked + .slider:before {
   }
 }
 
+
 /* ARROWS  */
+.arrow-5 {
+  margin-top: 10px;
+  width:56px;
+  height: 32px;
+  display: grid;
+  overflow: hidden;
+  opacity: 0.8;
+  color: var(--primary20)
+}
+.arrow-5:before,
+.arrow-5:after {
+  content: "";
+  grid-area: 1/1;
+  background: currentColor;
+  clip-path: polygon(0 10px,calc(100% - 15px) 10px,calc(100% - 15px) 0,100% 50%,calc(100% - 15px) 100%,calc(100% - 15px) calc(100% - 10px),0 calc(100% - 10px));
+  animation: a5 1s infinite;
+  transform: translate(calc(0% + var(--s,0%)));
+}
+
+.arrow-5:after {
+  --s:-100%;
+}
+
+@keyframes a5 {
+  80%,100%{transform: translate(calc(100% + var(--s,0%)))}
+}
+
+
 .arrow-6 {
   margin-top: 5px;
   width:56px;

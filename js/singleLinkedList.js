@@ -34,7 +34,7 @@ const createNode = function(currentData, nextData) {
     //Next Address
     var next = document.createElement('div');
     next.classList.add('data');
-    if( nextData === null) {
+    if( nextData == null) {
         nextData.innerHTML = ' - '
     }
     else  {
@@ -50,7 +50,7 @@ const createNode = function(currentData, nextData) {
 
 const addArrow = function() {
     const element = document.createElement('div');
-    element.classList.add('arrow-6');
+    element.classList.add('arrow-5');
     container.append(element)
 }
 
@@ -66,7 +66,7 @@ const getPointer = function(pointerName) {
     movePointerNext = function(pointerName){
         for (let i = 0; i < container.childElementCount; i++) {
             // This is two ignore the arrows 
-            if(container.children[i].classList.contains('arrow-6')){
+            if(container.children[i].classList.contains('arrow-5')){
                 continue;
             }
             if(container.children[i].lastChild.classList.contains(pointerName)){
@@ -79,7 +79,7 @@ const getPointer = function(pointerName) {
 
    movePointerPrev = function(pointerName){
         for (let i = 0; i < container.childElementCount; i++) {
-            if(container.children[i].classList.contains('arrow-6')){
+            if(container.children[i].classList.contains('arrow-5')){
                 continue;
             }
             if(container.children[i].lastChild.classList.contains(pointerName)){
@@ -92,7 +92,7 @@ const getPointer = function(pointerName) {
 
     getPresentPointerPos = function(pointerName){
         for (let i = 0; i < container.childElementCount; i++) {
-            if(container.children[i].classList.contains('arrow-6')){
+            if(container.children[i].classList.contains('arrow-5')){
                 continue;
             }
             if(container.children[i].lastChild.classList.contains(pointerName)){
@@ -131,10 +131,9 @@ class SinglyLinkedList {
 
   //insert in doubly linked List
    async insert(value) {
-         const delay = document.getElementById('delay').value
 
         updateInfoScreen(process, 'Creating a new node')
-        await sleep(delay)
+        await sleep(getDelay())
         const newNode = new node(value);
 
         showcase_updateData(newNode.value)
@@ -142,26 +141,26 @@ class SinglyLinkedList {
 
         newNode.myMemory = randomNumber();
         updateInfoScreen(currentNodeMemory, newNode.myMemory)
-        await sleep(delay)
+        await sleep(getDelay())
         // if list is empty
         updateInfoScreen(process, 'Checking if list is empty')
-        await sleep(delay)
+        await sleep(getDelay())
         if (this.head === null) {
             updateInfoScreen(process, 'List is empty')
-            await sleep(delay)
+            await sleep(getDelay())
             updateInfoScreen(process, 'Setting Head to new Node')
             this.head = newNode;
             updateInfoScreen(currentHeadMemory, newNode.myMemory)
             this.size++;
-            await sleep(delay)
+            await sleep(getDelay())
             //Psuedo Memory Address
             newNode.nextMemory = " - "
             updateInfoScreen(process, 'Setting next memory')
-            await sleep(delay)
+            await sleep(getDelay())
             // Drawing the node
             updateInfoScreen(process, 'Drawing the node')
             createNode(value, newNode.nextMemory)
-            await sleep(delay)
+            await sleep(getDelay())
             updateInfoScreen(process, 'Node drawn')
             //add pointer to the node
             container.lastChild.appendChild(getPointer('head'))
@@ -171,32 +170,43 @@ class SinglyLinkedList {
 
         // if  list is not empty
         updateInfoScreen(process, 'List is not empty')
-        await sleep(delay)
-        updateInfoScreen(process, 'Getting Tail Information')
-        await sleep(delay)
-        updateInfoScreen(process, 'Setting Tail to new node')
-        this.tail.nextMemory = newNode.myMemory;
-        updateInfoScreen(process, 'Setting previous node next memory')
-        await sleep(delay)
-        this.changePrevMemory(newNode.myMemory);
-        await sleep(delay)
-        updateInfoScreen(process, 'Setting Current Node Prev Memory')
-        await sleep(delay)
-        showcase_updatePrev(this.tail.myMemory)
-        newNode.prevMemory = this.tail.myMemory
-        this.tail.next = newNode;
-        newNode.prev = this.tail;
-        this.tail = newNode;
-        newNode.nextMemory = " - "
+        await sleep(getDelay())
+        var tmp  = this.head;
+        updateInfoScreen(process, 'Creating a tmp pointer')
+        await sleep(getDelay())
+        container.firstElementChild.appendChild(getPointer('pointer'))
+        while(true) {
+            updateInfoScreen(process, 'Checking if tmp is null')
+            await sleep(getDelay())
+            if(tmp.next == null) {
+                updateInfoScreen(process, 'next is null')
+                break;
+            }
+            updateInfoScreen(process, 'next is not null')
+            await sleep(getDelay())
+            tmp = tmp.next;
+            updateInfoScreen(process, 'Moving the pointer to next node')
+            await sleep(getDelay())
+            movePointerNext('pointer')
+        }
+        updateInfoScreen(process, 'Changing the next of tmp to new node address')
+        await sleep(getDelay())
+        tmp.next = newNode;
+        this.changePrevMemory(tmp.myMemory)
         this.size++;
         addArrow();
-        createNode(newNode.prevMemory, value, newNode.nextMemory)
-        updateInfoScreen(process, 'Node drawn')
-        await sleep(delay)
-        updateInfoScreen(process, 'Changing the tail')
-        await sleep(delay)
-        movePointerNext('tail')
-        updateInfoScreen(currentTailMemory, newNode.myMemory)
+        updateInfoScreen(process, 'Setting next memory')
+        await sleep(getDelay())
+        // Drawing the node
+        updateInfoScreen(process, 'Drawing the node')
+        createNode(value, ' - ')
+        await sleep(getDelay())
+        movePointerNext('pointer')
+        await sleep(getDelay())
+        container.lastChild.removeChild(container.lastChild.lastChild)
+        updateInfoScreen(process, 'Deleting the temp pointer')
+    
+        await sleep(getDelay())
         updateInfoScreen(process, 'Done')
         return;
     }
@@ -213,27 +223,27 @@ class SinglyLinkedList {
 
 
     //     updateInfoScreen(process, 'Traversing the list')
-    //     await sleep(delay)
+    //     await sleep(getDelay())
 
     //     updateInfoScreen(process, 'Getting Head Information to temp pointer')
-    //     await sleep(delay)
+    //     await sleep(getDelay())
     //     let current = this.head;
     //     container.firstElementChild.appendChild(getPointer('pointer'))
 
     //     updateInfoScreen(process, 'Checking if the next node is null')
-    //     await sleep(delay)
+    //     await sleep(getDelay())
     //     while (current) {
     //     updateInfoScreen(process, 'The node is not null')
     //     // Setting The data of the current node
     //     updateInfoScreen(process, 'Getting the data of the current node')
-    //     await sleep(delay)
+    //     await sleep(getDelay())
     //     updateInfoScreen(currentNodeData, current.value)
     //     updateInfoScreen(currentNodeMemory, current.myMemory)
     //         console.log(current.value);
     //         current = current.next;
-    //         await sleep(delay)
+    //         await sleep(getDelay())
     //     updateInfoScreen(process, 'Moving the pointer to the next node')
-    //         await sleep(delay)
+    //         await sleep(getDelay())
     //         if(current == null){
     //             continue
     //         }
@@ -241,9 +251,9 @@ class SinglyLinkedList {
     //     }
         
     //     updateInfoScreen(process, 'The Node is null')
-    //     await sleep(delay)
+    //     await sleep(getDelay())
     //     updateInfoScreen(process, 'Removing temp pointer and terminating traversal')
-    //     await sleep(delay)
+    //     await sleep(getDelay())
     //     container.lastChild.removeChild(container.lastChild.lastChild)
     // }
 
@@ -262,7 +272,7 @@ class SinglyLinkedList {
 
     // CHAINING THE MEMORY
     changePrevMemory(memory){
-        container.lastChild.children[2].innerHTML = memory
+        container.lastChild.children[1].innerHTML = memory
     }
 
 
@@ -273,6 +283,10 @@ class SinglyLinkedList {
 
 const sll = new SinglyLinkedList()
 
+//get Delay Value
+function getDelay() {
+    return document.getElementById('delay').value
+}
 
 // Update The infoScreen
 function updateInfoScreen(element, information) {
