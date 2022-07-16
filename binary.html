@@ -79,11 +79,15 @@
                       
                       <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
                 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">PUSH</button>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">INSERT DATA</button>
     
-                        <input type="number" class="text-center" placeholder="Enter Push Data" name="push">
+                        <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" name="push">
 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700">POP</button>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700">SEARCH</button>
+
+
+                        <input type="number" class="text-center" placeholder="ENTER SEARCH DIGIT" name="push">
+
 
                         <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700">RESET</button>
                     
@@ -102,35 +106,48 @@
 <!--------------------------------------------------------- PLAYGROUND AREAD ------------------------------------------------------------------------------------------------>
             <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
 
-                <div class="animation-wrapper">
-                  <div class="grid grid-cols-12 justify-items-center">
-                    <div class="col-span-12 queue">01</div>
-                    <div class="col-span-6 queue">02</div>
-                    <div class="col-span-6 queue">03</div>
-                    <div class="col-span-3 queue">02</div>
-                    <div class="col-span-3 queue">03</div>
-                    <div class="col-span-3 queue">02</div>
-                    <div class="col-span-3 queue">03</div>
-                    <div class="col-span-1 queue">02</div>
-                    <div class="col-span-1 invisible queue"></div>
-                    <div class="col-span-1 queue">02</div>
-                    <div class="col-span-1 queue">02</div>
-                    <div class="col-span-1 invisible queue"></div>
-                    <div class="col-span-1 queue">02</div>
-                    <div class="col-span-1 queue">02</div>
-                    <div class="col-span-1 invisible queue"></div>
-                    <div class="col-span-1 queue">02</div>
-                    <div class="col-span-1 queue">02</div>
-                    <div class="col-span-1 invisible queue"></div>
-                    <div class="col-span-1 queue">02</div>
-      
-
-              
-
-              
-        
-                  </div>
-                  </div>
+              <div class="tree" id="tree">
+                <ul>
+                  <li>
+                    <a href="#">1</a>
+                    <ul>
+                      <li>
+                        <a href="#">2</a>
+                        <ul>
+                          <li>
+                            <a href="#">2.1</a>
+                            
+                          </li>
+                          <li>
+                            <a href="#">2.2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#">3</a>
+                        <ul>
+                          <ul>
+                          <li>
+                            <a href="#">3.1</a>
+                            <ul>
+                          <li>
+                            <a href="#">3.1.1</a>
+                          </li>
+                          <li>
+                            <a href="#">3.1.2</a>
+                          </li>
+                        </ul>
+                          </li>
+                          <li>
+                            <a href="#">3.2</a>
+                          </li>
+                        </ul>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
             </div>
 <!--------------------------------------------------------- PLAYGROUND AREA ENDS ------------------------------------------------------------------------------------------------>
             
