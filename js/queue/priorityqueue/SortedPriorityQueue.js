@@ -64,14 +64,13 @@ class SortedPriorityQueue {
                 this.head = temp;
             } else {
                 while (start != null) {
-
                     await sleep(this.speed);
                     if(container.children[count]) {
-                        container.children[count].style.backgroundColor = 'green';
+                        container.children[count].style.backgroundColor = 'lightgreen';
                     }
                     await sleep(this.speed);
                     if(container.children[count]) {
-                        container.children[count].style.backgroundColor = temp.color;
+                        container.children[count].style.backgroundColor = start.color;
                     }
                     if(container.children[count+1]) {
                         container.children[count + 1].innerHTML = `<p style="color: yellow; font-size: large">>-<</p>`
