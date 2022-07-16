@@ -6,7 +6,7 @@ class SortAlgorithms{
     container = document.getElementById('animation-container')
     display = document.getElementById('sort-box')
     inf = document.getElementById('queueinfo')
-    isRepresentation=true;
+    isRepresentation=false;
     speed = 600;
     length = 40;
 
