@@ -186,10 +186,9 @@
         var clickx = e.offsetX;
         var perc = clickx / pbwid;
         var curtime = Math.round(vidlen * perc);
-        console.log(curtime*10);
         if(curtime <= 100){
             played.style.width = curtime + '%';
-            searchAlgorithms.speed = 1000 - curtime;
+            searchAlgorithms.speed = 1000 - curtime*10;
         }
     }
 </script>

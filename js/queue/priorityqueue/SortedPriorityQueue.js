@@ -1,9 +1,10 @@
 class Node {
-    constructor(key, value, color = getRandomColor()) {
+    constructor(key, value, color = getRandomColor(), address = generateRandomTwoLetterWord()) {
         this.key = key;
         this.value = value;
         this.next = null;
         this.previous = null;
+        this.address = address;
         this.color=color;
     }
 }
@@ -17,6 +18,20 @@ function getRandomColor() {
     for (let i = 0; i < 3; i++)
         color += ("0" + Math.floor(Math.random() * Math.pow(16, 2) / 2).toString(16)).slice(-2);
     return color;
+}
+
+const addresses = [];
+
+function generateRandomTwoLetterWord(){
+    const result = Math.random().toString(36).substring(2,5);
+    for (let i = 0; i < addresses.length; i++) {
+        if(addresses[i] == result) {
+            return generateRandomTwoLetterWord();
+        }
+    }
+    console.log(addresses)
+    addresses.push(result);
+    return result;
 }
 
 const container = document.getElementById('animation-container')
@@ -148,10 +163,10 @@ class SortedPriorityQueue {
         element.classList.add('sudo-pqueue')
         element.style.backgroundColor = data.color;
         element.innerHTML = `
-            <div class="sudo-pqueue-prev" style="color: white; font-size: large; background: ${data?.previous?.color}">${data?.previous?.value ? data.previous.key : '-'}</div>
+            <div class="sudo-pqueue-prev" style="color: white; font-size: small; background: ${data?.previous?.color}">${data?.previous?.address ? data.previous.address : '-'}</div>
             <div class="sudo-pqueue-key" style="text-shadow: 2px 2px 2px black; font-size: large; ">${data?.key}</div>
             <div class="sudo-pqueue-value" style="text-shadow: 2px 2px 2px black; color: white; font-size: large; ">${data?.value}</div>
-            <div class="sudo-pqueue-next" style="color: white; font-size: large; background: ${data?.next?.color}">${data?.next?.value ? data.next.key : '-'}</div>
+            <div class="sudo-pqueue-next" style="color: white; font-size: small; background: ${data?.next?.color}">${data?.next?.address ? data.next.address : '-'}</div>
         `;
         return element
     }
@@ -166,7 +181,9 @@ class SortedPriorityQueue {
 
     generate = () => {
         info.style.display = 'none'
-        document.getElementById('peekindex').innerHTML = this?.head?.key ? this.head.key : '-';
+        document.getElementById('peekindex').innerHTML = this?.head?.address ? this.head.address : '-';
+        document.getElementById('peekkey').innerHTML = this?.head?.key ? this.head.key : '-';
+        document.getElementById('peekindex').style.backgroundColor = this?.head?.color ? this.head.color : '';
         document.getElementById('sizearea').innerHTML = this.size();
         container.innerHTML = '';
         let node = this.head;
@@ -191,6 +208,12 @@ class SortedPriorityQueue {
         this.head = null;
         this.tail = null;
         this.generate();
+    }
+
+    randomize = () => {
+        let value = Math.floor((Math.random() * 99) + 1);
+        let key = Math.floor((Math.random() * 99) + 1);
+        this.enqueue(key, value);
     }
 
 }

@@ -87,6 +87,10 @@
                                             sortedPriorityQueue.isSorted ? sortedPriorityQueue.enqueue(p,v) : unsortedpriorityqueue.enqueue(p,v);">
                                         ENQUEUE
                                     </button>
+                                    <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
+                                            onclick="sortedPriorityQueue.isSorted ? sortedPriorityQueue.randomize() : unsortedpriorityqueue.randomize()">
+                                        RANDOM ADD
+                                    </button>
                                     <button class="bg-secondary rounded hover:bg-primary20 duration-700"
                                             onclick="sortedPriorityQueue.isSorted ? sortedPriorityQueue.dequeue() : unsortedpriorityqueue.dequeue();">
                                         DEQUEUE
@@ -141,8 +145,9 @@
         <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
             <div class="grid grid-cols-2">
                 <div class="sudo-pqueue">
-                    <div class="sudo-pqueue-value">MIN</div>
+                    <div class="sudo-pqueue-key" style="color: white">MIN</div>
                     <div id="peekindex" class="sudo-pqueue-key">-</div>
+                    <div id="peekkey" class="sudo-pqueue-key">-</div>
                 </div>
                 <div class="sudo-pqueue">
                     <div class="sudo-pqueue-value">LEN</div>
@@ -195,9 +200,9 @@
         if(curtime <= 100){
             played.style.width = curtime + '%';
             if(sortedPriorityQueue.isSorted){
-                sortedPriorityQueue.speed=1000 - curtime;
+                sortedPriorityQueue.speed=1000 - curtime*10;
             }else{
-                unsortedpriorityqueue.speed=1000 - curtime;
+                unsortedpriorityqueue.speed=1000 - curtime*10;
             }
         }
     }

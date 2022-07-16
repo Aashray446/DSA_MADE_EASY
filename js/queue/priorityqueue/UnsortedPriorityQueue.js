@@ -122,10 +122,10 @@ class UnsortedPriorityQueue {
         element.classList.add('sudo-pqueue')
         element.style.backgroundColor = data.color;
         element.innerHTML = `
-            <div class="sudo-pqueue-prev" style="color: white; font-size: large; background: ${data?.previous?.color}">${data?.previous?.value ? data.previous.key : '-'}</div>
+            <div class="sudo-pqueue-prev" style="color: white; font-size: small; background: ${data?.previous?.color}">${data?.previous?.address ? data.previous.address : '-'}</div>
             <div class="sudo-pqueue-key" style="text-shadow: 2px 2px 2px black; font-size: large; ">${data?.key}</div>
             <div class="sudo-pqueue-value" style="text-shadow: 2px 2px 2px black; color: white; font-size: large; ">${data?.value}</div>
-            <div class="sudo-pqueue-next" style="color: white; font-size: large; background: ${data?.next?.color}">${data?.next?.value ? data.next.key : '-'}</div>
+            <div class="sudo-pqueue-next" style="color: white; font-size: small; background: ${data?.next?.color}">${data?.next?.address ? data.next.address : '-'}</div>
         `;
         return element
     }
@@ -139,7 +139,9 @@ class UnsortedPriorityQueue {
 
     generate = () => {
         info.style.display = 'none'
-        document.getElementById('peekindex').innerHTML = this?.min()?.key ? this.min().key : '-';
+        document.getElementById('peekindex').innerHTML = this?.min()?.address ? this.min().address : '-';
+        document.getElementById('peekkey').innerHTML = this?.min()?.key ? this.min().key : '-';
+        document.getElementById('peekindex').style.backgroundColor = this?.min()?.color ? this.min().color : '-';
         document.getElementById('sizearea').innerHTML = this.size();
         container.innerHTML = '';
         let node = this.head;
@@ -163,6 +165,12 @@ class UnsortedPriorityQueue {
         this.head = null;
         this.tail = null;
         container.innerHTML = '';
+    }
+
+    randomize = () => {
+        let value = Math.floor((Math.random() * 99) + 1);
+        let key = Math.floor((Math.random() * 99) + 1);
+        this.enqueue(key, value);
     }
 }
 

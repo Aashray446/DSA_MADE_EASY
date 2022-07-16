@@ -199,7 +199,7 @@
         var curtime = Math.round(vidlen * perc);
         if(curtime <= 100){
             played.style.width = curtime + '%';
-            sortAlgorithms.speed = 1000 - curtime;
+            sortAlgorithms.speed = 1000 - curtime*10;
         }
     }
 </script>
