@@ -86,6 +86,13 @@ class Stack {
 
     push(value) {
 
+        if(value == 0){
+    document.getElementById('error').style.display = 'block';
+    return
+} else{
+    document.getElementById('error').style.display = 'none';
+} 
+
         if(this.dataArray.length > 12) {
             window.alert("Stack out of range")
         }
