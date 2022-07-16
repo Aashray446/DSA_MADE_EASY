@@ -23,6 +23,7 @@
                         sansSerif : ['Abel', 'sans-serif']
                     }
             }  
+          
         }
       }
     </script>
@@ -46,53 +47,63 @@
         
                 <!-- This example requires Tailwind CSS v2.0+ -->
                     <div class="back-light py-3 px-20 my-5 rounded">
-                        <h1 class="font-thin text-lg tracking-widest">
-                            <span>AMRITA VISHWA VIDYAPEETHAM </span>
+                        <h1 class="font-thin text-center text-lg tracking-widest">
+                            <span> SINGLY LINKED LIST</span>
                          </h1>
                     </div>
 
 
                     <section>
-                      <nav>
-                        <input id="toggle" style="border-radius:16px;" type="checkbox" checked>
-                       <h2>SELECT DATA STRUCTURE</h2>
-                     <ul>
-                         <li> <a href="index.html">Home</a></li>
-                         <li><a href="stack.html">Stack</a></li>
-                         <li><a href="queue.html">Queue</a></li>
-                         <li><a href="priorityqueue.html">Priority Queue</a></li>
-                         <li><a href="singlylinklist.html">Singly Linked List</a></li>
-                         <li><a href="doublylinklist.html">Doubly Linked List</a></li>
-                         <li><a href="binary.html">Binary Tree</a></li>
-                         <li><a href="search.html">Search Algorithms</a></li>
-                         <li><a href="sort.html">Sort Algorithms</a></li>
-                     </ul>
-                    </nav>
+                        <nav>
+                            <input id="toggle" style="border-radius:16px;" type="checkbox" checked>
+                           <h2>SELECT DATA STRUCTURE</h2>
+                         <ul>
+                             <li> <a href="index.html">Home</a></li>
+                             <li><a href="stack.html">Stack</a></li>
+                             <li><a href="queue.html">Queue</a></li>
+                             <li><a href="priorityqueue.html">Priority Queue</a></li>
+                             <li><a href="singlylinklist.html">Singly Linked List</a></li>
+                             <li><a href="doublylinklist.html">Doubly Linked List</a></li>
+                             <li><a href="binary.html">Binary Tree</a></li>
+                             <li><a href="search.html">Search Algorithms</a></li>
+                             <li><a href="sort.html">Sort Algorithms</a></li>
+                         </ul>
+                        </nav>
 
 
 <!------------------------------ SECTION THAT WILL BE CHANGED [CONTROLLER FOR EVERY DATASTRUCTURE] IN EVERY PAGE  ------------------------------------------------------------------->
       
-                     <div class="container mx-2 ">
+                     <div class="container mx-2 font-serif">
                     <div class="flex flex-col" id="moreInfo">
-                      <h2 class="font-thin text-2xl tracking-widest mt-20 text-secondary mb-5" >Controls of  Singly Linked List</h2>
+                      <h2 class="font-thin text-2xl tracking-widest mt-20 text-secondary mb-5" >Controls of Single Linked List</h2>
                     
-                    <div class="grid grid-cols-2 gap-10 tracking-widest">
+                    <div class="grid grid-cols-2 gap-4 tracking-widest">
                       
                       <!-- INITIAL WOKDS WILL BE ASSIGNED HERE -->
                 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">PUSH</button>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="sll.insert(document.getElementById('nodeData').value)" >INSERT OR CREATE</button>
     
-                        <input type="number" class="text-center" placeholder="Enter Push Data" name="push">
+                        <input type="number" class="text-center" placeholder="Enter Data For Node" id="nodeData">
 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700">POP</button>
+        
+                        <!-- <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">DELETE AT INDEX</button>
+    
+                        <input type="number" class="text-center" placeholder="Enter the Index" name="push"> -->
 
-                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700">RESET</button>
-                    
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="dll.traverse()">TRAVERSE</button>
+                        <div></div>
+                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700">SET DELAY</button>
+                        <input type="number" class="text-center" value="1000" placeholder="Enter the Index" id="delay">
                       
+                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="sll.reset()">RESET</button>
+
                   
                     </div>
 
+                    
+
                     </div>
+                    
                   </div>
       
                     </section>
@@ -100,14 +111,36 @@
              </div>
 
 <!--------------------------------------------------------- PLAYGROUND AREAD ------------------------------------------------------------------------------------------------>
-            <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
+            <div class="container h-screen place-items-center back-dark" style="height:100vh; width: 60%;">
 
-                <div class="animation-wrapper">
-                    <div class="arrayBox">
-                        <div  class="data">6</div>
-                        <div class="index">5</div>
-                    </div>
+              <div class="grid grid-cols-4 mt-5 place-items-center">
+                <div class="rounded border grid grid-cols-2 col-span-3 border-light-500 text-light px-5 min-w-full	">
+                  
+                  <p>Current Process : - </p> <p class="text-secondary" id="process">None</p>
+                  <p>Current Node Memory : - </p> <p class="text-secondary" id="currentNodeMemory">None</p>
+                  <p>Current Node Data : - </p> <p class="text-secondary" id="currentNodeData">None</p>
+                  <p>Current Head Memory : - </p> <p class="text-secondary" id="currentHeadMemory" >None</p>
+           
+              
+
                   </div>
+                  
+            
+                  <div class="node" id="nodeShowcase">
+                    <div class="data value"> -- </div>
+                    <div class="data"> - </div>
+                </div>
+            
+              </div>
+
+              <div class="flex flex-row flex-wrap mt-8 mx-4" id="animation-container">
+          
+              
+              
+              </div>
+
+            
+             
             </div>
 <!--------------------------------------------------------- PLAYGROUND AREA ENDS ------------------------------------------------------------------------------------------------>
             
@@ -119,9 +152,8 @@
 
 
 <script src="./js/anime.min.js"></script>
-<script src="./js/stack.js"></script>
 
 <!-- PAGE SPECIFICE ANIMATIION -->
-<script src="./js/singlyLinkList.js"></script>
+<script src="./js/singleLinkedList.js"></script>
 
 </html>
