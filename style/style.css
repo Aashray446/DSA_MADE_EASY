@@ -254,6 +254,16 @@ nav ul a {
   box-shadow: 10px 20px 16px rgba(0, 0, 0, 0.2) inset;
 }
 
+.queue-representation{
+  background-color:#24b4a6df;
+  display: inline-flex;
+  justify-content: center;
+  width: 13px;
+  margin: 5px;
+  align-content: center;
+  box-shadow: 10px 20px 16px rgba(0, 0, 0, 0.2);
+}
+
 .sudo-queue {
   background-color:#24b4a6df;
   color: white; 

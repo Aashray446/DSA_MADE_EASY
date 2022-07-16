@@ -6,19 +6,32 @@ class SortAlgorithms{
     container = document.getElementById('animation-container')
     display = document.getElementById('sort-box')
     inf = document.getElementById('queueinfo')
+    isRepresentation=true;
     speed = 600;
+    length = 40;
 
     structure = 'queue'
 
+    isFull = () => {
+        return this.array.length >= this.length;
+    }
+
     createElement = (value) => {
-        const element = document.createElement('div');
-        element.classList.add(this.structure)
-        element.innerHTML = `<p style="color: black; font-size: xx-large">${value}</p>`
-        return element
+        if(this.isRepresentation) {
+            const element = document.createElement('div');
+            element.classList.add('queue-representation');
+            element.style.height = `${value*6}px`;
+            return element
+        }
+        else {
+            const element = document.createElement('div');
+            element.classList.add(this.structure)
+            element.innerHTML = `<p style="color: black; font-size: xx-large">${value}</p>`
+            return element
+        }
     }
 
     array = new Array();
-    length;
     sorttype = 'bubble';
 
     render(){
@@ -30,6 +43,11 @@ class SortAlgorithms{
     }
 
     add=(value)=>{
+        if(this.isFull()) {
+            this.inf.getElementsByTagName('p')[0].innerHTML = "Array is full !";
+            this.inf.style.display = 'block';
+            return;
+        }
         let enqinf = document.getElementById('enqueueinfo')
         if(value=="" || value<-99 || value>99) {
             value = Math.floor((Math.random() * 99) + 1);
@@ -42,10 +60,9 @@ class SortAlgorithms{
         this.render();
     }
 
-    generateRandomArray(){
-        length=40;
+    generateRandomArray() {
         this.array = new Array();
-        for(let i=0;i<length;i++){
+        for (let i = 0; i < this.length; i++) {
             this.add(Math.floor((Math.random() * 99) + 1));
         }
         this.render();
