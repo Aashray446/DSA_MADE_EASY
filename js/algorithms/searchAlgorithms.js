@@ -129,7 +129,6 @@ class SearchAlgorithms {
             this.display.style.visibility = 'visible';
             this.display.innerHTML = `<p class="text-center">Mid is ${mid}, start is ${left}, end is ${right}</p>`
             this.container.children[mid].style.backgroundColor = 'orange';
-            console.log(target, array[mid])
             if (array[mid] == target) {
                 return mid;
             } else if (array[mid] > target) {

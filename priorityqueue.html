@@ -183,7 +183,7 @@
             }
         });
     }
-
+z
     var pb = document.getElementById('progressBar');
     var played = document.getElementById('played');
     var vidlen = 100;
@@ -196,9 +196,9 @@
         if(curtime <= 100){
             played.style.width = curtime + '%';
             if(sortedPriorityQueue.isSorted){
-                sortedPriorityQueue.speed=1000 - curtime*10;
+                sortedPriorityQueue.speed=1000 - curtime;
             }else{
-                unsortedpriorityqueue.speed=1000 - curtime*10;
+                unsortedpriorityqueue.speed=1000 - curtime;
             }
         }
     }
