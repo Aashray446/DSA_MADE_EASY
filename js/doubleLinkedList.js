@@ -144,10 +144,10 @@ class DoublyLinkedList {
 
   //insert in doubly linked List
    async insert(value) {
-         const delay = document.getElementById('delay').value
+        
 
         updateInfoScreen(process, 'Creating a new node')
-        await sleep(delay)
+        await sleep(getDelay())
         const newNode = new node(value);
 
         showcase_updateData(newNode.value)
@@ -155,31 +155,31 @@ class DoublyLinkedList {
 
         newNode.myMemory = randomNumber();
         updateInfoScreen(currentNodeMemory, newNode.myMemory)
-        await sleep(delay)
+        await sleep(getDelay())
         // if list is empty
         updateInfoScreen(process, 'Checking if list is empty')
-        await sleep(delay)
+        await sleep(getDelay())
         if (this.head === null) {
             updateInfoScreen(process, 'List is empty')
-            await sleep(delay)
+            await sleep(getDelay())
             updateInfoScreen(process, 'Setting Head and tail to new node')
             this.head = newNode;
             this.tail = newNode;
             updateInfoScreen(currentHeadMemory, newNode.myMemory)
             updateInfoScreen(currentTailMemory, newNode.myMemory)
             this.size++;
-            await sleep(delay)
+            await sleep(getDelay())
             //Psuedo Memory Address
             newNode.nextMemory = " - "
             newNode.prevMemory = " - "
             showcase_updatePrev(newNode.nextMemory)
             showcase_updateNext(newNode.prevMemory)
             updateInfoScreen(process, 'Setting next and prev memory')
-            await sleep(delay)
+            await sleep(getDelay())
             // Drawing the node
             updateInfoScreen(process, 'Drawing the node')
             createNode(newNode.prevMemory, value, newNode.nextMemory)
-            await sleep(delay)
+            await sleep(getDelay())
             updateInfoScreen(process, 'Node drawn')
             //add pointer to the node
             container.lastChild.appendChild(getPointer('head'))
@@ -190,17 +190,17 @@ class DoublyLinkedList {
 
         // if  list is not empty
         updateInfoScreen(process, 'List is not empty')
-        await sleep(delay)
+        await sleep(getDelay())
         updateInfoScreen(process, 'Getting Tail Information')
-        await sleep(delay)
+        await sleep(getDelay())
         updateInfoScreen(process, 'Setting Tail to new node')
         this.tail.nextMemory = newNode.myMemory;
         updateInfoScreen(process, 'Setting previous node next memory')
-        await sleep(delay)
+        await sleep(getDelay())
         this.changePrevMemory(newNode.myMemory);
-        await sleep(delay)
+        await sleep(getDelay())
         updateInfoScreen(process, 'Setting Current Node Prev Memory')
-        await sleep(delay)
+        await sleep(getDelay())
         showcase_updatePrev(this.tail.myMemory)
         newNode.prevMemory = this.tail.myMemory
         this.tail.next = newNode;
@@ -211,9 +211,9 @@ class DoublyLinkedList {
         addArrow();
         createNode(newNode.prevMemory, value, newNode.nextMemory)
         updateInfoScreen(process, 'Node drawn')
-        await sleep(delay)
+        await sleep(getDelay())
         updateInfoScreen(process, 'Changing the tail')
-        await sleep(delay)
+        await sleep(getDelay())
         movePointerNext('tail')
         updateInfoScreen(currentTailMemory, newNode.myMemory)
         updateInfoScreen(process, 'Done')
@@ -248,31 +248,31 @@ class DoublyLinkedList {
 
     //traverse the list
     async traverse() {
-        const delay = document.getElementById('delay').value
+
 
 
         updateInfoScreen(process, 'Traversing the list')
-        await sleep(delay)
+        await sleep(getDelay())
 
         updateInfoScreen(process, 'Getting Head Information to temp pointer')
-        await sleep(delay)
+        await sleep(getDelay())
         let current = this.head;
         container.firstElementChild.appendChild(getPointer('pointer'))
 
         updateInfoScreen(process, 'Checking if the next node is null')
-        await sleep(delay)
+        await sleep(getDelay())
         while (current) {
         updateInfoScreen(process, 'The node is not null')
         // Setting The data of the current node
         updateInfoScreen(process, 'Getting the data of the current node')
-        await sleep(delay)
+        await sleep(getDelay())
         updateInfoScreen(currentNodeData, current.value)
         updateInfoScreen(currentNodeMemory, current.myMemory)
             console.log(current.value);
             current = current.next;
-            await sleep(delay)
+            await sleep(getDelay())
         updateInfoScreen(process, 'Moving the pointer to the next node')
-            await sleep(delay)
+            await sleep(getDelay())
             if(current == null){
                 continue
             }
@@ -280,9 +280,9 @@ class DoublyLinkedList {
         }
         
         updateInfoScreen(process, 'The Node is null')
-        await sleep(delay)
+        await sleep(getDelay())
         updateInfoScreen(process, 'Removing temp pointer and terminating traversal')
-        await sleep(delay)
+        await sleep(getDelay())
         container.lastChild.removeChild(container.lastChild.lastChild)
     }
 
@@ -312,6 +312,10 @@ class DoublyLinkedList {
 
 const dll = new DoublyLinkedList()
 
+//get Delay Value
+function getDelay() {
+    return document.getElementById('delay').value
+}
 
 // Update The infoScreen
 function updateInfoScreen(element, information) {
