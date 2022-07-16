@@ -162,6 +162,7 @@ class UnsortedPriorityQueue {
     reset = () => {
         this.head = null;
         this.tail = null;
+        container.innerHTML = '';
     }
 }
 
