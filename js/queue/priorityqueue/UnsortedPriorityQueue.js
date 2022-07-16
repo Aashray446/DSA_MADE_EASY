@@ -66,6 +66,14 @@ class UnsortedPriorityQueue {
             }
             await sleep(this.speed);
             if (parseInt(node.key) < min) {
+                if (container.children[count]) {
+                    container.children[count].style.backgroundColor = 'lightgreen';
+                    await sleep(this.speed);
+                    container.children[count].style.backgroundColor = node.color;
+                }
+                document.getElementById('peekindex').innerHTML = node.address ? node.address : '-';
+                document.getElementById('peekkey').innerHTML = node.key ? node.key : '-';
+                document.getElementById('peekindex').style.backgroundColor = node.color ? node.color : '-';
                 min = node.key;
                 minNode = node;
                 count2 = count;

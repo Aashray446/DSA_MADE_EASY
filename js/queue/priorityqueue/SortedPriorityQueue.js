@@ -38,7 +38,7 @@ const container = document.getElementById('animation-container')
 const info = document.getElementById('info')
 
 class SortedPriorityQueue {
-    isSorted = true;
+    isSorted = false;
     head = null;
     tail = null;
     speed = 300;
