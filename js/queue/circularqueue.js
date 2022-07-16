@@ -36,7 +36,7 @@ class Circularqueue{
     array = new Array();
     front = -1;
     rear = -1;
-    length = 15;
+    length = 19;
     isactive=false;
 
     enqueue=(value)=>{
@@ -71,6 +71,8 @@ class Circularqueue{
         this.inf.style.display = 'none'
         this.qr.innerHTML = this.wrapFR(this.array[this.rear]||-1, false)
         this.qf.innerHTML = this.wrapFR(this.array[this.front]||-1, true)
+        this.qf.style.display = 'flex'
+        this.qr.style.display = 'flex'
         return true;
     }
 
@@ -92,6 +94,8 @@ class Circularqueue{
         this.inf.style.display = 'none'
         this.qr.innerHTML = this.wrapFR(this.array[this.rear]||-1, false)
         this.qf.innerHTML = this.wrapFR(this.array[this.front]||-1, true)
+        this.qf.style.display = 'flex'
+        this.qr.style.display = 'flex'
         return true;
     }
 
@@ -128,8 +132,6 @@ class Circularqueue{
                 }
             }
         }
-        this.qr.style.display='block'
-        this.qf.style.display='block'
 
     }
 
