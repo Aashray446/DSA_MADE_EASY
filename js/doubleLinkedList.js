@@ -247,10 +247,7 @@ class DoublyLinkedList {
 
 
     //traverse the list
-    async traverse() {
-
-
-
+    async traverseFromFront() {
         updateInfoScreen(process, 'Traversing the list')
         await sleep(getDelay())
 
@@ -284,6 +281,42 @@ class DoublyLinkedList {
         updateInfoScreen(process, 'Removing temp pointer and terminating traversal')
         await sleep(getDelay())
         container.lastChild.removeChild(container.lastChild.lastChild)
+    }
+
+    async traverseFromBack() {
+        updateInfoScreen(process, 'Traversing the list')
+        await sleep(getDelay())
+
+        updateInfoScreen(process, 'Getting Tail Information to temp pointer')
+        await sleep(getDelay())
+        let current = this.tail;
+        container.lastElementChild.appendChild(getPointer('pointer'))
+
+        updateInfoScreen(process, 'Checking if the prev node is null')
+        await sleep(getDelay())
+        while (current) {
+        updateInfoScreen(process, 'The node is not null')
+        // Setting The data of the current node
+        updateInfoScreen(process, 'Getting the data of the current node')
+        await sleep(getDelay())
+        updateInfoScreen(currentNodeData, current.value)
+        updateInfoScreen(currentNodeMemory, current.myMemory)
+            current = current.prev;
+            await sleep(getDelay())
+        updateInfoScreen(process, 'Moving the pointer to the next node')
+            await sleep(getDelay())
+            if(current == null){
+                continue
+            }
+            movePointerPrev('pointer')
+        }
+        
+        updateInfoScreen(process, 'The Node is null')
+        await sleep(getDelay())
+        updateInfoScreen(process, 'Removing temp pointer and terminating traversal')
+        await sleep(getDelay())
+      
+        container.firstElementChild.removeChild(container.firstElementChild.lastChild)
     }
 
     reset() {
