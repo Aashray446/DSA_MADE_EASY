@@ -455,3 +455,29 @@ input:checked + .slider:before {
 .hidden-scroll::-webkit-scrollbar { 
   display: none; 
 }
+
+/*-------Array Box--------*/
+.arrayBox{
+  width: 68px;
+  color: white;
+}
+
+.arrayBox .data {
+  color: var(--primary);
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+  display: block;
+  width: 64px;
+  height: 32px;
+  border: 1px solid var(--light);
+  background-color: var(--primary20);
+  padding-top: 4px;
+}
+.arrayBox .index {
+  font-size: smaller;
+  text-align: center;
+  display: block;
+  height: 24px;
+  opacity: 0.5;
+}
