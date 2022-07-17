@@ -7,7 +7,9 @@ const currentHeadMemory = document.getElementById('currentHeadMemory')
 const currentTailMemory = document.getElementById('currentTailMemory')
 
 const nodeShowcase = document.getElementById('nodeShowcase')
-
+const insertButton = document.getElementById('insertButton')
+const traverseFromBackButton = document.getElementById('traverseFromBack')
+const traverseFromFrontButton = document.getElementById('traverseFromFront')
 
 function showcase_updateData(value){
     nodeShowcase.children[1].innerHTML = value
@@ -112,6 +114,13 @@ const getPointer = function(pointerName) {
         }
     }
 
+disableButton = function(element) {
+    element.setAttribute("disabled", "");
+}
+enableButton = function(element) {
+    element.removeAttribute("disabled");
+}
+
     //return a random number between 0-90
     const randomNumber = function() {
         return Math.floor(Math.random() * (90 - 0 + 1)) + 0;
@@ -145,7 +154,7 @@ class DoublyLinkedList {
   //insert in doubly linked List
    async insert(value) {
         
-
+        disableButton(insertButton)
         updateInfoScreen(process, 'Creating a new node')
         await sleep(getDelay())
         const newNode = new node(value);
@@ -184,6 +193,7 @@ class DoublyLinkedList {
             //add pointer to the node
             container.lastChild.appendChild(getPointer('head'))
             container.lastChild.appendChild(getPointer('tail'))
+            enableButton(insertButton)
             return;
         }
 
@@ -217,6 +227,7 @@ class DoublyLinkedList {
         movePointerNext('tail')
         updateInfoScreen(currentTailMemory, newNode.myMemory)
         updateInfoScreen(process, 'Done')
+        enableButton(insertButton)
         return;
     }
 
@@ -248,6 +259,7 @@ class DoublyLinkedList {
 
     //traverse the list
     async traverseFromFront() {
+        disableButton(traverseFromFrontButton)
         updateInfoScreen(process, 'Traversing the list')
         await sleep(getDelay())
 
@@ -281,9 +293,11 @@ class DoublyLinkedList {
         updateInfoScreen(process, 'Removing temp pointer and terminating traversal')
         await sleep(getDelay())
         container.lastChild.removeChild(container.lastChild.lastChild)
+        enableButton(traverseFromFrontButton)
     }
 
     async traverseFromBack() {
+        disableButton(traverseFromBackButton)
         updateInfoScreen(process, 'Traversing the list')
         await sleep(getDelay())
 
@@ -317,6 +331,7 @@ class DoublyLinkedList {
         await sleep(getDelay())
       
         container.firstElementChild.removeChild(container.firstElementChild.lastChild)
+        enableButton(traverseFromBackButton)
     }
 
     reset() {

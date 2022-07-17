@@ -8,6 +8,8 @@ const currentTailMemory = document.getElementById('currentTailMemory')
 
 const nodeShowcase = document.getElementById('nodeShowcase')
 
+const insertButton = document.getElementById('insertButton')
+const traverseButton = document.getElementById('traverseButton')
 
 function showcase_updateData(value){
     nodeShowcase.children[0].innerHTML = value
@@ -104,6 +106,12 @@ const getPointer = function(pointerName) {
         return Math.floor(Math.random() * (90 - 0 + 1)) + 0;
     }
 
+    disableButton = function(element) {
+        element.setAttribute("disabled", "");
+    }
+    enableButton = function(element) {
+        element.removeAttribute("disabled");
+    }
 
 
 
@@ -129,7 +137,7 @@ class SinglyLinkedList {
 
   //insert in doubly linked List
    async insert(value) {
-
+        disableButton(insertButton)
         updateInfoScreen(process, 'Creating a new node')
         await sleep(getDelay())
         const newNode = new node(value);
@@ -161,6 +169,7 @@ class SinglyLinkedList {
             updateInfoScreen(process, 'Node drawn')
             //add pointer to the node
             container.lastChild.appendChild(getPointer('head'))
+            enableButton(insertButton)
             return;
         }
 
@@ -208,6 +217,7 @@ class SinglyLinkedList {
     
         await sleep(getDelay())
         updateInfoScreen(process, 'Done')
+        enableButton(insertButton)
         return;
     }
 
@@ -219,6 +229,7 @@ class SinglyLinkedList {
 
     //traverse the list
     async traverse() {
+        disableButton(traverseButton)
         var tmp  = this.head;
         updateInfoScreen(process, 'Creating a tmp pointer')
         await sleep(getDelay())
@@ -245,6 +256,7 @@ class SinglyLinkedList {
     
         await sleep(getDelay())
         updateInfoScreen(process, 'Done')
+        enableButton(traverseButton)
         return;
 
     }
