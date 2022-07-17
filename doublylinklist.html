@@ -81,7 +81,7 @@
                       
                       <!-- INITIAL WOKDS WILL BE ASSIGNED HERE -->
                 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="dll.insert(document.getElementById('nodeData').value)" >INSERT OR CREATE</button>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline disabled:bg-primary20" id="insertButton" onclick="dll.insert(document.getElementById('nodeData').value)" >INSERT OR CREATE</button>
     
                         <input type="number" class="text-center" placeholder="Enter Data For Node" id="nodeData">
 
@@ -90,8 +90,9 @@
     
                         <input type="number" class="text-center" placeholder="Enter the Index" name="push"> -->
 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="dll.traverse()">TRAVERSE</button>
-                        <div></div>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline disabled:bg-primary20" id="traverseFromFront" onclick="dll.traverseFromFront()">TRAVERSE FROM FRONT</button>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline disabled:bg-primary20" id="traverseFromBack" onclick="dll.traverseFromBack()">TRAVERSE FROM BACK</button>
+                   
                         <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700">SET DELAY</button>
                         <input type="number" class="text-center" value="1000" placeholder="Enter the Index" id="delay">
                       

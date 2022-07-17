@@ -81,9 +81,9 @@ const movePopingData = function() {
 // ------------------ Implementation of stack with animation  -------------------------
 // Stack Implementation with array
 class Stack {
-   
+  
     dataArray = new Array();
-
+    
     push(value) {
 
         if(value == 0){
@@ -116,6 +116,8 @@ class Stack {
     reset = function() {
         container.innerHTML = ''    
         this.dataArray = new Array();
+        document.getElementById('error').style.display = 'none';
+        
     }
 
     peek() {

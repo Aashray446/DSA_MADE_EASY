@@ -8,15 +8,15 @@ const currentTailMemory = document.getElementById('currentTailMemory')
 
 const nodeShowcase = document.getElementById('nodeShowcase')
 
+const insertButton = document.getElementById('insertButton')
+const traverseButton = document.getElementById('traverseButton')
 
 function showcase_updateData(value){
-    nodeShowcase.children[1].innerHTML = value
-}
-function showcase_updatePrev(value){
     nodeShowcase.children[0].innerHTML = value
 }
+
 function showcase_updateNext(value){
-    nodeShowcase.children[2].innerHTML = value
+    nodeShowcase.children[1].innerHTML = value
 }
 
 
@@ -106,6 +106,12 @@ const getPointer = function(pointerName) {
         return Math.floor(Math.random() * (90 - 0 + 1)) + 0;
     }
 
+    disableButton = function(element) {
+        element.setAttribute("disabled", "");
+    }
+    enableButton = function(element) {
+        element.removeAttribute("disabled");
+    }
 
 
 
@@ -131,11 +137,10 @@ class SinglyLinkedList {
 
   //insert in doubly linked List
    async insert(value) {
-
+        disableButton(insertButton)
         updateInfoScreen(process, 'Creating a new node')
         await sleep(getDelay())
         const newNode = new node(value);
-
         showcase_updateData(newNode.value)
         updateInfoScreen(currentNodeData, value);
 
@@ -164,6 +169,7 @@ class SinglyLinkedList {
             updateInfoScreen(process, 'Node drawn')
             //add pointer to the node
             container.lastChild.appendChild(getPointer('head'))
+            enableButton(insertButton)
             return;
         }
 
@@ -185,6 +191,9 @@ class SinglyLinkedList {
             updateInfoScreen(process, 'next is not null')
             await sleep(getDelay())
             tmp = tmp.next;
+            updateInfoScreen(currentNodeData, tmp.value)
+            updateInfoScreen(currentNodeMemory, tmp.myMemory)
+            await sleep(getDelay())
             updateInfoScreen(process, 'Moving the pointer to next node')
             await sleep(getDelay())
             movePointerNext('pointer')
@@ -208,6 +217,7 @@ class SinglyLinkedList {
     
         await sleep(getDelay())
         updateInfoScreen(process, 'Done')
+        enableButton(insertButton)
         return;
     }
 
@@ -219,54 +229,35 @@ class SinglyLinkedList {
 
     //traverse the list
     async traverse() {
-    //     const delay = document.getElementById('delay').value
-
-
-    //     updateInfoScreen(process, 'Traversing the list')
-    //     await sleep(getDelay())
-
-    //     updateInfoScreen(process, 'Getting Head Information to temp pointer')
-    //     await sleep(getDelay())
-    //     let current = this.head;
-    //     container.firstElementChild.appendChild(getPointer('pointer'))
-
-    //     updateInfoScreen(process, 'Checking if the next node is null')
-    //     await sleep(getDelay())
-    //     while (current) {
-    //     updateInfoScreen(process, 'The node is not null')
-    //     // Setting The data of the current node
-    //     updateInfoScreen(process, 'Getting the data of the current node')
-    //     await sleep(getDelay())
-    //     updateInfoScreen(currentNodeData, current.value)
-    //     updateInfoScreen(currentNodeMemory, current.myMemory)
-    //         console.log(current.value);
-    //         current = current.next;
-    //         await sleep(getDelay())
-    //     updateInfoScreen(process, 'Moving the pointer to the next node')
-    //         await sleep(getDelay())
-    //         if(current == null){
-    //             continue
-    //         }
-    //         movePointerNext('pointer')
-    //     }
-        
-    //     updateInfoScreen(process, 'The Node is null')
-    //     await sleep(getDelay())
-    //     updateInfoScreen(process, 'Removing temp pointer and terminating traversal')
-    //     await sleep(getDelay())
-    //     container.lastChild.removeChild(container.lastChild.lastChild)
-    // }
-
-    // reset() {
-    //     this.head = null;
-    //     this.tail = null;
-    //     this.size = 0;
-    //     container.innerHTML = '';
-    //     updateInfoScreen(process, 'List reset')
-    //     updateInfoScreen(currentHeadMemory, ' - ')
-    //     updateInfoScreen(currentTailMemory, ' - ')
-    //     updateInfoScreen(currentNodeMemory, ' - ')
-    //     updateInfoScreen(currentNodeData, ' - ')
+        disableButton(traverseButton)
+        var tmp  = this.head;
+        updateInfoScreen(process, 'Creating a tmp pointer')
+        await sleep(getDelay())
+        container.firstElementChild.appendChild(getPointer('pointer'))
+        while(true) {
+            updateInfoScreen(process, 'Checking if tmp is null')
+            await sleep(getDelay())
+            if(tmp.next == null) {
+                updateInfoScreen(process, 'next is null')
+                break;
+            }
+            movePointerNext('pointer')
+            updateInfoScreen(process, 'next is not null')
+            await sleep(getDelay())
+            updateInfoScreen(process, 'Moving the pointer to next node')
+            tmp = tmp.next;
+            updateInfoScreen(currentNodeData, tmp.value)
+            updateInfoScreen(currentNodeMemory, tmp.myMemory)
+            await sleep(getDelay())
+           
+        }
+        container.lastChild.removeChild(container.lastChild.lastChild)
+        updateInfoScreen(process, 'Deleting the temp pointer')
+    
+        await sleep(getDelay())
+        updateInfoScreen(process, 'Done')
+        enableButton(traverseButton)
+        return;
 
     }
 
@@ -299,3 +290,5 @@ function sleep(ms) {
       resolve => setTimeout(resolve, ms)
     );
   }
+
+// Preserving the 
