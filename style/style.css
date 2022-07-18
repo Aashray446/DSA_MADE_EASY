@@ -6,6 +6,7 @@
   --primary10 : #24B4A5;
   --primary20 : #8FEDC2;
   --bs-dark: var(--primary);
+  --pink : '#c17c74';
   overflow-y:hidden;
   overflow-x: hidden;
 }
@@ -862,4 +863,22 @@ right connector from last child*/
 .tree li a:hover+ul::before, 
 .tree li a:hover+ul ul::before{
 	border-color:  #94a0b4;
+}
+.tree li.right a {
+  border: 2px solid var(--secondary);
+  
+}
+.tree li.left a {
+  border: 2px solid var(--primary20);
+  
+}
+
+.tree li a.pointer {
+  border: 2px solid red;
+}
+
+.tree li a.found {
+  border: 2px solid red;
+  -webkit-animation: breathing 2s ease-out infinite normal;
+  animation: breathing 2s ease-out infinite normal;
 }
