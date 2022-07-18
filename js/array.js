@@ -2,6 +2,7 @@ const container = document.getElementById('animation-container')
 const container2 = document.getElementById('animation-container2')
 const structure = 'arrayBox'
 const errorBox = document.getElementById("error");
+const reverse = document.getElementById("reverse");
 
 
 const createElement = (value, ind) => {
@@ -155,23 +156,32 @@ class ArrayImp{
     }
 
     reset = function() {
-        container.innerHTML = ''    
+        errorBox.style.display = "none";
+        reverse.style.display = "none";
+        container.innerHTML = '' 
+        container2.innerHTML = ''   
         this.dataArray = new Array();
         this.inde = 0;
     }
 
-    search(value){
+   async search(value){
         if(this.isEmpty()){
             errorBox.style.display = "block";
             errorBox.innerText = "Array is Empty";
         }
         else{
             for(let i = 0; i<this.dataArray.length; i++){
+                container.children[i].children[0].classList.add('active');
                 if(this.dataArray[i] == value){
+                    await sleep(1000);
                     errorBox.style.display = "block";
                     errorBox.innerText = "Value is found at index " + i;
+                    container.children[i].children[0].classList.remove('active');
                     return i;
+
                 }
+                await sleep(1000);
+                container.children[i].children[0].classList.remove('active');
             }
             errorBox.style.display = "block";
             errorBox.innerText = "Value not found";
@@ -184,13 +194,32 @@ class ArrayImp{
             errorBox.innerText = "Array is Empty";
         }
         else{
+            errorBox.style.display = "block";
+            errorBox.innerText = "Original Array";;
             this.reverseArray = this.dataArray;
             this.reverseArray.reverse();
-            console.log(this.reverseArray)
-            console.log(this.dataArray)
-            for(let i = 0; i<this.reverse.length; i++){
+            reverse.style.display = "block";
+            reverse.innerHTML = "Reversed Array";
+            for(let i = 0; i<this.reverseArray.length; i++){
+                console.log('hello')
                 container2.append(createElement(this.reverseArray[i], i));
+               
             }
+        }
+    }
+ getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    randomArray(){
+        this.length = 10;
+            errorBox.style.display = "block";
+            errorBox.innerText = "Random Array";
+            container.innerHTML =' ';
+            for(let i = 0; i<10; i++){
+                let a = getRandomInt(0,99);
+                this.dataArray.push(a);
+                container.append(createElement(a, i));
         }
     }
 
@@ -199,5 +228,14 @@ class ArrayImp{
 
 
 }
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function sleep(ms) {
+    return new Promise(
+      resolve => setTimeout(resolve, ms)
+    );
+  }
 
 const array = new ArrayImp();
