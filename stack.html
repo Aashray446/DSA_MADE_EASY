@@ -48,8 +48,8 @@
         
                 <!-- This example requires Tailwind CSS v2.0+ -->
                     <div class="back-light py-3 px-20 my-5 rounded">
-                        <h1 class="font-thin text-lg tracking-widest">
-                            <span>AMRITA VISHWA VIDYAPEETHAM </span>
+                        <h1 class="font-thin text-lg tracking-widest text-center">
+                            <span> STACK</span>
                          </h1>
                     </div>
 
@@ -60,6 +60,7 @@
                        <h2>SELECT DATA STRUCTURE</h2>
                      <ul>
                         <li> <a href="index.html">Home</a></li>
+                        <li><a href="array.html">Array</a></li>
                         <li><a href="stack.html">Stack</a></li>
                         <li><a href="queue.html">Queue</a></li>
                          <li><a href="priorityqueue.html">Priority Queue</a></li>
@@ -79,8 +80,11 @@
                       <h2 class="font-thin text-2xl tracking-widest mt-20 text-secondary mb-5" >Controls of Stack</h2>
                     
                     <div class="grid grid-cols-2 gap-10 tracking-widest">
-                      
+
+                     
+                     
                       <!-- INITIAL WOKDS WILL BE ASSIGNED HERE -->
+                      <div class="col-span-2 text-center border border-pink p-3 text-lg text-pink" id="error" style="display : none"> NULL VALUE CANNOT BE PUSHED </div>
                 
                         <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="stack.push(
                           document.getElementById('push').value
@@ -94,8 +98,7 @@
 
                         <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="stack.reset()">RESET</button>
                     
-                      
-                  
+            
                     </div>
 
                     </div>
@@ -110,6 +113,7 @@
             <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
 
               <div class="grid grid-cols-2">
+                
                 <div class="sudo-stack bg-secondary" id="pushingData"></div>
                 <div class="sudo-stack bg-primary20" id="popingData"></div>
               </div>

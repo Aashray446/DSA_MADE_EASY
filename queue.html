@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSA VISUALIZATION </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!---------------------------TAILWIND  ---------------------------------------------------------------------------->
@@ -48,6 +47,7 @@
                     <h2>SELECT DATA STRUCTURE</h2>
                     <ul>
                         <li> <a href="index.html">Home</a></li>
+                        <li><a href="array.html">Array</a></li>
                         <li><a href="stack.html">Stack</a></li>
                         <li><a href="queue.html">Queue</a></li>
                         <li><a href="priorityqueue.html">Priority Queue</a></li>
@@ -75,7 +75,7 @@
                                     <div class="text-center bg-secondary rounded">
                                         LENGTH
                                     </div>
-                                    <input type="number" id="queuelength" class="text-center" value=16
+                                    <input type="number" id="queuelength" class="text-center" value=20
                                            placeholder="Enter Queue Length" name="length"
                                            onchange="circularqueue.isactive ? circularqueue.length=value-1 : queue.length=value-1;
                                            circularqueue.isactive && circularqueue.handlengthchange()"

@@ -19,6 +19,7 @@ class SearchAlgorithms {
     container = document.getElementById('animation-container')
     display = document.getElementById('search-box')
     queinf = document.getElementById('queueinfo')
+    speed = 600;
 
     structure = 'queue'
 
@@ -110,7 +111,7 @@ class SearchAlgorithms {
             if (array[i] == target) {
                 return i;
             }
-            await sleep(300);
+            await sleep(this.speed/2);
             this.container.children[i].style.backgroundColor = '#24b4a6df';
         }
 
@@ -128,7 +129,6 @@ class SearchAlgorithms {
             this.display.style.visibility = 'visible';
             this.display.innerHTML = `<p class="text-center">Mid is ${mid}, start is ${left}, end is ${right}</p>`
             this.container.children[mid].style.backgroundColor = 'orange';
-            console.log(target, array[mid])
             if (array[mid] == target) {
                 return mid;
             } else if (array[mid] > target) {
@@ -136,7 +136,7 @@ class SearchAlgorithms {
             } else {
                 left = mid + 1;
             }
-            await sleep(500);
+            await sleep(this.speed);
             this.container.children[mid].style.backgroundColor = '#24b4a6df';
             mid = Math.floor((left + right) / 2);
         }

@@ -28,7 +28,6 @@
     }
     </script>
     <link rel="stylesheet" href="./style/style.css">
-    <link rel="stylesheet" href="./style/style.scss">
 </head>
 
 <body style="background-color:var(--primary);">
@@ -48,6 +47,7 @@
                     <h2>SELECT DATA STRUCTURE</h2>
                     <ul>
                         <li> <a href="index.html">Home</a></li>
+                        <li><a href="array.html">Array</a></li>
                         <li><a href="stack.html">Stack</a></li>
                         <li><a href="queue.html">Queue</a></li>
                         <li><a href="priorityqueue.html">Priority Queue</a></li>
@@ -96,6 +96,10 @@
                                     <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
                                             onclick="sortAlgorithms.reset()">
                                         RESET
+                                    </button>
+                                    <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
+                                            onclick="sortAlgorithms.isRepresentation = !sortAlgorithms.isRepresentation; sortAlgorithms.render();">
+                                        Change Mode
                                     </button>
                                 </div>
                             </div>
@@ -152,6 +156,10 @@
                 <p class="text-center"></p>
             </div>
             <div class="animation-container items-center" id="animation-container"></div>
+            <div id='progressBar'>
+                <div id='played'></div>
+                <div style="color: #FDD741"><strong>Seek to change Speed</strong></div>
+            </div>
         </div>
         <!--------------------------------------------------------------------------------------------------------->
     </div>
@@ -178,6 +186,21 @@
                 }
             }
         });
+    }
+
+    var pb = document.getElementById('progressBar');
+    var played = document.getElementById('played');
+    var vidlen = 100;
+    pb.onclick = seek;
+    function seek(e) {
+        var pbwid = parseInt(window.getComputedStyle(pb).width);
+        var clickx = e.offsetX;
+        var perc = clickx / pbwid;
+        var curtime = Math.round(vidlen * perc);
+        if(curtime <= 100){
+            played.style.width = curtime + '%';
+            sortAlgorithms.speed = 1000 - curtime*10;
+        }
     }
 </script>
 

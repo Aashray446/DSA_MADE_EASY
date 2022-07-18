@@ -1,5 +1,7 @@
 const container = document.getElementById('animation-container')
+const container2 = document.getElementById('animation-container2')
 const structure = 'arrayBox'
+const errorBox = document.getElementById("error");
 
 
 const createElement = (value, ind) => {
@@ -30,17 +32,34 @@ class ArrayImp{
 
 
     dataArray = new Array();
+    reverseArray = new Array();
     inde = 0;
-    length;
+    length = -1;
+
+   
     
     setLength(value){
         this.length = value;
         this.reset();
+        if(value == ''){
+            errorBox.style.display = "block";
+            errorBox.innerHTML = "Please enter length";
+            return;
+        }
+        errorBox.style.display = "block";
+        errorBox.innerText = "An Array of length  " + value  + " is created";
     }
 
     insert(value){
+        errorBox.style.display = "none";
+        if(this.length == -1){
+            errorBox.style.display = "block";
+            errorBox.innerHTML = "Please enter length";
+            return;
+        }
         if(this.isFull()){
-            window.alert("Array out of range")
+            errorBox.style.display = "block";
+            errorBox.innerText = "Array is Full";
         }
         else{
             console.log(this.inde)
@@ -53,8 +72,9 @@ class ArrayImp{
 
     insertAtIndex(value, index){
         if(this.isFull()){
-            window.alert("Array is Full")
-            return
+            errorBox.style.display = "block";
+            errorBox.innerText = "Array is Full";
+            return;
         }
         if(index == '' ){
             this.insert(value);
@@ -65,7 +85,6 @@ class ArrayImp{
                 this.insert(value);
                 return
             }
-
             console.log(container.children[index])
             container.children[index].insertAdjacentElement("beforeBegin", createElement(value, index));
             this.dataArray.splice(index,0, value)
@@ -87,14 +106,15 @@ class ArrayImp{
 
     delete(){
         if(this.isEmpty()){
-            window.alert("Empty Array")
+            errorBox.style.display = "block";
+            errorBox.innerText = "Array is Empty";
         }
         else{
             const list = document.getElementsByClassName(structure)
             this.dataArray.pop();
             list[list.length-1].remove()
             this.inde--;
-            console.log(this.inde)
+
 
         }
     }  
@@ -104,11 +124,13 @@ class ArrayImp{
             return;
         }
         if(index >= this.dataArray.length){
-            window.alert("Index out of range")
+            errorBox.style.display = "block";
+            errorBox.innerText = "Index is out of range";
         
         }
         else if(this.isEmpty()){
-            window.alert("Empty Array")
+            errorBox.style.display = "block";
+            errorBox.innerText = "Array is Empty";
         }
         else{
             container.children[index].remove();
@@ -136,6 +158,40 @@ class ArrayImp{
         container.innerHTML = ''    
         this.dataArray = new Array();
         this.inde = 0;
+    }
+
+    search(value){
+        if(this.isEmpty()){
+            errorBox.style.display = "block";
+            errorBox.innerText = "Array is Empty";
+        }
+        else{
+            for(let i = 0; i<this.dataArray.length; i++){
+                if(this.dataArray[i] == value){
+                    errorBox.style.display = "block";
+                    errorBox.innerText = "Value is found at index " + i;
+                    return i;
+                }
+            }
+            errorBox.style.display = "block";
+            errorBox.innerText = "Value not found";
+        }
+    }
+
+    reverse(){
+        if(this.isEmpty()){
+            errorBox.style.display = "block";
+            errorBox.innerText = "Array is Empty";
+        }
+        else{
+            this.reverseArray = this.dataArray;
+            this.reverseArray.reverse();
+            console.log(this.reverseArray)
+            console.log(this.dataArray)
+            for(let i = 0; i<this.reverse.length; i++){
+                container2.append(createElement(this.reverseArray[i], i));
+            }
+        }
     }
 
 

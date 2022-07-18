@@ -32,7 +32,7 @@ class Queue {
     dataArray = new Array();
     front=-1;
     rear=-1;
-    length=15;
+    length=19;
     detailed=false;
     isdeque=false;
 
