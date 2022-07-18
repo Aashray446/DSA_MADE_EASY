@@ -1,4 +1,5 @@
 var treeContainer = document.getElementById('tree');
+var bst;
 
 createValue = (value) => {
 	const li = document.createElement('li');
@@ -64,7 +65,7 @@ insert(value) {
    async search(value) {
         if(value == parseInt(this.value.firstChild.innerText)) {
             this.value.firstChild.classList.add('found');
-            await sleep(2000);
+            await sleep(4000);
             this.value.firstChild.classList.remove('found');
             return true;
         }
@@ -111,10 +112,14 @@ insert(value) {
 
 
 
-var bst;
+
 
 setBst = function(value) {
-    bst = new binarySearchTree(value, true);
+    if(bst!= null) {
+        bst.reset();
+        bst == null;
+    }
+        bst = new binarySearchTree(value, true);
 }
 
 
