@@ -142,6 +142,39 @@ class ArrayImp{
         }
     }
 
+    async deleteAtValue(value){
+        let index = -1;
+        if(this.isEmpty()){
+            errorBox.style.display = "block";
+            errorBox.innerText = "Array is Empty";
+        }
+        else{
+            for(let i = 0; i<this.dataArray.length; i++){
+                container.children[i].children[0].classList.add('active');
+                if(this.dataArray[i] == value){
+                    await sleep(1000);
+                    container.children[i].children[0].classList.remove('active');
+                    index = i;
+                    break;
+
+                }
+                await sleep(1000);
+                container.children[i].children[0].classList.remove('active');
+            }
+            if(index == -1){
+                errorBox.style.display = "block";
+                errorBox.innerText = "Value is not found";
+            }
+            else{
+                console.log('hello')
+                container.children[index].remove();
+                this.replaceIndex(index-1)
+                this.dataArray.splice(index,1)
+            }
+        }
+    }
+
+
     isFull(){
         console.log(this.dataArray.length)
         if(this.dataArray.length == this.length){
