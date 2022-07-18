@@ -110,13 +110,22 @@
                         <input type="number" id="data" class="text-center" placeholder="Enter Push Data" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.insert(
                           document.getElementById('push').value)"> -->
 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="array.delete()">DELETE</button>
-                        <input type="number" id="del" class="text-center" placeholder="Index" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.deleteAtIndex(
-                        document.getElementById('del').value)">
+                          
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.delete()">DELETE</button>
+      
+                        <div class="flex flex-row flex-wrap" >
+                          <input type="number" id="delindex" class="text-center" placeholder="INDEX" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.deleteAtIndex(
+                            document.getElementById('delindes').value
+                          )">
+                          <input type="number" id="delvalue" class="text-center mt-1" placeholder="VALUE" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.deleteAtValue(
+                            document.getElementById('delvalue').value
+                          )">
+                        </div>
                         <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="array.search(document.getElementById('search').value)">Search</button>
                         <input type="number" id="search" class="text-center" placeholder="Search Data" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.search(document.getElementById('search').value)">
                         
                         <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="array.reverse()">REVERSE</button>
+                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="array.randomArray()">RANDOM ARRAY</button>
                         <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="array.reset()">RESET</button>
                     
                       
@@ -133,14 +142,12 @@
 
 <!--------------------------------------------------------- PLAYGROUND AREAD ------------------------------------------------------------------------------------------------>
 
-<div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
-  <div class="text-center border border-pink p-3 text-lg text-pink" id="error" style="display : none"> NULL VALUE CANNOT BE PUSHED </div>
+<div class="container h-screen back-dark" style="height:100vh; width: 60%;">
+  <div class="text-center border m-10 border-pink p-3 text-lg text-pink" id="error" style="display : none"> NULL VALUE CANNOT BE PUSHED </div>
                 
-  <div class="animation-container " ></div>
-  
-  <div class="flex flex-row flex-wrap items-center" id="animation-container"></div>
-  <div class="flex flex-row flex-wrap items-center" id="animation-container2"></div>
-  </div>
+  <div class="flex flex-row flex-wrap m-10 items-center"  id="animation-container"></div>
+  <div class="text-center border border-pink m-10 p-3 text-lg text-pink" id="reverse" style="display : none"> NULL VALUE CANNOT BE PUSHED </div>
+  <div class="flex flex-row flex-wrap items-center m-10" id="animation-container2"></div>
 
       
 </div>
