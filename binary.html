@@ -79,7 +79,9 @@
                       
                       <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
 
-                      <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="setBst(document.getElementById('create').value)">CREATE TREE</button>
+                      <div class="col-span-2 text-center border border-pink p-3 text-sm text-pink" id="error" style="display : none"> NULL VALUE CANNOT BE PUSHED </div>
+
+                      <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="setBst(document.getElementById('create').value) " >CREATE TREE</button>
     
                       <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" id="create">
                 
@@ -87,13 +89,13 @@
     
                         <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" id="insert">
 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700">SEARCH</button>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="bst.search(document.getElementById('search').value)" >SEARCH</button>
 
 
-                        <input type="number" class="text-center" placeholder="ENTER SEARCH DIGIT" name="push">
+                        <input type="number" class="text-center" placeholder="ENTER SEARCH DIGIT" id="search">
 
-
-                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700">RESET</button>
+                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="generateRandomBst()">GENERATE RANDOM</button>
+                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="bst.reset()">RESET</button>
                     
                       
                   

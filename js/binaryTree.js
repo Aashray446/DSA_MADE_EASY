@@ -1,32 +1,4 @@
 var treeContainer = document.getElementById('tree');
-// var parentNode = document.createElement('ul');
-// var dataNode = document.createElement('li');
-// var data = document.createElement('a');
-
-// const createParentNode = (value) => {
-//     const parentNode = document.createElement('ul');
-//     const dataNode = document.createElement('li');
-//     const data = document.createElement('a');
-//     data.innerText = value;
-//     dataNode.appendChild(data);
-//     parentNode.appendChild(dataNode);
-//     treeContainer.appendChild(parentNode);
-//     return parentNode;
-// }
-
-// const createChildNode = (value, parentNode, direction) => {
-
-//     const dataNode = document.createElement('li');
-//     const data = document.createElement('a');
-//     data.innerText = value;
-//     dataNode.appendChild(data);
-//     if(direction == right) {
-//         dataNode.appendChild(data);
-//         return dataNode;
-//     }
-//     parentNode.prepend(dataNode);
-//     return dataNode;
-// }
 
 createValue = (value) => {
 	const li = document.createElement('li');
@@ -86,7 +58,49 @@ insert(value) {
             this.right.insert(value);
         }
     }
-}
+
+}   
+    //search in binary tree
+   async search(value) {
+        if(value == parseInt(this.value.firstChild.innerText)) {
+            this.value.firstChild.classList.add('found');
+            await sleep(2000);
+            this.value.firstChild.classList.remove('found');
+            return true;
+        }
+        else if(value < parseInt(this.value.firstChild.innerText)) {
+            if(this.left == null) {
+                this.left.value.firstChild.classList.add('pointer');
+                await sleep(1000)
+                this.left.value.firstChild.classList.remove('pointer');
+                return null;
+            }
+            else {
+                this.left.value.firstChild.classList.add('pointer');
+                await sleep(1000)
+                this.left.value.firstChild.classList.remove('pointer');
+                return this.left.search(value);
+            }
+        }
+        else {
+            if(this.right == null) {
+               
+                this.right.value.firstChild.classList.add('pointer');
+                await sleep(1000)
+                this.right.value.firstChild.classList.remove('pointer');
+                return null;
+            }
+            else {
+                this.right.value.firstChild.classList.add('pointer');
+                await sleep(1000)
+                this.right.value.firstChild.classList.remove('pointer');
+                return this.right.search(value);
+            }
+        }
+
+
+
+    }
 
     reset() {
         treeContainer.innerHTML = '';
@@ -95,65 +109,38 @@ insert(value) {
 
 }
 
-// class Node {
-// 	constructor(data) {
-// 		this.data = createValue(data);
-// 		this.left = null;
-// 		this.right = null;
-// 	}
-// }
 
-// class binarySearchTree {
-// 	constructor() {
-// 		// root of a binary search tree
-// 		this.root = null;
-        
-// 	}
-
-// 	// insert(data)
-// 	insert(data) {
-
-// 		var newNode = new Node(data);
-// 		if (this.root === null) {
-// 			this.root = newNode;
-//         }
-// 		else {
-// 			this.insertNode(this.root, newNode);
-//         }
-// 	}
-
-// 	insertNode(node, newNode) {
-	
-// 		if (newNode.data < node.data) {
-// 			// if left is null insert node here
-// 			if (node.left === null)
-// 				node.left = newNode;
-// 			else
-// 				// if left is not null recur until
-// 				// null is found
-// 				this.insertNode(node.left, newNode);
-// 		}
-
-// 		// if the data is more than the node
-// 		// data move right of the tree
-// 		else {
-// 			// if right is null insert node here
-// 			if (node.right === null)
-// 				node.right = newNode;
-// 			else
-
-// 				// if right is not null recur until
-// 				// null is found
-// 				this.insertNode(node.right, newNode);
-// 		}
-// 	}
-
-
-// 	// remove(data)
-// }
 
 var bst;
 
 setBst = function(value) {
     bst = new binarySearchTree(value, true);
+}
+
+
+//get Delay Value
+function getDelay() {
+    return document.getElementById('delay').value
+}
+
+// Util functions
+function sleep(ms) {
+    return new Promise(
+      resolve => setTimeout(resolve, ms)
+    );
+    
+  }
+
+  getRandomInt = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+generateRandomBst = function() {
+    if(bst != null) {
+        bst.reset();
+    }
+    bst = new binarySearchTree(getRandomInt(0, 100), true);
+    for(i = 0; i < 10; i++){
+        bst.insert(getRandomInt(0, 100));
+    }
 }
