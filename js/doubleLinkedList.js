@@ -376,3 +376,94 @@ function sleep(ms) {
       resolve => setTimeout(resolve, ms)
     );
   }
+
+
+// //   SUMITHA'S ORGINAL CONTRIBUTION 
+// // Doubly linked list
+// class DoublyLinkedList {
+//     constructor() {
+//         this.head = null;
+//         this.tail = null;
+//         this.size = 0;
+//     }
+
+//     //insert at front
+//     insert(value) {
+//         const newNode = new node(value);
+//         if (this.head === null) {
+//             this.head = newNode;
+//             this.tail = newNode;
+//             this.size++;
+//             createNode(5, value, 5);
+//             return;
+//         }
+//         newNode.next = this.head;
+//         this.head.prev = newNode;
+//         this.head = newNode;
+//         newNode.prev = null;
+//         this.size++;
+//         createNode(5, value, 5);
+//         return;
+//     }
+
+//     //insert at back
+//     insertAtBack(value) {
+//         const newNode = new node(value);
+//         if (this.tail === null) {
+//             this.tail = newNode;
+//             this.head = newNode;
+//             this.size++;
+//             createNode(5, value, 5);
+//             return;
+//         }
+//         newNode.prev = this.tail;
+//         this.tail.next = newNode;
+//         this.tail = newNode;
+//         newNode.next = null;
+//         this.size++;
+//         createNode(5, value, 5);
+//         return;
+//     }
+
+//     //insert at index
+//     insertAt(value, index) {
+//         if (index > this.size) {
+//             return;
+//         }
+//         if (index === 0) {
+//             this.insert(value);
+//             return;
+//         }
+//         const newNode = new node(value);
+//         let current = this.head;
+//         let count = 0;
+//         while (count < index - 1) {
+//             current = current.next;
+//             count++;
+//         }
+//         newNode.next = current.next;
+//         current.next = newNode;
+//         newNode.prev = current;
+//         newNode.next.prev = newNode;
+//         createNode(5, value, 5);
+//         this.size++;
+//         return;
+//     }
+
+//     //traverse the list
+//     traverseFromFront() {
+//         let current = this.head;
+//         while (current) {
+//             console.log(current.value);
+//             current = current.next;
+//         }
+//     }
+//     //traverse the list
+//     traverseFromBack() {
+//         let current = this.tail;
+//         while (current) {
+//             console.log(current.value);
+//             current = current.prev;
+//         }
+//     }
+// }

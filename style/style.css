@@ -1,3 +1,4 @@
+
 :root {
   --primary : #1e424e;
   --secondary : #FDD741;
@@ -5,6 +6,7 @@
   --primary10 : #24B4A5;
   --primary20 : #8FEDC2;
   --bs-dark: var(--primary);
+  --pink : '#c17c74';
   overflow-y:hidden;
   overflow-x: hidden;
 }
@@ -585,7 +587,301 @@ input:checked + .slider:before {
   display: none; 
 }
 
-/*-------Array Box--------*/
+/*progress bar*/
+#progressBar{
+  width:50%;
+  height:20px;
+  background-color:#808080;
+}
+
+#played{
+  width:30%;
+  height:100%;
+  background-color:cadetblue;
+}
+
+
+/* DESIGNS FOR SINGLY AND DOUBLY LINKED LIST */
+
+.node {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  width: 128px;
+}
+
+.node .data{
+  border: 1px solid var(--light);
+  text-align: center;
+  padding: 5px 0;
+  font-size: 18px;
+  color: var(--light);
+  border-radius: 4px 4px;
+  height: 40px;
+  margin-top: 5px;
+}
+
+.node .value {
+  grid-column: 2 / 5;
+}
+
+.node .head {
+  grid-column: 3 / 6;
+  margin-top: 4px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid var(--secondary);
+  -webkit-animation: breathing 2s ease-out infinite normal;
+    animation: breathing 2s ease-out infinite normal;
+}
+
+.node .pointer {
+  grid-column: 3 / 6;
+  margin-top: 4px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid red;
+  -webkit-animation: breathing 2s ease-out infinite normal;
+    animation: breathing 2s ease-out infinite normal;
+}
+.node .tail{
+  grid-column: 3 / 6;
+  margin-top: 4px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid var(--primary10);
+  -webkit-animation: breathing 2s ease-out infinite normal;
+    animation: breathing 2s ease-out infinite normal;
+}
+
+@-webkit-keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+  }
+
+  25% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  60% {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+  }
+
+  100% {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+  }
+}
+
+@keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    transform: scale(0.6);
+  }
+
+  25% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  60% {
+    -webkit-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    transform: scale(0.6);
+  }
+
+  100% {
+    -webkit-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    transform: scale(0.6);
+  }
+}
+
+
+/* ARROWS  */
+.arrow-5 {
+  margin-top: 10px;
+  width:56px;
+  height: 32px;
+  display: grid;
+  overflow: hidden;
+  opacity: 0.8;
+  color: var(--primary20)
+}
+.arrow-5:before,
+.arrow-5:after {
+  content: "";
+  grid-area: 1/1;
+  background: currentColor;
+  clip-path: polygon(0 10px,calc(100% - 15px) 10px,calc(100% - 15px) 0,100% 50%,calc(100% - 15px) 100%,calc(100% - 15px) calc(100% - 10px),0 calc(100% - 10px));
+  animation: a5 1s infinite;
+  transform: translate(calc(0% + var(--s,0%)));
+}
+
+.arrow-5:after {
+  --s:-100%;
+}
+
+@keyframes a5 {
+  80%,100%{transform: translate(calc(100% + var(--s,0%)))}
+}
+
+
+.arrow-6 {
+  margin-top: 5px;
+  width:56px;
+  height: 40px;
+  display: grid;
+  opacity: 0.8;
+  color: var(--primary20)
+}
+.arrow-6:before,
+.arrow-6:after {
+  content: "";
+  background:
+    linear-gradient(90deg,currentColor calc(100% - 15px),#0000 0) 0 50%/100% 8px,
+    conic-gradient(from -136deg at 15px 50%,#0000 ,currentColor 1deg 90deg,#0000 91deg) 24px 0/100% 100%;
+  background-repeat: repeat-x;
+  animation: a6 1s infinite;
+}
+.arrow-6:after {
+  transform: scaleX(-1);
+}
+
+@keyframes a6 {
+  80%,100%{background-position: 50px 50%,85px 0}
+}
+
+/* BINARY TREE  */
+.tree ul {
+	padding-top: 20px; position: relative;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+.tree li {
+	float: left; text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 32px 5px 0 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before, .tree li::after{
+	content: '';
+	position: absolute; top: 0; right: 50%;
+	border-top: 1px solid #ccc;
+	width: 50%; height: 20px;
+}
+.tree li::after{
+	right: auto; left: 50%;
+	border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+	display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child{ padding-top: 0;}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+.tree li:first-child::before, .tree li:last-child::after{
+	border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before{
+	border-right: 1px solid #ccc;
+	border-radius: 0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after{
+	border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	-moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before{
+	content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 1px solid #ccc;
+	width: 0; height: 20px;
+}
+
+.tree li a{
+  color: var(--light);
+  background-color:#24b4a6df;
+  display: inline-flex;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  border: 1px solid #F4F3ED;
+  border-radius: 10px;
+  box-shadow: 10px 20px 16px rgba(0, 0, 0, 0.2) inset;
+	display: inline-block;
+  padding-top: 12px;
+ 
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li a:hover, .tree li a:hover+ul li a {
+	background: var(--secondary); color: #000; border: 1px solid #94a0b4;
+}
+/*Connector styles on hover*/
+.tree li a:hover+ul li::after, 
+.tree li a:hover+ul li::before, 
+.tree li a:hover+ul::before, 
+.tree li a:hover+ul ul::before{
+	border-color:  #94a0b4;
+}
+.tree li.right a {
+  border: 2px solid var(--secondary);
+  
+}
+.tree li.left a {
+  border: 2px solid var(--primary20);
+  
+}
+
+.tree li a.pointer {
+  border: 2px solid red;
+}
+
+.tree li a.found {
+  border: 2px solid red;
+  -webkit-animation: breathing 2s ease-out infinite normal;
+  animation: breathing 2s ease-out infinite normal;
+}
 .arrayBox{
   width: 68px;
   color: white;
@@ -610,7 +906,4 @@ input:checked + .slider:before {
   display: block;
   height: 24px;
   opacity: 0.5;
-}
-.arrayBox .active {
-  background-color: var(--secondary);
 }

@@ -86,8 +86,10 @@ class Stack {
       errorBox.style.display = "block";
       errorBox.innerText = "Stack is Full";
     } else {
+      // THIS IS CREATING THE UI PART
       document.getElementById("pushingData").innerHTML = value;
       createElement(value);
+      // ACUTAL ARRAY PUTTING
       this.dataArray.push(value);
       movePushingElement();
     }
