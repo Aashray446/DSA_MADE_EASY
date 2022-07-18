@@ -99,9 +99,10 @@ class ArrayImp{
         }
     }  
     deleteAtIndex(index){
-        console.log(this.dataArray.length)
-        console.log(index)
-        console.log(index >= this.dataArray.length)
+        if(index == '' ){
+            this.delete(value);
+            return;
+        }
         if(index >= this.dataArray.length){
             window.alert("Index out of range")
         
