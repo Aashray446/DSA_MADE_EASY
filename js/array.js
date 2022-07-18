@@ -34,7 +34,7 @@ class ArrayImp{
 
     dataArray = new Array();
     reverseArray = new Array();
-    inde = 0;
+    arrayIndex = 0;
     length = -1;
 
    
@@ -63,10 +63,12 @@ class ArrayImp{
             errorBox.innerText = "Array is Full";
         }
         else{
-            console.log(this.inde)
-        container.append(createElement(value,this.inde));
+            if(value == '' || value == undefined || value >=99 || value <= -99){
+                value = this.getRandomInt(0, 99);
+            }
+        container.append(createElement(value,this.arrayIndex));
         this.dataArray.push(value);
-        this.inde++;
+        this.arrayIndex++;
         }
         
     }
@@ -89,7 +91,7 @@ class ArrayImp{
             console.log(container.children[index])
             container.children[index].insertAdjacentElement("beforeBegin", createElement(value, index));
             this.dataArray.splice(index,0, value)
-            this.inde++;
+            this.arrayIndex++;
             this.replaceIndex(index);
 
         }
@@ -111,10 +113,10 @@ class ArrayImp{
             errorBox.innerText = "Array is Empty";
         }
         else{
-            const list = document.getElementsByClassName(structure)
+            
             this.dataArray.pop();
-            list[list.length-1].remove()
-            this.inde--;
+            container.children[this.dataArray.length].remove();
+            this.arrayIndex--;
 
 
         }
@@ -161,7 +163,7 @@ class ArrayImp{
         container.innerHTML = '' 
         container2.innerHTML = ''   
         this.dataArray = new Array();
-        this.inde = 0;
+        this.arrayIndex = 0;
     }
 
    async search(value){
@@ -188,7 +190,8 @@ class ArrayImp{
         }
     }
 
-    reverse(){
+    async reverse(){
+        container2.innerHTML = ' ';
         if(this.isEmpty()){
             errorBox.style.display = "block";
             errorBox.innerText = "Array is Empty";
@@ -196,8 +199,9 @@ class ArrayImp{
         else{
             errorBox.style.display = "block";
             errorBox.innerText = "Original Array";;
-            this.reverseArray = this.dataArray;
-            this.reverseArray.reverse();
+            for(let i = this.dataArray.length-1; i>=0; i--){
+                this.reverseArray.push(this.dataArray[i]);
+            }
             reverse.style.display = "block";
             reverse.innerHTML = "Reversed Array";
             for(let i = 0; i<this.reverseArray.length; i++){
@@ -205,6 +209,11 @@ class ArrayImp{
                 container2.append(createElement(this.reverseArray[i], i));
                
             }
+            this.reverseArray = new Array();
+            await sleep(10000);
+            container2.innerHTML = '';
+            reverse.style.display = "none";
+            
         }
     }
  getRandomInt(min, max) {
@@ -213,6 +222,7 @@ class ArrayImp{
 
     randomArray(){
         this.length = 10;
+        this.dataArray = new Array();
             errorBox.style.display = "block";
             errorBox.innerText = "Random Array";
             container.innerHTML =' ';
