@@ -863,3 +863,11 @@ right connector from last child*/
 .tree li a:hover+ul ul::before{
 	border-color:  #94a0b4;
 }
+.tree li.right a {
+  border: 2px solid var(--secondary);
+  
+}
+.tree li.left a {
+  border: 2px solid var(--primary20);
+  
+}

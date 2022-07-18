@@ -78,10 +78,14 @@
                     <div class="grid grid-cols-2 gap-10 tracking-widest">
                       
                       <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
-                
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline">INSERT DATA</button>
+
+                      <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="setBst(document.getElementById('create').value)">CREATE TREE</button>
     
-                        <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" name="push">
+                      <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" id="create">
+                
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="bst.insert(document.getElementById('insert').value)">INSERT DATA</button>
+    
+                        <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" id="insert">
 
                         <button class="bg-secondary rounded hover:bg-primary20 duration-700">SEARCH</button>
 
@@ -107,46 +111,7 @@
             <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
 
               <div class="tree" id="tree">
-                <ul>
-                  <li>
-                    <a href="#">1</a>
-                    <ul>
-                      <li>
-                        <a href="#">2</a>
-                        <ul>
-                          <li>
-                            <a href="#">2.1</a>
-                            
-                          </li>
-                          <li>
-                            <a href="#">2.2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="#">3</a>
-                        <ul>
-                          <ul>
-                          <li>
-                            <a href="#">3.1</a>
-                            <ul>
-                          <li>
-                            <a href="#">3.1.1</a>
-                          </li>
-                          <li>
-                            <a href="#">3.1.2</a>
-                          </li>
-                        </ul>
-                          </li>
-                          <li>
-                            <a href="#">3.2</a>
-                          </li>
-                        </ul>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
+                
               </div>
             </div>
 <!--------------------------------------------------------- PLAYGROUND AREA ENDS ------------------------------------------------------------------------------------------------>
@@ -159,6 +124,6 @@
 
 
 <script src="./js/anime.min.js"></script>
-
+<script src="./js/binaryTree.js"></script>
 
 </html>
