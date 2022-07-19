@@ -74,70 +74,81 @@
 
 
 <!------------------------------ SECTION THAT WILL BE CHANGED [CONTROLLER FOR EVERY DATASTRUCTURE] IN EVERY PAGE  ------------------------------------------------------------------->
-      
-                  <div class="container mx-2 font-serif">
-                    <div class="flex flex-col" id="moreInfo">
-                      <h2 class="font-thin text-2xl tracking-widest mt-20 text-secondary mb-5" >Controls of Array</h2>
-                    
-                    <div class="grid grid-cols-2 gap-10 tracking-widest">
-                      
-                      <!-- INITIAL WOKDS WILL BE ASSIGNED HERE -->
 
-                      <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.setLength(
+
+                        <div class="container hidden-scroll mx-2 font-sans">
+                            <div class="flex flex-col" id="moreInfo">
+                                <div class="mt-3 mr-4">
+                                    <button class="simulation">
+                                        Simulation Controls
+                                    </button>
+                                    <div class="simulationpanel w-700">
+                                        <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
+                                            <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.setLength(
                         document.getElementById('push').value
                       )">CREATE ARRAY</button>
 
-                      <input type="number" id="push" class="text-center" placeholder="LENGTH" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.setLength(
+                                            <input type="number" id="push" class="text-center" placeholder="LENGTH" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.setLength(
                         document.getElementById('push').value)">
 
-                      <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.insertAtIndex(
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.insertAtIndex(
                         document.getElementById('data').value, document.getElementById('index').value
                       )">INSERT</button>
 
-                        <div class="flex flex-row flex-wrap" >
-                          <input type="number" id="data" class="text-center" placeholder="VALUE" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.insertAtIndex(
+                                            <div class="flex flex-row flex-wrap" >
+                                                <input type="number" id="data" class="text-center" placeholder="VALUE" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.insertAtIndex(
                             document.getElementById('data').value, document.getElementById('index').value
                           )">
-                          <input type="number" id="index" class="text-center mt-1" placeholder="INDEX" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.insertAtIndex(
+                                                <input type="number" id="index" class="text-center mt-1" placeholder="INDEX" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.insertAtIndex(
                             document.getElementById('data').value, document.getElementById('index').value
                           )">
-                        </div>
-<!--
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.insert(
-                          document.getElementById('data').value
-                        )">Insert</button>
+                                            </div>
 
-                        <input type="number" id="data" class="text-center" placeholder="Enter Push Data" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.insert(
-                          document.getElementById('push').value)"> -->
-
-                          
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.deleteAll(
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.deleteAll(
                           document.getElementById('delindex').value,document.getElementById('delvalue').value
                         )">DELETE</button>
-      
-                        <div class="flex flex-row flex-wrap" >
-                          <input type="number" id="delindex" class="text-center" placeholder="INDEX" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.deleteAll(
+
+                                            <div class="flex flex-row flex-wrap" >
+                                                <input type="number" id="delindex" class="text-center" placeholder="INDEX" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.deleteAll(
                             document.getElementById('delindex').value, document.getElementById('delvalue').value
                           )">
-                          <input type="number" id="delvalue" class="text-center mt-1" placeholder="VALUE" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.deleteAll(
+                                                <input type="number" id="delvalue" class="text-center mt-1" placeholder="VALUE" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.deleteAll(
                             document.getElementById('delindex').value,document.getElementById('delvalue').value
                           )">
+                                            </div>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="array.search(document.getElementById('search').value)">Search</button>
+                                            <input type="number" id="search" class="text-center" placeholder="Search Data" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.search(document.getElementById('search').value)">
+
+                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="array.reverse()">REVERSE</button>
+                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="array.randomArray()">RANDOM ARRAY</button>
+                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="array.reset()">RESET</button>
+
+                                        </div>
+                                    </div>
+                                    <div id="queueinfo" class="alert items-center" style="display: none; background: coral">
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        <p></p>
+                                    </div>
+                                    <button class="accordion" onclick="sortedPriorityQueue.isSorted=false;">
+                                        Stack
+                                    </button>
+                                    <div class="panel ">
+                                        <p class="py-4">
+                                            A Stack is a linear data structure that follows the LIFO (Last-In-First-Out) principle.In other
+                                            words, a stack can be defined as a container in which insertion and deletion can be done from the
+                                            one end known as the top of the stack.
+                                        </p>
+                                        <br>
+                                        <p>
+                                            Time complexity : O(1)
+                                        </p>
+                                        <br>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="array.search(document.getElementById('search').value)">Search</button>
-                        <input type="number" id="search" class="text-center" placeholder="Search Data" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.search(document.getElementById('search').value)">
-
-                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="array.reverse()">REVERSE</button>
-                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="array.randomArray()">RANDOM ARRAY</button>
-                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="array.reset()">RESET</button>
-                    
-                      
-                  
-                    </div>
-
-                    </div>
-                  </div>
-
-
                     </section>
 
              </div>
