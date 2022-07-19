@@ -889,16 +889,17 @@ right connector from last child*/
 }
 
 .arrayBox .data {
-  color: var(--primary);
-  font-weight: bold;
-  border-radius: 5px;
-  text-align: center;
-  display: block;
-  width: 64px; this.reset();
-  height: 32px;
-  border: 1px solid var(--light);
-  background-color: var(--primary20);
-  padding-top: 4px;
+  background-color:#24b4a6df;
+  display: inline-flex;
+  justify-content: center;
+  padding-top: 14px;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  border: 1px solid #F4F3ED;
+  border-radius: 10px;
+  align-content: center;
+  box-shadow: 10px 20px 16px rgba(0, 0, 0, 0.2) inset;
 }
 .arrayBox .index {
   font-size: smaller;
@@ -906,4 +907,8 @@ right connector from last child*/
   display: block;
   height: 24px;
   opacity: 0.5;
+}
+
+.arrayBox .active {
+  border: 2px solid red;
 }
