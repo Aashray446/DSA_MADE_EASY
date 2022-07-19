@@ -106,14 +106,14 @@ class SortAlgorithms{
                 if (this.array[j] > this.array[j + 1]) {
                     this.container.children[j].style.backgroundColor = 'orange';
                     this.container.children[j+1].style.backgroundColor = 'lightgreen';
-                    await sleep(this.speed);
+                    await sleep(this.speed/2);
                     temp = this.array[j];
                     this.array[j] = this.array[j + 1];
                     this.array[j + 1] = temp;
                     this.render();
                     this.container.children[j].style.backgroundColor = 'lightgreen';
                     this.container.children[j+1].style.backgroundColor = 'orange';
-                    await sleep(this.speed);
+                    await sleep(this.speed/2);
                     this.container.children[j].style.backgroundColor = '#24b4a6df';
                     this.container.children[j+1].style.backgroundColor = '#24b4a6df';
 
@@ -131,18 +131,18 @@ class SortAlgorithms{
                     min = j;
                 }
             }
-            await sleep(this.speed/2);
+            await sleep(this.speed/3);
             this.render();
             this.container.children[min].style.backgroundColor = 'orange';
             this.container.children[i].style.backgroundColor = 'lightgreen';
-            await sleep(this.speed);
+            await sleep(this.speed/3);
             temp = this.array[i];
             this.array[i] = this.array[min];
             this.array[min] = temp;
             this.render();
             this.container.children[min].style.backgroundColor = 'lightgreen';
             this.container.children[i].style.backgroundColor = 'orange';
-            await sleep(this.speed);
+            await sleep(this.speed/3);
         }
     }
 
@@ -170,7 +170,7 @@ class SortAlgorithms{
                     this.container.children[j + 1].innerHTML = `<p style="color: black; font-size: xx-large">${temp}</p>`;
                 }
                 j = j - 1;
-                await sleep(this.speed);
+                await sleep(this.speed/3);
                 this.render();
             }
             this.array[j + 1] = temp;
@@ -179,9 +179,9 @@ class SortAlgorithms{
                 this.container.children[j + 1].innerHTML = `<p style="color: black; font-size: xx-large">${temp}</p>`;
             }
             this.container.children[j + 1].style.backgroundColor = 'lightblue';
-            await sleep(this.speed);
+            await sleep(this.speed/3);
             this.container.children[j + 1].style.backgroundColor = 'green';
-            await sleep(this.speed);
+            await sleep(this.speed/3);
             this.render()
         }
     }
