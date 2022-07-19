@@ -159,19 +159,25 @@ class SortAlgorithms{
                 this.container.children[i].style.backgroundColor = 'orange';
                 if(i>=j+2) {
                     this.container.children[j + 1].style.backgroundColor = 'lightblue';
-                    this.container.children[j + 2].text = `<p style="color: black; font-size: xx-large">${temp}</p>`;
+                    if(!this.isRepresentation) {
+                        this.container.children[j + 2].text = `<p style="color: black; font-size: xx-large">${temp}</p>`;
+                    }
                 }
                 this.display.style.visibility = 'visible';
                 this.array[j + 1] = this.array[j];
                 this.container.children[j + 1].style.backgroundColor = 'lightblue';
-                this.container.children[j + 1].innerHTML = `<p style="color: black; font-size: xx-large">${temp}</p>`;
+                if(!this.isRepresentation) {
+                    this.container.children[j + 1].innerHTML = `<p style="color: black; font-size: xx-large">${temp}</p>`;
+                }
                 j = j - 1;
                 await sleep(this.speed);
                 this.render();
             }
             this.array[j + 1] = temp;
             this.container.children[i].style.backgroundColor = 'orange';
-            this.container.children[j + 1].innerHTML = `<p style="color: black; font-size: xx-large">${temp}</p>`;
+            if(!this.isRepresentation) {
+                this.container.children[j + 1].innerHTML = `<p style="color: black; font-size: xx-large">${temp}</p>`;
+            }
             this.container.children[j + 1].style.backgroundColor = 'lightblue';
             await sleep(this.speed);
             this.container.children[j + 1].style.backgroundColor = 'green';

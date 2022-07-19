@@ -16,16 +16,6 @@ class Circularqueue{
         return element
     }
 
-    getRandomColor = () => {
-        var trans = '0.3';
-        var color = 'rgba(';
-        for (var i = 0; i < 3; i++) {
-            color += Math.floor(Math.random() * 255) + ',';
-        }
-        color += trans + ')';
-        return color;
-    }
-
     wrapFR = (value, isfront) => {
         if(isfront) {
             return `<p class="text-center">Front is ${value}</p>`
