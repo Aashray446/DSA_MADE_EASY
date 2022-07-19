@@ -117,6 +117,21 @@
                             document.getElementById('delindex').value,document.getElementById('delvalue').value
                           )">
                                             </div>
+
+                                            <!-- REPlace Value-->
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.replaceValue(
+                                           document.getElementById('replaceindex').value,document.getElementById('replacevalue').value
+                                            )">REPLACE</button>
+                                            <div class="flex flex-row flex-wrap" >
+                                                <input type="number" id="replaceindex" class="text-center" placeholder="INDEX" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.replaceValue(
+                                            document.getElementById('replaceindex').value, document.getElementById('replacevalue').value
+                                          )">
+                                                <input type="number" id="replacevalue" class="text-center mt-1" placeholder="VALUE" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.replaceValue(
+                                            document.getElementById('replaceindex').value,document.getElementById('replacevalue').value
+                                          )">
+                                            </div>
+
+
                                             <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="array.search(document.getElementById('search').value)">Search</button>
                                             <input type="number" id="search" class="text-center" placeholder="Search Data" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.search(document.getElementById('search').value)">
 
@@ -131,17 +146,20 @@
                                         <p></p>
                                     </div>
                                     <button class="accordion" onclick="sortedPriorityQueue.isSorted=false;">
-                                        Stack
+                                        Array
                                     </button>
                                     <div class="panel ">
                                         <p class="py-4">
-                                            A Stack is a linear data structure that follows the LIFO (Last-In-First-Out) principle.In other
-                                            words, a stack can be defined as a container in which insertion and deletion can be done from the
-                                            one end known as the top of the stack.
+                                          An Array is a data structure that contains a group of elements. Typically these elements are all of the same data type, such as an integer or string. Arrays are commonly used in computer programs to organize data so that a related set of values can be easily sorted or searched.
                                         </p>
                                         <br>
                                         <p>
-                                            Time complexity : O(1)
+                                            Time complexity :
+                                            <br>Insertion : O(n)
+                                            <br>Deletion : O(n)
+                                            <br>Search : O(n)
+                                            <br>Reverse : O(n)
+
                                         </p>
                                         <br>
                                     </div>
@@ -175,5 +193,26 @@
 <!-- PAGE SPECIFICE ANIMATIION -->
 <script src="./js/anime.min.js"></script>
 <script src="./js/array.js"></script>
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+  for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+              panel.style.maxHeight = null;
+          } else {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+          for (i = 0; i < acc.length; i++) {
+              if (acc[i] != this && acc[i].classList.contains("active")) {
+                  acc[i].classList.toggle("active");
+                  acc[i].nextElementSibling.style.maxHeight = null;
+              }
+          }
+      });
+  }
+</script>
 
 </html>

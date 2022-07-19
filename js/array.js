@@ -288,6 +288,30 @@ class ArrayImp{
         }
     }
 
+    async replaceValue(index ,value){
+        if(index == '' || value == ''){
+            errorBox.style.display = "block";
+            errorBox.innerText = "Please enter both value and index";
+        }
+        else if(index >= this.dataArray.length){
+            errorBox.style.display = "block";
+            errorBox.innerText = "Index is out of range";
+        }
+        else if(this.isEmpty()){
+            errorBox.style.display = "block";
+            errorBox.innerText = "Array is Empty";
+        }
+        else{
+            container.children[index].children[0].classList.add('active');
+            await sleep(1000);
+            container.children[index].children[0].classList.remove('active');
+            container.children[index].innerHTML = "";
+            container.children[index].append(createElement(value, index));
+            this.dataArray[index] = value;
+        }
+
+        
+    }
 
 
 
