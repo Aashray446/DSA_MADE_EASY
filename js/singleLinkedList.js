@@ -266,6 +266,12 @@ class SinglyLinkedList {
         container.lastChild.children[1].innerHTML = memory
     }
 
+    reset(){
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+        container.innerHTML = "" ;
+    }
 
 
 }
