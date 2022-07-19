@@ -45,8 +45,8 @@
         
                 <!-- This example requires Tailwind CSS v2.0+ -->
                     <div class="back-light py-3 px-20 my-5 rounded">
-                        <h1 class="font-thin text-lg tracking-widest">
-                            <span>AMRITA VISHWA VIDYAPEETHAM </span>
+                        <h1 class="font-thin text-lg tracking-widest text-center">
+                            <span>BINARY SEARCH TREE</span>
                          </h1>
                     </div>
 
@@ -63,7 +63,7 @@
                          <li><a href="priorityqueue.html">Priority Queue</a></li>
                          <li><a href="singlylinklist.html">Singly Linked List</a></li>
                          <li><a href="doublylinklist.html">Doubly Linked List</a></li>
-                         <li><a href="binary.html">Binary Tree</a></li>
+                         <li><a href="binary.html">Binary Search Tree</a></li>
                          <li><a href="search.html">Search Algorithms</a></li>
                          <li><a href="sort.html">Sort Algorithms</a></li>
                      </ul>
@@ -71,39 +71,59 @@
 
 
 <!------------------------------ SECTION THAT WILL BE CHANGED [CONTROLLER FOR EVERY DATASTRUCTURE] IN EVERY PAGE  ------------------------------------------------------------------->
-      
-                     <div class="container mx-2 font-serif">
-                    <div class="flex flex-col" id="moreInfo">
-                      <h2 class="font-thin text-2xl tracking-widest mt-20 text-secondary mb-5" >Controls Of Binary Tree</h2>
-                    
-                    <div class="grid grid-cols-2 gap-10 tracking-widest">
-                      
-                      <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
+                        <div class="container hidden-scroll mx-2 font-sans">
+                            <div class="flex flex-col" id="moreInfo">
+                                <div class="mt-3 mr-4">
+                                    <button class="simulation">
+                                        Simulation Controls
+                                        <div class="col-span-2 text-center border border-pink p-3 text-sm text-pink" id="error" style="display : none"> NULL VALUE CANNOT BE PUSHED </div>
+                                    </button>
+                                    <div class="simulationpanel w-700">
+                                        <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
+                                            <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="setBst(document.getElementById('create').value)" >CREATE TREE</button>
 
-                      <div class="col-span-2 text-center border border-pink p-3 text-sm text-pink" id="error" style="display : none"> NULL VALUE CANNOT BE PUSHED </div>
+                                            <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" id="create">
 
-                      <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="setBst(document.getElementById('create').value)" >CREATE TREE</button>
-    
-                      <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" id="create">
-                
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="bst.insert(document.getElementById('insert').value)">INSERT DATA</button>
-    
-                        <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" id="insert">
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="bst.insert(document.getElementById('insert').value)">INSERT DATA</button>
 
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="bst.search(document.getElementById('search').value)" >SEARCH</button>
+                                            <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" id="insert">
+
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="bst.search(document.getElementById('search').value)" >SEARCH</button>
 
 
-                        <input type="number" class="text-center" placeholder="ENTER SEARCH DIGIT" id="search">
+                                            <input type="number" class="text-center" placeholder="ENTER SEARCH DIGIT" id="search">
 
-                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="generateRandomBst()">GENERATE RANDOM</button>
-                        <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="bst.reset()">RESET</button>
-                    
-                      
-                  
-                    </div>
-
-                    </div>
-                  </div>
+                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="generateRandomBst()">GENERATE RANDOM</button>
+                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="bst.reset()">RESET</button>
+                                        </div>
+                                    </div>
+                                    <div id="queueinfo" class="alert items-center" style="display: none; background: coral">
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        <p></p>
+                                    </div>
+                                    <button class="accordion" onclick="">
+                                        Binary Search Tree
+                                    </button>
+                                    <div class="panel ">
+                                        <p class="py-4">
+                                            Binary Search Tree is a node-based binary tree data structure which has the following properties:
+                                            The left subtree of a node contains only nodes with keys lesser than the node’s key.
+                                            The right subtree of a node contains only nodes with keys greater than the node’s key.
+                                            The left and right subtree each must also be a binary search tree.
+                                        </p>
+                                        <br>
+                                        <p>
+                                            <h6>Time Complexity</h6>
+                                            Searching: time complexity is O(h) where h is height of BST.
+                                            Insertion: O(h)
+                                            Deletion: O(h).
+                                        </p>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
       
       
                     </section>
@@ -128,5 +148,26 @@
 
 <script src="./js/anime.min.js"></script>
 <script src="./js/binaryTree.js"></script>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+            for (i = 0; i < acc.length; i++) {
+                if (acc[i] != this && acc[i].classList.contains("active")) {
+                    acc[i].classList.toggle("active");
+                    acc[i].nextElementSibling.style.maxHeight = null;
+                }
+            }
+        });
+    }
+</script>
 
 </html>
