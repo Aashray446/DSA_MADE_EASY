@@ -145,7 +145,7 @@ generateRandomBst = function() {
         bst.reset();
     }
     bst = new binarySearchTree(getRandomInt(0, 100), true);
-    for(i = 0; i < 10; i++){
+    for(i = 0; i < 15; i++){
         bst.insert(getRandomInt(0, 100));
     }
 }
