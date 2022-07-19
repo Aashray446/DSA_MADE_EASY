@@ -85,55 +85,34 @@
                                     <div class="simulationpanel w-700">
                                         <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
                                             <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.setLength(
-                        document.getElementById('push').value
-                      )">CREATE ARRAY</button>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.setLength(document.getElementById('push').value)">CREATE ARRAY</button>
 
-                                            <input type="number" id="push" class="text-center" placeholder="LENGTH" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.setLength(
-                        document.getElementById('push').value)">
+                                            <input type="number" id="push" class="text-center" placeholder="LENGTH" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.setLength(document.getElementById('push').value)">
 
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.insertAtIndex(
-                        document.getElementById('data').value, document.getElementById('index').value
-                      )">INSERT</button>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.insertAtIndex(document.getElementById('data').value, document.getElementById('index').value)">INSERT</button>
 
-                                            <div class="flex flex-row flex-wrap" >
-                                                <input type="number" id="data" class="text-center" placeholder="VALUE" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.insertAtIndex(
-                            document.getElementById('data').value, document.getElementById('index').value
-                          )">
-                                                <input type="number" id="index" class="text-center mt-1" placeholder="INDEX" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.insertAtIndex(
-                            document.getElementById('data').value, document.getElementById('index').value
-                          )">
+                                            <div class="grid grid-cols-2 gap-5 tracking-widest" >
+                                                <input type="number" id="data" class="text-center" placeholder=" VALUE" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.insertAtIndex(document.getElementById('data').value, document.getElementById('index').value)">
+                                                <input type="number" id="index" class="text-center" placeholder="INDEX" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.insertAtIndex(document.getElementById('data').value, document.getElementById('index').value)">
                                             </div>
 
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.deleteAll(
-                          document.getElementById('delindex').value,document.getElementById('delvalue').value
-                        )">DELETE</button>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.deleteAll(document.getElementById('delindex').value,document.getElementById('delvalue').value)">DELETE</button>
 
-                                            <div class="flex flex-row flex-wrap" >
-                                                <input type="number" id="delindex" class="text-center" placeholder="INDEX" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.deleteAll(
-                            document.getElementById('delindex').value, document.getElementById('delvalue').value
-                          )">
-                                                <input type="number" id="delvalue" class="text-center mt-1" placeholder="VALUE" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.deleteAll(
-                            document.getElementById('delindex').value,document.getElementById('delvalue').value
-                          )">
+                                            <div class="grid grid-cols-2 gap-5 tracking-widest" >
+                                                <input type="number" id="delindex" class="text-center" placeholder="INDEX" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.deleteAll(document.getElementById('delindex').value, document.getElementById('delvalue').value)">
+                                                <input type="number" id="delvalue" class="text-center" placeholder="VALUE" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.deleteAll(document.getElementById('delindex').value,document.getElementById('delvalue').value)">
                                             </div>
 
                                             <!-- REPlace Value-->
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.replaceValue(
-                                           document.getElementById('replaceindex').value,document.getElementById('replacevalue').value
-                                            )">REPLACE</button>
-                                            <div class="flex flex-row flex-wrap" >
-                                                <input type="number" id="replaceindex" class="text-center" placeholder="INDEX" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.replaceValue(
-                                            document.getElementById('replaceindex').value, document.getElementById('replacevalue').value
-                                          )">
-                                                <input type="number" id="replacevalue" class="text-center mt-1" placeholder="VALUE" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.replaceValue(
-                                            document.getElementById('replaceindex').value,document.getElementById('replacevalue').value
-                                          )">
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.replaceValue(document.getElementById('replaceindex').value,document.getElementById('replacevalue').value)">REPLACE</button>
+                                            <div class="grid grid-cols-2 gap-5 tracking-widest" >
+                                                <input type="number" id="replaceindex" class="text-center" placeholder="INDEX" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.replaceValue(document.getElementById('replaceindex').value, document.getElementById('replacevalue').value)">
+                                                <input type="number" id="replacevalue" class="text-center" placeholder="VALUE" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.replaceValue(document.getElementById('replaceindex').value,document.getElementById('replacevalue').value)">
                                             </div>
 
 
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="array.search(document.getElementById('search').value)">Search</button>
-                                            <input type="number" id="search" class="text-center" placeholder="Search Data" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.search(document.getElementById('search').value)">
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="array.search(document.getElementById('search').value)">SEARCH</button>
+                                            <input type="number" id="search" class="text-center" placeholder="VALUE" name="push" onkeypress="Javascipt: if (event.keyCode ==13) array.search(document.getElementById('search').value)">
 
                                             <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="array.reverse()">REVERSE</button>
                                             <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="array.randomArray()">RANDOM ARRAY</button>
