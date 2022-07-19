@@ -111,14 +111,16 @@
                           document.getElementById('push').value)"> -->
 
                           
-                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.delete()">DELETE</button>
+                        <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="array.deleteAll(
+                          document.getElementById('delindex').value,document.getElementById('delvalue').value
+                        )">DELETE</button>
       
                         <div class="flex flex-row flex-wrap" >
-                          <input type="number" id="delindex" class="text-center" placeholder="INDEX" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.deleteAtIndex(
-                            document.getElementById('delindes').value
+                          <input type="number" id="delindex" class="text-center" placeholder="INDEX" name="data" onkeypress="Javascipt: if (event.keyCode ==13) array.deleteAll(
+                            document.getElementById('delindex').value, document.getElementById('delvalue').value
                           )">
-                          <input type="number" id="delvalue" class="text-center mt-1" placeholder="VALUE" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.deleteAtValue(
-                            document.getElementById('delvalue').value
+                          <input type="number" id="delvalue" class="text-center mt-1" placeholder="VALUE" name="push" onkeypress="Javascript: if(event.keyCode == 13) array.deleteAll(
+                            document.getElementById('delindex').value,document.getElementById('delvalue').value
                           )">
                         </div>
                         <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="array.search(document.getElementById('search').value)">Search</button>

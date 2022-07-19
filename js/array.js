@@ -100,28 +100,48 @@ class ArrayImp{
 
     replaceIndex(index){
         for(let i = parseInt(index); i<this.dataArray.length-1; i++){
-            container.children[i+1].children[1].innerHTML = i+1;
+            container.children[i].children[1].innerHTML = i;
            
             
      }
-}
+} 
+    deleteAll(index,value){
+        if(index == '' && value == ''){
+            this.delete();
+            return;
+        }
+        else if(index == '' && value != ''){
+            this.deleteAtValue(value);
+            return;
+        }
+        else if(value == '' && index != ''){
+            this.deleteAtIndex(index);
+            return;
+        }
+        else{
+            errorBox.style.display = "block";
+            errorBox.innerText = "Please enter either index or value";
+        }
+    }
 
 
-    delete(){
+    async delete(){
         if(this.isEmpty()){
             errorBox.style.display = "block";
             errorBox.innerText = "Array is Empty";
         }
         else{
-            
+            container.children[this.dataArray.length-1].children[0].classList.add('active');
+            await sleep(1000);
             this.dataArray.pop();
             container.children[this.dataArray.length].remove();
+            container.children[this.dataArray.length].children[0].classList.remove('active');
             this.arrayIndex--;
 
 
         }
     }  
-    deleteAtIndex(index){
+    async deleteAtIndex(index){
         if(index == '' ){
             this.delete(value);
             return;
@@ -136,9 +156,13 @@ class ArrayImp{
             errorBox.innerText = "Array is Empty";
         }
         else{
+            container.children[index].children[0].classList.add('active');
+            await sleep(1000);
             container.children[index].remove();
+            container.children[index].children[0].classList.remove('active');
             this.replaceIndex(index-1)
             this.dataArray.splice(index,1)
+            console.log(this.dataArray)
         }
     }
 
@@ -166,7 +190,6 @@ class ArrayImp{
                 errorBox.innerText = "Value is not found";
             }
             else{
-                console.log('hello')
                 container.children[index].remove();
                 this.replaceIndex(index-1)
                 this.dataArray.splice(index,1)
@@ -233,14 +256,13 @@ class ArrayImp{
             errorBox.style.display = "block";
             errorBox.innerText = "Original Array";;
             for(let i = this.dataArray.length-1; i>=0; i--){
+                container.children[i].children[0].classList.add('active');
                 this.reverseArray.push(this.dataArray[i]);
-            }
-            reverse.style.display = "block";
-            reverse.innerHTML = "Reversed Array";
-            for(let i = 0; i<this.reverseArray.length; i++){
-                console.log('hello')
-                container2.append(createElement(this.reverseArray[i], i));
-               
+                await sleep(1000);
+                container.children[i].children[0].classList.remove('active');
+                reverse.style.display = "block";
+                reverse.innerHTML = "Reversed Array";
+                container2.append(createElement(this.dataArray[i], (this.dataArray.length-i-1)));
             }
             this.reverseArray = new Array();
             await sleep(10000);
