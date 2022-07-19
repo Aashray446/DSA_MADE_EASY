@@ -259,40 +259,40 @@ nav ul a {
   background-color:#24b4a6df;
   display: inline-flex;
   justify-content: center;
-  width: 16.5px;
-  margin: 3px;
+  width: 0.85vw;
+  margin: 0.15vw;
   align-content: center;
   box-shadow: 10px 20px 16px rgba(0, 0, 0, 0.2);
 
 }
 
-@media (max-width: 1900px) {
-  .queue-representation {
-    width: 12px;
-  }
-}
+/*@media (max-width: 1900px) {*/
+/*  .queue-representation {*/
+/*    width: 12px;*/
+/*  }*/
+/*}*/
 
-@media (max-width: 1700px) {
-  .queue-representation {
-    width: 16.1px;
-    margin: 0px;
-    margin: 1px;
-  }
-}
+/*@media (max-width: 1700px) {*/
+/*  .queue-representation {*/
+/*    width: 16.1px;*/
+/*    margin: 0px;*/
+/*    margin: 1px;*/
+/*  }*/
+/*}*/
 
-@media (max-width: 1500px) {
-  .queue-representation {
-    width: 11.1px;
-    margin: 0px;
-  }
-}
+/*@media (max-width: 1500px) {*/
+/*  .queue-representation {*/
+/*    width: 11.1px;*/
+/*    margin: 0px;*/
+/*  }*/
+/*}*/
 
-@media (max-width: 900px) {
-  .queue-representation {
-    width: 6px;
-    margin: 0px;
-  }
-}
+/*@media (max-width: 900px) {*/
+/*  .queue-representation {*/
+/*    width: 6px;*/
+/*    margin: 0px;*/
+/*  }*/
+/*}*/
 .sudo-queue {
   background-color:#24b4a6df;
   color: white; 
