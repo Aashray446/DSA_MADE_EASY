@@ -75,7 +75,9 @@ class Stack {
   dataArray = new Array();
 
   push(value) {
-    if (value == 0) {
+    
+    // Check if the value is null or not
+    if (value == "") {
       errorBox.style.display = "block";
       return;
     } else {

@@ -266,33 +266,6 @@ nav ul a {
 
 }
 
-/*@media (max-width: 1900px) {*/
-/*  .queue-representation {*/
-/*    width: 12px;*/
-/*  }*/
-/*}*/
-
-/*@media (max-width: 1700px) {*/
-/*  .queue-representation {*/
-/*    width: 16.1px;*/
-/*    margin: 0px;*/
-/*    margin: 1px;*/
-/*  }*/
-/*}*/
-
-/*@media (max-width: 1500px) {*/
-/*  .queue-representation {*/
-/*    width: 11.1px;*/
-/*    margin: 0px;*/
-/*  }*/
-/*}*/
-
-/*@media (max-width: 900px) {*/
-/*  .queue-representation {*/
-/*    width: 6px;*/
-/*    margin: 0px;*/
-/*  }*/
-/*}*/
 .sudo-queue {
   background-color:#24b4a6df;
   color: white; 
