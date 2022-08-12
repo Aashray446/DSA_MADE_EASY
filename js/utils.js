@@ -33,5 +33,5 @@ class QueueUtil {
     }
 }
 
-let genralUtils = new GeneralUtil();
-let queueUtils = new QueueUtil();
+const genralUtils = new GeneralUtil();
+const queueUtils = new QueueUtil();

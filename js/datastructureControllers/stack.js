@@ -72,9 +72,12 @@ const movePopingData = function () {
 // ------------------ Implementation of stack with animation  -------------------------
 // Stack Implementation with array
 class Stack {
-  dataArray = new Array();
 
-  push(value) {
+  //construtor
+  constructor() {
+    this.dataArray = new Array();
+  }
+   push(value) {
     
     // Check if the value is null or not
     if (value == "") {
@@ -87,14 +90,14 @@ class Stack {
     if (this.dataArray.length > 12) {
       errorBox.style.display = "block";
       errorBox.innerText = "Stack is Full";
-    } else {
+      return;
+    }
       // THIS IS CREATING THE UI PART
       document.getElementById("pushingData").innerHTML = value;
       createElement(value);
       // ACUTAL ARRAY PUTTING
       this.dataArray.push(value);
       movePushingElement();
-    }
   }
 
   pop() {
@@ -109,7 +112,7 @@ class Stack {
     document.getElementById("popingData").innerHTML = this.dataArray.pop();
   }
 
-  reset = function () {
+  reset() {
     container.innerHTML = "";
     this.dataArray = new Array();
     errorBox.style.display = "none";
@@ -128,4 +131,4 @@ class Stack {
 }
 
 // Function that will be used by the browser
-let stack = new Stack();
+const stack = new Stack();

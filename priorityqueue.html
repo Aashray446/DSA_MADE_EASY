@@ -7,27 +7,7 @@
     <title>DSA VISUALIZATION </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!---------------------------TAILWIND  ---------------------------------------------------------------------------->
-    <script>
-        tailwind.config = {
-            theme: {
-                colors : {
-                    'primary' : '#166D8A',
-                    'secondary' : '#FDD741',
-                    'light' : '#F4F3ED',
-                    'primary10' : '#24B4A5',
-                    'primary20' : '#8FEDC2',
-                    'pink' : '#c17c74'
-                } ,
-                extend: {
-                    fontFamily : {
-                        serif : ['Abel', 'sans'],
-                        sansSerif : ['Abel', 'sans-serif']
-                    }
-            }  
-        }
-
-        }
-    </script>
+    <script src="./js/tailwindConfig.js"></script>
     <link rel="stylesheet" href="./style/style.css">
 </head>
 
@@ -166,8 +146,8 @@
 </div>
 </body>
 <!-- PAGE SPECIFICE ANIMATIION -->
-<script src="js/queue/priorityqueue/SortedPriorityQueue.js"></script>
-<script src="js/queue/priorityqueue/UnsortedPriorityQueue.js"></script>
+<script src="./js/datastructureControllers/queue/priorityqueue/SortedPriorityQueue.js"></script>
+<script src="./js/datastructureControllers/queue/priorityqueue/UnsortedPriorityQueue.js"></script>
 <script>
     var acc = document.getElementsByClassName("accordion");
     var i;
