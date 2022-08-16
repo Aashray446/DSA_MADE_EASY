@@ -7,7 +7,6 @@ const currentHeadMemory = document.getElementById('currentHeadMemory')
 const currentTailMemory = document.getElementById('currentTailMemory')
 
 const nodeShowcase = document.getElementById('nodeShowcase')
-
 const insertButton = document.getElementById('insertButton')
 const traverseButton = document.getElementById('traverseButton')
 
@@ -63,7 +62,7 @@ const getPointer = function(pointerName) {
 
    // Pointer animation related information
     // move pointer to next node
-    movePointerNext = function(pointerName){
+const movePointerNext = function(pointerName){
         for (let i = 0; i < container.childElementCount; i++) {
             // This is two ignore the arrows 
             if(container.children[i].classList.contains('arrow-5')){
@@ -77,7 +76,7 @@ const getPointer = function(pointerName) {
         }
     }
 
-   movePointerPrev = function(pointerName){
+const movePointerPrev = function(pointerName){
         for (let i = 0; i < container.childElementCount; i++) {
             if(container.children[i].classList.contains('arrow-5')){
                 continue;
@@ -90,7 +89,7 @@ const getPointer = function(pointerName) {
         }
     }
 
-    getPresentPointerPos = function(pointerName){
+ const getPresentPointerPos = function(pointerName){
         for (let i = 0; i < container.childElementCount; i++) {
             if(container.children[i].classList.contains('arrow-5')){
                 continue;
@@ -102,14 +101,14 @@ const getPointer = function(pointerName) {
     }
 
     //return a random number between 0-90
-    const randomNumber = function() {
-        return Math.floor(Math.random() * (90 - 0 + 1)) + 0;
+const randomNumber = function() {
+        return Math.floor(Math.random() * (90 - 0 + 1))  + 0;
     }
 
-    disableButton = function(element) {
+const disableButton = function(element) {
         element.setAttribute("disabled", "");
     }
-    enableButton = function(element) {
+const enableButton = function(element) {
         element.removeAttribute("disabled");
     }
 

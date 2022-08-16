@@ -1,4 +1,4 @@
-var treeContainer = document.getElementById('tree');
+const treeContainer = document.getElementById('tree');
 var bst;
 
 createValue = (value) => {
@@ -25,7 +25,7 @@ class binarySearchTree {
 
     }
 
-insert(value) {
+    insert(value) {
     if(value < parseInt(this.value.firstChild.innerText)) {
 
         if(this.left == null) {

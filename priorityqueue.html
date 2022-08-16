@@ -148,27 +148,8 @@
 <!-- PAGE SPECIFICE ANIMATIION -->
 <script src="./js/datastructureControllers/queue/priorityqueue/SortedPriorityQueue.js"></script>
 <script src="./js/datastructureControllers/queue/priorityqueue/UnsortedPriorityQueue.js"></script>
+<script src="./js/utils.js"></script>
 <script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-            for (i = 0; i < acc.length; i++) {
-                if (acc[i] != this && acc[i].classList.contains("active")) {
-                    acc[i].classList.toggle("active");
-                    acc[i].nextElementSibling.style.maxHeight = null;
-                }
-            }
-        });
-    }
-
     var pb = document.getElementById('progressBar');
     var played = document.getElementById('played');
     var vidlen = 100;
