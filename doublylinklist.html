@@ -65,17 +65,17 @@
                                     <div class="simulationpanel w-700">
                                         <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
                                             <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline disabled:bg-primary20" id="insertButton" onclick="dll.insert(document.getElementById('nodeData').value)" >INSERT OR CREATE</button>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline disabled:bg-primary20" id="insertButton" >INSERT OR CREATE</button>
 
                                             <input type="number" class="text-center" placeholder="Enter Data For Node" id="nodeData">
 
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline disabled:bg-primary20" id="traverseFromFront" onclick="dll.traverseFromFront()">TRAVERSE FROM FRONT</button>
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline disabled:bg-primary20" id="traverseFromBack" onclick="dll.traverseFromBack()">TRAVERSE FROM BACK</button>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline disabled:bg-primary20" id="traverseFromFront">TRAVERSE FROM FRONT</button>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline disabled:bg-primary20" id="traverseFromBack">TRAVERSE FROM BACK</button>
 
                                             <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700">SET DELAY</button>
                                             <input type="number" class="text-center" value="1000" placeholder="Enter the Index" id="delay">
 
-                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="dll.reset()">RESET</button>
+                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" id="resetButton">RESET</button>
                                         </div>
                                     </div>
                                     <div id="queueinfo" class="alert items-center" style="display: none; background: coral">
@@ -156,7 +156,7 @@
 
 
 <!-- PAGE SPECIFICE ANIMATIION -->
-<script src="./js/datastructureControllers/doubleLinkedList.js"></script>
-<script src="./js/utils.js"></script>
+<script defer type="module" src="./js/datastructureControllers/doubleLinkedList.js"></script>
+<!-- <script src="./js/utils.js"></script> -->
 
 </html>

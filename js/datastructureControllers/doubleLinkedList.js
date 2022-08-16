@@ -1,3 +1,6 @@
+//imports 
+import { activateAccordion, sleep } from "../utils.js"
+
 //Container Variable Definition 
 const container = document.getElementById('animation-container')
 const process = document.getElementById('process')
@@ -10,6 +13,12 @@ const nodeShowcase = document.getElementById('nodeShowcase')
 const insertButton = document.getElementById('insertButton')
 const traverseFromBackButton = document.getElementById('traverseFromBack')
 const traverseFromFrontButton = document.getElementById('traverseFromFront')
+
+//Controller Buttons 
+const insertBtnController = document.getElementById('insertButton')
+const traverseFromBackBtnController = document.getElementById('traverseFromBack')
+const traverseFromFrontBtnController = document.getElementById('traverseFromFront')
+const resetBtnController = document.getElementById('resetButton')
 
 function showcase_updateData(value){
     nodeShowcase.children[1].innerHTML = value
@@ -30,12 +39,7 @@ const createNode = function(prevData, currentData, nextData) {
     // Previous Address
     var prev  = document.createElement('div');
     prev.classList.add('data');
-    if( prevData == null) {
-        prevData.innerHTML = ' - '
-    }
-    else  {
-        prev.innerHTML =  prevData;
-    }
+    prevData == null ? prev.innerHTML = 'NULL' : prev.innerHTML = prevData;
 
     // Current Value
     var data  = document.createElement('div');
@@ -46,13 +50,7 @@ const createNode = function(prevData, currentData, nextData) {
     //Next Address
     var next = document.createElement('div');
     next.classList.add('data');
-    if( nextData === null) {
-        nextData.innerHTML = ' - '
-    }
-    else  {
-        next.innerHTML =  nextData;
-    }
-    
+    !nextData ? nextData.innerHTML = ' - ' : next.innerHTML =  nextData;
 
     element.appendChild(prev)
     element.appendChild(data)
@@ -76,7 +74,7 @@ const getPointer = function(pointerName) {
 
    // Pointer animation related information
     // move pointer to next node
-    movePointerNext = function(pointerName){
+const movePointerNext = function(pointerName){
         for (let i = 0; i < container.childElementCount; i++) {
             // This is two ignore the arrows 
             if(container.children[i].classList.contains('arrow-6')){
@@ -89,8 +87,7 @@ const getPointer = function(pointerName) {
             }
         }
     }
-
-   movePointerPrev = function(pointerName){
+const movePointerPrev = function(pointerName){
         for (let i = 0; i < container.childElementCount; i++) {
             if(container.children[i].classList.contains('arrow-6')){
                 continue;
@@ -103,21 +100,11 @@ const getPointer = function(pointerName) {
         }
     }
 
-    getPresentPointerPos = function(pointerName){
-        for (let i = 0; i < container.childElementCount; i++) {
-            if(container.children[i].classList.contains('arrow-6')){
-                continue;
-            }
-            if(container.children[i].lastChild.classList.contains(pointerName)){
-                return i;
-            }
-        }
-    }
-
-disableButton = function(element) {
+const disableButton = function(element) {
     element.setAttribute("disabled", "");
 }
-enableButton = function(element) {
+
+const enableButton = function(element) {
     element.removeAttribute("disabled");
 }
 
@@ -371,99 +358,11 @@ function updateInfoScreen(element, information) {
 }
 
 // Util functions
-function sleep(ms) {
-    return new Promise(
-      resolve => setTimeout(resolve, ms)
-    );
-  }
 
+activateAccordion()
 
-// //   SUMITHA'S ORGINAL CONTRIBUTION 
-// // Doubly linked list
-// class DoublyLinkedList {
-//     constructor() {
-//         this.head = null;
-//         this.tail = null;
-//         this.size = 0;
-//     }
-
-//     //insert at front
-//     insert(value) {
-//         const newNode = new node(value);
-//         if (this.head === null) {
-//             this.head = newNode;
-//             this.tail = newNode;
-//             this.size++;
-//             createNode(5, value, 5);
-//             return;
-//         }
-//         newNode.next = this.head;
-//         this.head.prev = newNode;
-//         this.head = newNode;
-//         newNode.prev = null;
-//         this.size++;
-//         createNode(5, value, 5);
-//         return;
-//     }
-
-//     //insert at back
-//     insertAtBack(value) {
-//         const newNode = new node(value);
-//         if (this.tail === null) {
-//             this.tail = newNode;
-//             this.head = newNode;
-//             this.size++;
-//             createNode(5, value, 5);
-//             return;
-//         }
-//         newNode.prev = this.tail;
-//         this.tail.next = newNode;
-//         this.tail = newNode;
-//         newNode.next = null;
-//         this.size++;
-//         createNode(5, value, 5);
-//         return;
-//     }
-
-//     //insert at index
-//     insertAt(value, index) {
-//         if (index > this.size) {
-//             return;
-//         }
-//         if (index === 0) {
-//             this.insert(value);
-//             return;
-//         }
-//         const newNode = new node(value);
-//         let current = this.head;
-//         let count = 0;
-//         while (count < index - 1) {
-//             current = current.next;
-//             count++;
-//         }
-//         newNode.next = current.next;
-//         current.next = newNode;
-//         newNode.prev = current;
-//         newNode.next.prev = newNode;
-//         createNode(5, value, 5);
-//         this.size++;
-//         return;
-//     }
-
-//     //traverse the list
-//     traverseFromFront() {
-//         let current = this.head;
-//         while (current) {
-//             console.log(current.value);
-//             current = current.next;
-//         }
-//     }
-//     //traverse the list
-//     traverseFromBack() {
-//         let current = this.tail;
-//         while (current) {
-//             console.log(current.value);
-//             current = current.prev;
-//         }
-//     }
-// }
+// Attaching Event Listeners
+insertBtnController.addEventListener('click', () =>  dll.insert(document.getElementById('nodeData').value))
+traverseFromBackBtnController.addEventListener('click', () => dll.traverseFromBack())
+traverseFromFrontBtnController.addEventListener('click', () => dll.traverseFromFront())
+resetBtnController.addEventListener('click', () => dll.reset())

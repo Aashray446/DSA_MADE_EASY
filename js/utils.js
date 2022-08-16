@@ -1,9 +1,8 @@
-class GeneralUtil {
-    static getRandomInt(min, max) {
+const getRandomInt = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    createElement = (data) => {
+const createElement = (data) => {
         const element = document.createElement('div');
         element.classList.add(this.structure)
         element.style.backgroundColor = data?.color
@@ -12,7 +11,7 @@ class GeneralUtil {
         return element
     }
 
-    getRandomColor = () => {
+const getRandomColor = () => {
         var trans = '0.3';
         var color = 'rgba(';
         for (var i = 0; i < 3; i++) {
@@ -22,35 +21,19 @@ class GeneralUtil {
         return color;
     }
 
-}
-
-class QueueUtil {
-    wrapFR = (value, isfront) => {
-        if(isfront) {
-            return `<p class="text-center">Front is ${value}</p>`
+const wrapFR = (value, isfront) => {
+            if(isfront) return `<p class="text-center">Front is ${value}</p>`
+            return `<p class="text-center">Rear is ${value}</p>`
         }
-        return `<p class="text-center">Rear is ${value}</p>`
-    }
-}
-
-
-
-const genralUtils = new GeneralUtil();
-const queueUtils = new QueueUtil();
-
 
 //  ACCORDION 
-let acc = document.getElementsByClassName("accordion");
-let i;
-for (i = 0; i < acc.length; i++) {
+const activateAccordion = () => {
+    let acc = document.getElementsByClassName("accordion");
+    for (let i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {
         this.classList.toggle("active");
         let panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-        } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-        }
+        panel.style.maxHeight ?  panel.style.maxHeight = null : panel.style.maxHeight = panel.scrollHeight + "px";
         for (i = 0; i < acc.length; i++) {
             if (acc[i] != this && acc[i].classList.contains("active")) {
                 acc[i].classList.toggle("active");
@@ -58,4 +41,14 @@ for (i = 0; i < acc.length; i++) {
             }
         }
     });
+    }
 }
+
+function sleep(ms) {
+    return new Promise(
+      resolve => setTimeout(resolve, ms)
+    );
+  }
+
+
+export {getRandomInt, createElement, getRandomColor, wrapFR, activateAccordion, sleep}
