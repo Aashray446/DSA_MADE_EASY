@@ -1,3 +1,7 @@
+//Imports
+import { getRandomInt, sleep, activateAccordion } from "../utils.js";
+
+// Animation related Elements
 const container = document.getElementById('animation-container')
 const container2 = document.getElementById('animation-container2')
 const structure = 'arrayBox'
@@ -5,9 +9,43 @@ const errorBox = document.getElementById("error");
 const reverse = document.getElementById("reverse");
 
 
+// User Input Elements
+const arrayLength = document.getElementById("arrayLength");
+const insertData = document.getElementById("insertData");
+const index = document.getElementById("index");
+const deleteAtIndex = document.getElementById("delIndex");
+const deleteValue =  document.getElementById("delValue");
+const replaceIndex = document.getElementById("replaceIndex");
+const replaceValue = document.getElementById("replaceValue");
+const searchValue = document.getElementById("search");
+
+const reverseBtn = document.getElementById("reverseBtn");
+const randomBtn = document.getElementById("randomBtn");
+const resetBtn = document.getElementById("resetBtn");
+const createBtn = document.getElementById("createBtn");
+const replaceBtn = document.getElementById("replaceBtn");
+const deleteBtn = document.getElementById("deleteBtn");
+const insertBtn = document.getElementById("insertBtn");
+
+const allInputFields = document.querySelectorAll("#simulationPanel input, #simulationPanel button");
+
+const disableAllInputFields = () => {
+    allInputFields.forEach(input => {
+        input.disabled = true;
+    } );
+}
+
+const enableAllInputFields = () => {
+    allInputFields.forEach(input => {
+        input.disabled = false;
+    } );
+}
+
+
+
 const createElement = (value, ind) => {
     const element = document.createElement('div');
-    element.classList.add('arrayBox')
+    element.classList.add(structure)
 
 
     // Current Value
@@ -29,7 +67,7 @@ const createElement = (value, ind) => {
       
 }
 
-class ArrayImp{
+class ArrayList{
 
 
     dataArray = new Array();
@@ -265,15 +303,13 @@ class ArrayImp{
                 container2.append(createElement(this.dataArray[i], (this.dataArray.length-i-1)));
             }
             this.reverseArray = new Array();
-            await sleep(10000);
+            await sleep(2000);
             container2.innerHTML = '';
             reverse.style.display = "none";
             
         }
     }
- getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+
 
     randomArray(){
         this.length = 10;
@@ -317,14 +353,51 @@ class ArrayImp{
 
 
 }
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
-function sleep(ms) {
-    return new Promise(
-      resolve => setTimeout(resolve, ms)
-    );
-  }
 
-const array = new ArrayImp();
+
+const array = new ArrayList();
+activateAccordion();
+
+
+// User Input Event Listeners
+reverseBtn.addEventListener('click', async() => {
+    disableAllInputFields();
+    await array.reverse()
+    enableAllInputFields();
+} );
+resetBtn.addEventListener('click', () => array.reset());
+randomBtn.addEventListener('click', () => array.randomArray());
+
+searchBtn.addEventListener('click', async() => {
+    disableAllInputFields();
+    await array.search(searchInput.value);
+    searchInput.value = '';
+    enableAllInputFields();
+});
+
+replaceBtn.addEventListener('click', async() => {
+    disableAllInputFields();
+    await array.replaceValue(replaceIndex.value, replaceValue.value);
+    replaceIndex.value = '';
+    replaceValue.value = '';
+    enableAllInputFields();
+});
+
+deleteBtn.addEventListener('click', () => {
+    array.deleteAtIndex(deleteAtIndex.value, deleteValue.value);
+    deleteAtIndex.value = '';
+    deleteValue.value = '';
+});
+
+insertBtn.addEventListener('click', () => {
+    array.insertAtIndex(insertIndex.value, insertValue.value);
+    insertIndex.value = '';
+    insertValue.value = '';
+});
+
+createBtn.addEventListener('click', () => {
+    array.create(createValue.value);
+    createValue.value = '';
+});
+
