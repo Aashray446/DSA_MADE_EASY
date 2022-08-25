@@ -391,13 +391,11 @@ deleteBtn.addEventListener('click', () => {
 });
 
 insertBtn.addEventListener('click', () => {
-    array.insertAtIndex(insertIndex.value, insertValue.value);
-    insertIndex.value = '';
-    insertValue.value = '';
+    array.insertAtIndex(insertData.value, index.value);
 });
 
 createBtn.addEventListener('click', () => {
-    array.create(createValue.value);
-    createValue.value = '';
+    array.setLength(arrayLength.value);
+    arrayLength.value = '';
 });
 
