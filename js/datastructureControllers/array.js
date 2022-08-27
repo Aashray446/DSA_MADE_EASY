@@ -361,22 +361,24 @@ activateAccordion();
 
 
 // User Input Event Listeners
-reverseBtn.addEventListener('click', async() => {
-    disableAllInputFields();
+reverseBtn.addEventListener('click', async function(){
+    // disableAllInputFields();
+    this.disabled = true;
     await array.reverse()
-    enableAllInputFields();
+    this.disabled = false;
+    // enableAllInputFields();
 } );
 resetBtn.addEventListener('click', () => array.reset());
 randomBtn.addEventListener('click', () => array.randomArray());
 
-searchBtn.addEventListener('click', async() => {
+searchBtn.addEventListener('click', async function(){
     disableAllInputFields();
-    await array.search(searchInput.value);
-    searchInput.value = '';
+    await array.search(searchValue.value);
+    searchValue.value = '';
     enableAllInputFields();
 });
 
-replaceBtn.addEventListener('click', async() => {
+replaceBtn.addEventListener('click', async function(){
     disableAllInputFields();
     await array.replaceValue(replaceIndex.value, replaceValue.value);
     replaceIndex.value = '';
@@ -384,17 +386,17 @@ replaceBtn.addEventListener('click', async() => {
     enableAllInputFields();
 });
 
-deleteBtn.addEventListener('click', () => {
+deleteBtn.addEventListener('click', async function(){
     array.deleteAtIndex(deleteAtIndex.value, deleteValue.value);
     deleteAtIndex.value = '';
     deleteValue.value = '';
 });
 
-insertBtn.addEventListener('click', () => {
+insertBtn.addEventListener('click', async function(){
     array.insertAtIndex(insertData.value, index.value);
 });
 
-createBtn.addEventListener('click', () => {
+createBtn.addEventListener('click', async function(){
     array.setLength(arrayLength.value);
     arrayLength.value = '';
 });

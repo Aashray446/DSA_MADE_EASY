@@ -66,36 +66,36 @@
                                     <div class="simulationpanel w-700" id="simulationPanel">
                                         <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
                                             <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" id="createBtn" onclick="array.setLength(document.getElementById('arrayLength').value)">CREATE ARRAY</button>
-                                            <input type="number" id="arrayLength" class="text-center" placeholder="LENGTH" onkeypress="Javascipt: if (event.keyCode ==13) array.setLength(document.getElementById('arrayLength').value)">
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" id="createBtn">CREATE ARRAY</button>
+                                            <input type="number" id="arrayLength" class="text-center" placeholder="LENGTH">
 
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" id="insertBtn" onclick="array.insertAtIndex(document.getElementById('insertData').value, document.getElementById('index').value)">INSERT</button>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" id="insertBtn">INSERT</button>
                                             <div class="grid grid-cols-2 gap-5 tracking-widest" >
-                                                <input type="number" id="insertData" class="text-center" placeholder=" VALUE"  onkeypress="Javascipt: if (event.keyCode ==13) array.insertAtIndex(document.getElementById('insertData').value, document.getElementById('index').value)">
-                                                <input type="number" id="index" class="text-center" placeholder="INDEX"  onkeypress="Javascript: if(event.keyCode == 13) array.insertAtIndex(document.getElementById('insertData').value, document.getElementById('index').value)">
+                                                <input type="number" id="insertData" class="text-center" placeholder=" VALUE">
+                                                <input type="number" id="index" class="text-center" placeholder="INDEX">
                                             </div>
 
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" id="deleteBtn" onclick="array.deleteAll(document.getElementById('delindex').value,document.getElementById('delvalue').value)">DELETE</button>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" id="deleteBtn">DELETE</button>
 
                                             <div class="grid grid-cols-2 gap-5 tracking-widest" >
-                                                <input type="number" id="delIndex" class="text-center" placeholder="INDEX"  onkeypress="Javascipt: if (event.keyCode ==13) array.deleteAll(document.getElementById('delIndex').value, document.getElementById('delValue').value)">
-                                                <input type="number" id="delValue" class="text-center" placeholder="VALUE" onkeypress="Javascript: if(event.keyCode == 13) array.deleteAll(document.getElementById('delIndex').value,document.getElementById('delValue').value)">
+                                                <input type="number" id="delIndex" class="text-center" placeholder="INDEX">
+                                                <input type="number" id="delValue" class="text-center" placeholder="VALUE">
                                             </div>
 
                                             <!-- REPlace Value-->
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" id="replaceBtn" onclick="array.replaceValue(document.getElementById('replaceIndex').value,document.getElementById('replaceValue').value)">REPLACE</button>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" id="replaceBtn">REPLACE</button>
                                             <div class="grid grid-cols-2 gap-5 tracking-widest" >
-                                                <input type="number" id="replaceIndex" class="text-center" placeholder="INDEX"  onkeypress="Javascipt: if (event.keyCode ==13) array.replaceValue(document.getElementById('replaceIndex').value, document.getElementById('replaceValue').value)">
-                                                <input type="number" id="replaceValue" class="text-center" placeholder="VALUE" onkeypress="Javascript: if(event.keyCode == 13) array.replaceValue(document.getElementById('replaceIndex').value,document.getElementById('replaceValue').value)">
+                                                <input type="number" id="replaceIndex" class="text-center" placeholder="INDEX">
+                                                <input type="number" id="replaceValue" class="text-center" placeholder="VALUE">
                                             </div>
 
 
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700" id="searchBtn" onclick="array.search(document.getElementById('search').value)">SEARCH</button>
-                                            <input type="number" id="search" class="text-center" placeholder="VALUE" onkeypress="Javascipt: if (event.keyCode ==13) array.search(document.getElementById('search').value)">
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700" id="searchBtn">SEARCH</button>
+                                            <input type="number" id="search" class="text-center" placeholder="VALUE">
 
-                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" id="reverseBtn" onclick="array.reverse()">REVERSE</button>
-                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" id="randomBtn" onclick="array.randomArray()">RANDOM ARRAY</button>
-                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" id="resetBtn" onclick="array.reset()">RESET</button>
+                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" id="reverseBtn">REVERSE</button>
+                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" id="randomBtn" >RANDOM ARRAY</button>
+                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" id="resetBtn" >RESET</button>
 
                                         </div>
                                     </div>
