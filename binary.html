@@ -63,21 +63,21 @@
                                     <div class="simulationpanel w-700">
                                         <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
                                             <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="setBst(document.getElementById('create').value)" >CREATE TREE</button>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" id="createBtn" >CREATE TREE</button>
 
                                             <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" id="create">
 
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" onclick="bst.insert(document.getElementById('insert').value)">INSERT DATA</button>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" id="insertBtn">INSERT DATA</button>
 
                                             <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" id="insert">
 
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700" onclick="bst.search(document.getElementById('search').value)" >SEARCH</button>
+                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700" id="searchBtn" >SEARCH</button>
 
 
                                             <input type="number" class="text-center" placeholder="ENTER SEARCH DIGIT" id="search">
 
-                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="generateRandomBst()">GENERATE RANDOM</button>
-                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" onclick="bst.reset()">RESET</button>
+                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" id="randomBstBtn">GENERATE RANDOM</button>
+                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" id="resetBtn">RESET</button>
                                         </div>
                                     </div>
                                     <div id="queueinfo" class="alert items-center" style="display: none; background: coral">
@@ -128,7 +128,6 @@
 </body>
 
 
-<script src="./js/datastructureControllers/binaryTree.js"></script>
-<script src="./js/utils.js"></script>
+<script type="module" defer src="./js/datastructureControllers/binaryTree.js"></script>
 
 </html>

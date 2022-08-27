@@ -1,5 +1,5 @@
 //imports 
-import { activateAccordion, sleep } from "../utils.js"
+import { sleep } from "../utils.js"
 
 //Container Variable Definition 
 const container = document.getElementById('animation-container')
@@ -357,11 +357,9 @@ function updateInfoScreen(element, information) {
     element.innerHTML = information;
 }
 
-// Util functions
 
-activateAccordion()
 
-// Attaching Event Listeners
+// Button Event Listners Setup
 insertBtnController.addEventListener('click', () =>  dll.insert(document.getElementById('nodeData').value))
 traverseFromBackBtnController.addEventListener('click', () => dll.traverseFromBack())
 traverseFromFrontBtnController.addEventListener('click', () => dll.traverseFromFront())

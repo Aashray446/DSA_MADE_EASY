@@ -1,5 +1,5 @@
 //Imports
-import { getRandomInt, sleep, activateAccordion } from "../utils.js";
+import { getRandomInt, sleep} from "../utils.js";
 
 // Animation related Elements
 const container = document.getElementById('animation-container')
@@ -357,10 +357,10 @@ class ArrayList{
 
 
 const array = new ArrayList();
-activateAccordion();
 
 
-// User Input Event Listeners
+
+// Button Event Listners Setup
 reverseBtn.addEventListener('click', async function(){
     // disableAllInputFields();
     this.disabled = true;

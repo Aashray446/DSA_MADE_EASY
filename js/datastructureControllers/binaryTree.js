@@ -1,7 +1,21 @@
-const treeContainer = document.getElementById('tree');
-var bst;
+import { getRandomInt, sleep} from "../utils.js";
 
-createValue = (value) => {
+const treeContainer = document.getElementById('tree');
+let bst;
+
+// Controller Buttons
+const createBtn = document.getElementById("createBtn")
+const insertBtn = document.getElementById("insertBtn")
+const searchBtn = document.getElementById("searchBtn")
+const randomBstBtn = document.getElementById("randomBstBtn")
+const resetBtn = document.getElementById("resetBtn")
+
+// Inputs 
+const createInput =  document.getElementById('create')
+const inserInput =  document.getElementById('insert')
+const searchInput = document.getElementById('search')
+
+const createValue = (value) => {
 	const li = document.createElement('li');
 	const a = document.createElement('a');
 	a.innerText = value;
@@ -10,6 +24,8 @@ createValue = (value) => {
 }
 
 class binarySearchTree {
+
+
     constructor(value, firstTime) {
         this.value = createValue(value);
 
@@ -113,8 +129,7 @@ class binarySearchTree {
 
 
 
-
-setBst = function(value) {
+const setBst = function(value) {
     if(bst!= null) {
         bst.reset();
         bst == null;
@@ -122,30 +137,27 @@ setBst = function(value) {
         bst = new binarySearchTree(value, true);
 }
 
-
-//get Delay Value
-function getDelay() {
-    return document.getElementById('delay').value
-}
-
-// Util functions
-function sleep(ms) {
-    return new Promise(
-      resolve => setTimeout(resolve, ms)
-    );
-    
-  }
-
-  getRandomInt = function(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-generateRandomBst = function() {
+const generateRandomBst = function() {
     if(bst != null) {
         bst.reset();
     }
     bst = new binarySearchTree(getRandomInt(0, 100), true);
-    for(i = 0; i < 15; i++){
+    for(let i = 0; i < 15; i++){
         bst.insert(getRandomInt(0, 100));
     }
 }
+
+
+// Button Event Listners Setup
+createBtn.addEventListener('click', ()=>{
+    setBst(createInput.value)
+})
+insertBtn.addEventListener('click', () => { 
+    bst.insert(inserInput.value)
+})
+searchBtn.addEventListener('click', () => {
+    bst.search(searchInput.value)
+})
+randomBstBtn.addEventListener('click', () => generateRandomBst())
+resetBtn.addEventListener('click', () => bst.reset())
+

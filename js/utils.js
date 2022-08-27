@@ -1,3 +1,21 @@
+//  ACCORDION 
+export default (() => {
+    let acc = document.getElementsByClassName("accordion");
+    for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        let panel = this.nextElementSibling;
+        panel.style.maxHeight ?  panel.style.maxHeight = null : panel.style.maxHeight = panel.scrollHeight + "px";
+        for (i = 0; i < acc.length; i++) {
+            if (acc[i] != this && acc[i].classList.contains("active")) {
+                acc[i].classList.toggle("active");
+                acc[i].nextElementSibling.style.maxHeight = null;
+            }
+        }
+    });
+    }
+})()
+
 const getRandomInt = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -26,23 +44,7 @@ const wrapFR = (value, isfront) => {
             return `<p class="text-center">Rear is ${value}</p>`
         }
 
-//  ACCORDION 
-const activateAccordion = () => {
-    let acc = document.getElementsByClassName("accordion");
-    for (let i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        let panel = this.nextElementSibling;
-        panel.style.maxHeight ?  panel.style.maxHeight = null : panel.style.maxHeight = panel.scrollHeight + "px";
-        for (i = 0; i < acc.length; i++) {
-            if (acc[i] != this && acc[i].classList.contains("active")) {
-                acc[i].classList.toggle("active");
-                acc[i].nextElementSibling.style.maxHeight = null;
-            }
-        }
-    });
-    }
-}
+
 
 function sleep(ms) {
     return new Promise(
@@ -51,4 +53,4 @@ function sleep(ms) {
   }
 
 
-export {getRandomInt, createElement, getRandomColor, wrapFR, activateAccordion, sleep}
+export {getRandomInt, createElement, getRandomColor, wrapFR, sleep}
