@@ -1,5 +1,5 @@
 //Imports
-import { getRandomInt, sleep} from "../utils.js";
+import { getRandomInt, sleep} from "./utils";
 
 // Animation related Elements
 const container = document.getElementById('animation-container')
@@ -14,7 +14,7 @@ const arrayLength = document.getElementById("arrayLength");
 const insertData = document.getElementById("insertData");
 const index = document.getElementById("index");
 const deleteAtIndex = document.getElementById("delIndex");
-const deleteValue =  document.getElementById("delValue");
+const deleteValue = document.getElementById("delValue");
 const replaceIndex = document.getElementById("replaceIndex");
 const replaceValue = document.getElementById("replaceValue");
 const searchValue = document.getElementById("search");
@@ -27,21 +27,37 @@ const replaceBtn = document.getElementById("replaceBtn");
 const deleteBtn = document.getElementById("deleteBtn");
 const insertBtn = document.getElementById("insertBtn");
 
-const allInputFields = document.querySelectorAll("#simulationPanel input, #simulationPanel button");
+const allInputFields = document.querySelectorAll("#simulationPanel input");
+const numberFields = document.querySelectorAll("input[type='number']");
 
 const disableAllInputFields = () => {
     allInputFields.forEach(input => {
         input.disabled = true;
-    } );
+    });
 }
 
 const enableAllInputFields = () => {
     allInputFields.forEach(input => {
         input.disabled = false;
-    } );
+    });
 }
 
+const disableAllInputFieldsExceptLength = () => {
+    allInputFields.forEach(input => {
+        //console.log(input);
+        if (input.id === "arrayLength") {
+            input.disabled = false;
+        } else {
+            input.disabled = true;
+        }
+    });
+};
 
+const clearNumberFields = () => {
+    numberFields.forEach(field => {
+        field.value = '';
+    });
+};
 
 const createElement = (value, ind) => {
     const element = document.createElement('div');
@@ -49,234 +65,235 @@ const createElement = (value, ind) => {
 
 
     // Current Value
-    var data  = document.createElement('div');
+    var data = document.createElement('div');
     data.classList.add('data');
     data.innerHTML = value;
 
     //Next Address
     var index = document.createElement('div');
     index.classList.add('index');
-        index.innerHTML = ind;
-    
-    
+    index.innerHTML = ind;
+
+
     element.appendChild(data)
     element.appendChild(index)
-  //  container.append(element)
+    //  container.append(element)
 
     return element;
-      
+
 }
 
-class ArrayList{
-
+class ArrayList {
 
     dataArray = new Array();
     reverseArray = new Array();
     arrayIndex = 0;
-    length = -1;
+    length = 0;
 
-   
-    
-    setLength(value){
-        this.length = value;
+    setLength(value) {
+        this.length = parseInt(value);
         this.reset();
-        if(value == ''){
+        if (value == '') {
             errorBox.style.display = "block";
             errorBox.innerHTML = "Please enter length";
             return;
         }
         errorBox.style.display = "block";
-        errorBox.innerText = "An Array of length  " + value  + " is created";
+        errorBox.innerText = "An Array of length  " + value + " is created";
     }
 
-    insert(value){
+    insert(value) {
         errorBox.style.display = "none";
-        if(this.length == -1){
+        if (this.length == -1) {
             errorBox.style.display = "block";
             errorBox.innerHTML = "Please enter length";
             return;
         }
-        if(this.isFull()){
+        if (this.isFull()) {
             errorBox.style.display = "block";
             errorBox.innerText = "Array is Full";
         }
-        else{
-            if(value == '' || value == undefined || value >=99 || value <= -99){
-                value = this.getRandomInt(0, 99);
+        else {
+            if (value == '' || value == undefined || value >= 99 || value <= -99) {
+                value = getRandomInt(0, 99);
             }
-        container.append(createElement(value,this.arrayIndex));
-        this.dataArray.push(value);
-        this.arrayIndex++;
+            container.append(createElement(value, this.arrayIndex));
+            this.dataArray.push(value);
+            this.arrayIndex++;
         }
-        
+
     }
 
-    insertAtIndex(value, index){
-        if(this.isFull()){
+    insertAtIndex(value, index) {
+        if (this.isFull()) {
             errorBox.style.display = "block";
             errorBox.innerText = "Array is Full";
             return;
         }
-        if(index == '' ){
+        if (index == '') {
             this.insert(value);
             return;
-        }
-        else{
-            if(index == 0 && this.dataArray.length == 0){
+        } else {
+            if (index == 0 && this.dataArray.length == 0) {
                 this.insert(value);
-                return
+                return;
             }
-            console.log(container.children[index])
-            container.children[index].insertAdjacentElement("beforeBegin", createElement(value, index));
-            this.dataArray.splice(index,0, value)
+
+            console.log(container.children[parseInt(index)]);
+            this.dataArray.splice(parseInt(index), 0, value);
             this.arrayIndex++;
+            container.children[parseInt(index)].insertAdjacentElement("beforeBegin", createElement(value, parseInt(index) + 1));
             this.replaceIndex(index);
 
         }
-       
+
     }
 
-    replaceIndex(index){
-        for(let i = parseInt(index); i<this.dataArray.length-1; i++){
+    replaceIndex(index) {
+        for (let i = parseInt(index); i < this.dataArray.length; i++) {
             container.children[i].children[1].innerHTML = i;
-           
-            
-     }
-} 
-    deleteAll(index,value){
-        if(index == '' && value == ''){
+        }
+    }
+
+    deleteAll(index, value) {
+        if (index == '' && value == '') {
             this.delete();
             return;
         }
-        else if(index == '' && value != ''){
+        else if (index == '' && value != '') {
             this.deleteAtValue(value);
             return;
         }
-        else if(value == '' && index != ''){
+        else if (value == '' && index != '') {
             this.deleteAtIndex(index);
             return;
         }
-        else{
+        else {
             errorBox.style.display = "block";
             errorBox.innerText = "Please enter either index or value";
         }
     }
 
 
-    async delete(){
-        if(this.isEmpty()){
+    async delete() {
+
+        if (this.isEmpty()) {
             errorBox.style.display = "block";
             errorBox.innerText = "Array is Empty";
         }
-        else{
-            container.children[this.dataArray.length-1].children[0].classList.add('active');
-            await sleep(1000);
+        else {
+            container.children[this.dataArray.length - 1].children[0].classList.add('active');
+            await sleep(300);
             this.dataArray.pop();
             container.children[this.dataArray.length].remove();
-            container.children[this.dataArray.length].children[0].classList.remove('active');
+            //container.children[this.dataArray.length].children[0].classList.remove('active');
             this.arrayIndex--;
 
 
         }
-    }  
-    async deleteAtIndex(index){
-        if(index == '' ){
+    }
+
+    async deleteAtIndex(index) {
+
+        if (index == '') {
             this.delete(value);
             return;
         }
-        if(index >= this.dataArray.length){
+        if (index >= this.dataArray.length) {
             errorBox.style.display = "block";
             errorBox.innerText = "Index is out of range";
-        
+
         }
-        else if(this.isEmpty()){
+        else if (this.isEmpty()) {
             errorBox.style.display = "block";
             errorBox.innerText = "Array is Empty";
         }
-        else{
+        else {
             container.children[index].children[0].classList.add('active');
-            await sleep(1000);
+            await sleep(300);
             container.children[index].remove();
             container.children[index].children[0].classList.remove('active');
-            this.replaceIndex(index-1)
-            this.dataArray.splice(index,1)
-            console.log(this.dataArray)
+            this.replaceIndex(index - 1)
+            this.dataArray.splice(index, 1)
+            //console.log(this.dataArray)
         }
     }
 
-    async deleteAtValue(value){
+    async deleteAtValue(value) {
         let index = -1;
-        if(this.isEmpty()){
+        if (this.isEmpty()) {
             errorBox.style.display = "block";
             errorBox.innerText = "Array is Empty";
         }
-        else{
-            for(let i = 0; i<this.dataArray.length; i++){
+        else {
+            for (let i = 0; i < this.dataArray.length; i++) {
                 container.children[i].children[0].classList.add('active');
-                if(this.dataArray[i] == value){
-                    await sleep(1000);
+                if (this.dataArray[i] == value) {
+                    await sleep(300);
                     container.children[i].children[0].classList.remove('active');
                     index = i;
                     break;
 
                 }
-                await sleep(1000);
+                await sleep(300);
                 container.children[i].children[0].classList.remove('active');
             }
-            if(index == -1){
+            if (index == -1) {
                 errorBox.style.display = "block";
                 errorBox.innerText = "Value is not found";
             }
-            else{
+            else {
                 container.children[index].remove();
-                this.replaceIndex(index-1)
-                this.dataArray.splice(index,1)
+                this.replaceIndex(index - 1)
+                this.dataArray.splice(index, 1)
             }
         }
     }
 
 
-    isFull(){
-        console.log(this.dataArray.length)
-        if(this.dataArray.length == this.length){
+    isFull() {
+        //console.log(this.dataArray.length)
+        if (this.dataArray.length === this.length) {
             return true;
         }
         return false;
     }
 
-    isEmpty(){
-        if(this.dataArray.length == 0){
+    isEmpty() {
+        if (this.dataArray.length === 0) {
             return true;
         }
         return false;
     }
 
-    reset = function() {
+    reset = function () {
         errorBox.style.display = "none";
         reverse.style.display = "none";
-        container.innerHTML = '' 
-        container2.innerHTML = ''   
+        container.innerHTML = ''
+        container2.innerHTML = ''
         this.dataArray = new Array();
         this.arrayIndex = 0;
+        clearNumberFields();
+        disableAllInputFieldsExceptLength();
     }
 
-   async search(value){
-        if(this.isEmpty()){
+    async search(value) {
+        if (this.isEmpty()) {
             errorBox.style.display = "block";
             errorBox.innerText = "Array is Empty";
         }
-        else{
-            for(let i = 0; i<this.dataArray.length; i++){
+        else {
+            for (let i = 0; i < this.dataArray.length; i++) {
                 container.children[i].children[0].classList.add('active');
-                if(this.dataArray[i] == value){
-                    await sleep(1000);
+                if (this.dataArray[i] == value) {
+                    await sleep(300);
                     errorBox.style.display = "block";
                     errorBox.innerText = "Value is found at index " + i;
                     container.children[i].children[0].classList.remove('active');
                     return i;
 
                 }
-                await sleep(1000);
+                await sleep(300);
                 container.children[i].children[0].classList.remove('active');
             }
             errorBox.style.display = "block";
@@ -284,120 +301,122 @@ class ArrayList{
         }
     }
 
-    async reverse(){
+    async reverse() {
         container2.innerHTML = ' ';
-        if(this.isEmpty()){
+        if (this.isEmpty()) {
             errorBox.style.display = "block";
             errorBox.innerText = "Array is Empty";
         }
-        else{
+        else {
             errorBox.style.display = "block";
             errorBox.innerText = "Original Array";;
-            for(let i = this.dataArray.length-1; i>=0; i--){
+            for (let i = this.dataArray.length - 1; i >= 0; i--) {
                 container.children[i].children[0].classList.add('active');
                 this.reverseArray.push(this.dataArray[i]);
-                await sleep(1000);
+                await sleep(300);
                 container.children[i].children[0].classList.remove('active');
                 reverse.style.display = "block";
                 reverse.innerHTML = "Reversed Array";
-                container2.append(createElement(this.dataArray[i], (this.dataArray.length-i-1)));
+                container2.append(createElement(this.dataArray[i], (this.dataArray.length - i - 1)));
             }
             this.reverseArray = new Array();
             await sleep(2000);
             container2.innerHTML = '';
             reverse.style.display = "none";
-            
+
         }
     }
 
 
-    randomArray(){
+    randomArray() {
         this.length = 10;
         this.dataArray = new Array();
-            errorBox.style.display = "block";
-            errorBox.innerText = "Random Array";
-            container.innerHTML =' ';
-            for(let i = 0; i<10; i++){
-                let a = getRandomInt(0,99);
-                this.dataArray.push(a);
-                container.append(createElement(a, i));
+        errorBox.style.display = "block";
+        errorBox.innerText = "Random Array";
+        container.innerHTML = ' ';
+        arrayLength.value = '10';
+        enableAllInputFields();
+        
+        for (let i = 0; i < 10; i++) {
+            let a = getRandomInt(0, 99);
+            this.dataArray.push(a);
+            container.append(createElement(a, i));
         }
     }
 
-    async replaceValue(index ,value){
-        if(index == '' || value == ''){
+    async replaceValue(index, value) {
+        if (index == '' || value == '') {
             errorBox.style.display = "block";
             errorBox.innerText = "Please enter both value and index";
         }
-        else if(index >= this.dataArray.length){
+        else if (this.dataArray.length < parseInt(index)) {
             errorBox.style.display = "block";
             errorBox.innerText = "Index is out of range";
         }
-        else if(this.isEmpty()){
+        else if (this.isEmpty()) {
             errorBox.style.display = "block";
             errorBox.innerText = "Array is Empty";
         }
-        else{
+        else {
             container.children[index].children[0].classList.add('active');
-            await sleep(1000);
+            await sleep(300);
             container.children[index].children[0].classList.remove('active');
             container.children[index].innerHTML = "";
             container.children[index].append(createElement(value, index));
             this.dataArray[index] = value;
         }
-
-        
     }
-
-
-
-
 }
-
-
 
 const array = new ArrayList();
 
-
-
 // Button Event Listners Setup
-reverseBtn.addEventListener('click', async function(){
+reverseBtn.addEventListener('click', async function () {
     // disableAllInputFields();
     this.disabled = true;
     await array.reverse()
     this.disabled = false;
     // enableAllInputFields();
-} );
+});
 resetBtn.addEventListener('click', () => array.reset());
 randomBtn.addEventListener('click', () => array.randomArray());
 
-searchBtn.addEventListener('click', async function(){
+searchBtn.addEventListener('click', async function () {
     disableAllInputFields();
     await array.search(searchValue.value);
     searchValue.value = '';
     enableAllInputFields();
 });
 
-replaceBtn.addEventListener('click', async function(){
-    disableAllInputFields();
+replaceBtn.addEventListener('click', async function () {
+    //disableAllInputFields();
     await array.replaceValue(replaceIndex.value, replaceValue.value);
     replaceIndex.value = '';
     replaceValue.value = '';
-    enableAllInputFields();
+    //enableAllInputFields();
 });
 
-deleteBtn.addEventListener('click', async function(){
-    array.deleteAtIndex(deleteAtIndex.value, deleteValue.value);
+deleteBtn.addEventListener('click', async function () {
+    array.deleteAll(deleteAtIndex.value, deleteValue.value);
     deleteAtIndex.value = '';
     deleteValue.value = '';
 });
 
-insertBtn.addEventListener('click', async function(){
+insertBtn.addEventListener('click', async function () {
     array.insertAtIndex(insertData.value, index.value);
 });
 
-createBtn.addEventListener('click', async function(){
+createBtn.addEventListener('click', async function () {
+    //console.log(arrayLength.value);
+    if (arrayLength.value == '') {
+        errorBox.style.display = "block";
+        errorBox.innerText = 'Please enter a valid length.';
+        return;
+    }
+    enableAllInputFields();
     array.setLength(arrayLength.value);
-    arrayLength.value = '';
+    //arrayLength.value = '';
 });
+
+disableAllInputFieldsExceptLength();
 
