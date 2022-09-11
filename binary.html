@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,109 +23,128 @@
 
 
 
-<!------------------------------------------------  CONTROLLER AREA   ------------------------------------------------------------------------------------>
+            <!------------------------------------------------  CONTROLLER AREA   ------------------------------------------------------------------------------------>
             <div class="flex-intial px-3" style="border-right: 1px solid grey; height: 100vh; width: 40%;">
-        
+
                 <!-- This example requires Tailwind CSS v2.0+ -->
-                    <div class="back-light py-3 px-20 my-5 rounded">
-                        <h1 class="font-thin text-lg tracking-widest text-center">
-                            <span>BINARY SEARCH TREE</span>
-                         </h1>
-                    </div>
+                <div class="back-light py-3 px-20 my-5 rounded">
+                    <h1 class="font-thin text-lg tracking-widest text-center">
+                        <span>BINARY SEARCH TREE</span>
+                    </h1>
+                </div>
 
 
-                    <section>
-                      <nav>
+                <section>
+                    <nav>
                         <input id="toggle" style="border-radius:16px;" type="checkbox" checked>
-                       <h2>SELECT DATA STRUCTURE</h2>
-                     <ul>
-                         <li> <a href="index.html">Home</a></li>
-                         <li><a href="array.html">Array</a></li>
-                         <li><a href="stack.html">Stack</a></li>
-                         <li><a href="queue.html">Queue</a></li>
-                         <li><a href="priorityqueue.html">Priority Queue</a></li>
-                         <li><a href="singlylinklist.html">Singly Linked List</a></li>
-                         <li><a href="doublylinklist.html">Doubly Linked List</a></li>
-                         <li><a href="binary.html">Binary Search Tree</a></li>
-                         <li><a href="search.html">Search Algorithms</a></li>
-                         <li><a href="sort.html">Sort Algorithms</a></li>
-                     </ul>
+                        <h2>SELECT DATA STRUCTURE</h2>
+                        <ul>
+                            <li> <a href="index.html">Home</a></li>
+                            <li><a href="array.html">Array</a></li>
+                            <li><a href="stack.html">Stack</a></li>
+                            <li><a href="queue.html">Queue</a></li>
+                            <li><a href="priorityqueue.html">Priority Queue</a></li>
+                            <li><a href="singlylinklist.html">Singly Linked List</a></li>
+                            <li><a href="doublylinklist.html">Doubly Linked List</a></li>
+                            <li><a href="binary.html">Binary Search Tree</a></li>
+                            <li><a href="search.html">Search Algorithms</a></li>
+                            <li><a href="sort.html">Sort Algorithms</a></li>
+                        </ul>
                     </nav>
 
 
-<!------------------------------ SECTION THAT WILL BE CHANGED [CONTROLLER FOR EVERY DATASTRUCTURE] IN EVERY PAGE  ------------------------------------------------------------------->
-                        <div class="container hidden-scroll mx-2 font-sans">
-                            <div class="flex flex-col" id="moreInfo">
-                                <div class="mt-3 mr-4">
-                                    <button class="simulation">
-                                        Simulation Controls
-                                        <div class="col-span-2 text-center border border-pink p-3 text-sm text-pink" id="error" style="display : none"> NULL VALUE CANNOT BE PUSHED </div>
-                                    </button>
-                                    <div class="simulationpanel w-700">
-                                        <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
-                                            <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" id="createBtn" >CREATE TREE</button>
+                    <!------------------------------ SECTION THAT WILL BE CHANGED [CONTROLLER FOR EVERY DATASTRUCTURE] IN EVERY PAGE  ------------------------------------------------------------------->
+                    <div class="container hidden-scroll mx-2 font-sans">
+                        <div class="flex flex-col" id="moreInfo">
+                            <div class="mt-3 mr-4">
+                                <button class="simulation">
+                                    Simulation Controls
+                                    <div class="col-span-2 text-center border border-pink p-3 text-sm text-pink"
+                                        id="error" style="display : none"> NULL VALUE CANNOT BE PUSHED </div>
+                                </button>
+                                <div class="simulationpanel w-700">
+                                    <div class="grid grid-cols-2 gap-10 tracking-widest p-5">
+                                        <!-- INITIAL WORKS WILL BE ASSIGNED HERE -->
+                                        <!-- <button
+                                            class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline"
+                                            id="createBtn">CREATE TREE</button>
 
-                                            <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" id="create">
+                                        <input type="number" class="text-center" placeholder="ENTER ANY DIGIT"
+                                            id="create" style="visibility:hidden;"> -->
 
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline" id="insertBtn">INSERT DATA</button>
+                                        <button
+                                            class="bg-secondary rounded hover:bg-primary20 duration-700 focus:shadow-outline"
+                                            id="insertBtn">INSERT DATA</button>
 
-                                            <input type="number" class="text-center" placeholder="ENTER ANY DIGIT" id="insert">
+                                        <input type="number" class="text-center" placeholder="ENTER ANY DIGIT"
+                                            id="insert">
 
-                                            <button class="bg-secondary rounded hover:bg-primary20 duration-700" id="searchBtn" >SEARCH</button>
+                                        <button class="bg-secondary rounded hover:bg-primary20 duration-700"
+                                            id="searchBtn">SEARCH</button>
 
 
-                                            <input type="number" class="text-center" placeholder="ENTER SEARCH DIGIT" id="search">
+                                        <input type="number" class="text-center" placeholder="ENTER SEARCH DIGIT"
+                                            id="search">
 
-                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" id="randomBstBtn">GENERATE RANDOM</button>
-                                            <button class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700" id="resetBtn">RESET</button>
-                                        </div>
+                                        <button
+                                            class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
+                                            id="randomBstBtn">GENERATE RANDOM</button>
+                                        <button
+                                            class="bg-secondary text-red-600 rounded hover:bg-primary20 duration-700"
+                                            id="resetBtn">RESET</button>
                                     </div>
-                                    <div id="queueinfo" class="alert items-center" style="display: none; background: coral">
-                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                        <p></p>
-                                    </div>
-                                    <button class="accordion" onclick="">
-                                        Binary Search Tree
-                                    </button>
-                                    <div class="panel ">
-                                        <p class="py-4">
-                                            Binary Search Tree is a node-based binary tree data structure which has the following properties:
-                                            The left subtree of a node contains only nodes with keys lesser than the node’s key.
-                                            The right subtree of a node contains only nodes with keys greater than the node’s key.
-                                            The left and right subtree each must also be a binary search tree.
-                                        </p>
-                                        <br>
-                                        <p>
-                                            <h6>Time Complexity</h6>
-                                            Searching: time complexity is O(h) where h is height of BST.
-                                            Insertion: O(h)
-                                            Deletion: O(h).
-                                        </p>
-                                        <br>
-                                    </div>
+                                </div>
+                                <div id="queueinfo" class="alert items-center" style="display: none; background: coral">
+                                    <span class="closebtn"
+                                        onclick="this.parentElement.style.display='none';">&times;</span>
+                                    <p></p>
+                                </div>
+                                <button class="accordion" onclick="">
+                                    Binary Search Tree
+                                </button>
+                                <div class="panel ">
+                                    <p class="py-4">
+                                        Binary Search Tree is a node-based binary tree data structure which has the
+                                        following properties:
+                                        The left subtree of a node contains only nodes with keys lesser than the node’s
+                                        key.
+                                        The right subtree of a node contains only nodes with keys greater than the
+                                        node’s key.
+                                        The left and right subtree each must also be a binary search tree.
+                                    </p>
+                                    <br>
+                                    <p>
+                                    <h6>Time Complexity</h6>
+                                    Searching: time complexity is O(h) where h is height of BST.
+                                    Insertion: O(h)
+                                    Deletion: O(h).
+                                    </p>
+                                    <br>
                                 </div>
                             </div>
                         </div>
-      
-      
-                    </section>
+                    </div>
 
-             </div>
 
-<!--------------------------------------------------------- PLAYGROUND AREAD ------------------------------------------------------------------------------------------------>
-            <div class="container grid place-items-center h-screen back-dark" style="height:100vh; width: 60%;">
+                </section>
 
-              <div class="tree" id="tree">
-                
-              </div>
             </div>
-<!--------------------------------------------------------- PLAYGROUND AREA ENDS ------------------------------------------------------------------------------------------------>
-            
+
+            <!--------------------------------------------------------- PLAYGROUND AREAD ------------------------------------------------------------------------------------------------>
+            <div class="container grid place-items-center h-screen back-dark" style="overflow: scroll; width: 60%;">
+                <div class="text-center border m-10 border-pink p-3 text-lg text-pink" id="error1"
+                    style="display: none"> NULL VALUE CANNOT BE PUSHED </div>
+
+                <div class="tree" id="tree">
+
+                </div>
             </div>
+            <!--------------------------------------------------------- PLAYGROUND AREA ENDS ------------------------------------------------------------------------------------------------>
+
+        </div>
     </div>
-    
-    
+
+
 </body>
 
 
