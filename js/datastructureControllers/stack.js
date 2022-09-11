@@ -3,6 +3,10 @@ const container = document.getElementById("animation-container");
 const structure = "stack";
 const errorBox = document.getElementById("error");
 
+const textFieldStack = document.getElementById("push");
+const pushingData = document.getElementById("pushingData");
+const popingData = document.getElementById("popingData");
+
 const createElement = function (value) {
   const element = document.createElement("div");
   element.classList.add("hidden");
@@ -60,11 +64,14 @@ const movePopingData = function () {
       value: x,
     },
     complete: function () {
-      document.getElementsByClassName("stack")[0].classList.remove("hidden");
-      anime.set(target, {
-        translateX: 0,
-        translateY: 0,
-      });
+      var stackElementHolder = document.getElementsByClassName("stack")[0];
+      if (stackElementHolder) {
+        document.getElementsByClassName("stack")[0].classList.remove("hidden");
+        anime.set(target, {
+          translateX: 0,
+          translateY: 0,
+        });
+      }      
     },
   });
 };
@@ -98,6 +105,7 @@ class Stack {
       // ACUTAL ARRAY PUTTING
       this.dataArray.push(value);
       movePushingElement();
+      textFieldStack.value = "";
   }
 
   pop() {
@@ -116,6 +124,9 @@ class Stack {
     container.innerHTML = "";
     this.dataArray = new Array();
     errorBox.style.display = "none";
+    textFieldStack.value = "";
+    popingData.innerHTML = "";
+    pushingData.innerHTML = "";
   };
 
   peek() {
