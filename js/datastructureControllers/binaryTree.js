@@ -45,12 +45,6 @@ const clearAllInputFields = () => {
     });
 };
 
-function reset() {
-    bst = null;
-    treeContainer.innerHTML = '';
-    errorBox.style.display = "none";
-    clearAllInputFields();
-}
 
 class BinarySearchTree {
 
@@ -149,6 +143,13 @@ class BinarySearchTree {
             }
         }
     }
+
+    reset() {
+        bst = null;
+        treeContainer.innerHTML = '';
+        errorBox.style.display = "none";
+        clearAllInputFields();
+    }
 }
 
 
@@ -197,7 +198,7 @@ searchBtn.addEventListener('click', () => {
         errorBox.style.display = "block";
         errorBox.innerHTML = "Value cannot be blank!";
         return;
-    } 
+    }
     if (!bst) {
         errorBox.style.display = "block";
         errorBox.innerHTML = "Tree is empty!";
@@ -207,5 +208,5 @@ searchBtn.addEventListener('click', () => {
     bst.search(parseInt(searchInput.value));
 });
 randomBstBtn.addEventListener('click', () => generateRandomBst())
-resetBtn.addEventListener('click', reset);
+resetBtn.addEventListener('click', () => bst.reset());
 
