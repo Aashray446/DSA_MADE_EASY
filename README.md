@@ -7,3 +7,6 @@ The project is based on plain javascript, HTML, and CSS with no framework purpos
 
 ### How to run the Code ??
 - Just open Index.html (Easy right?? )
+
+![image](https://github.com/Aashray446/DSA_MADE_EASY/assets/69245931/1ccb8545-883d-491c-b3a2-b8f0bb8da242)
+
